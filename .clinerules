@@ -1,5 +1,0 @@
-# TERMlNAL & SCRIPT EXECUTION RULES
-1. Wenn du Terminal-Befehle, Test-Skripte oder Build-Pipelines ausführst, darfst du den Standard-Output (stdout) NIEMALS ungefiltert im Chat ausgeben lassen. Das zerstört unseren Prompt-Cache.
-2. Leite den Output JEDES Befehls/Skripts immer in eine temporäre Datei im Workspace um (z. B. `> .cline_output.log 2>&1` oder nutze `tmp/cline_exec.log`).
-3. Analysiere das Skript-Ergebnis im Hintergrund, indem du die Log-Datei liest.
-4. Gib mir im Chat NUR eine ultrakompakte Zusammenfassung aus (z. B. "✓ Tests erfolgreich" oder "✗ Fehler in Zeile 42 von server.ts"). Poste niemals den ungekürzten Stack-Trace oder Dependency-Logs in unseren Chat-Verlauf.
