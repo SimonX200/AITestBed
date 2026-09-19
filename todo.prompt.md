@@ -1,6 +1,6 @@
 Führe diese Aufgabe strikt isoliert aus. Ignoriere das restliche Repository und lies keine anderen Dateien ein. Schreibe den Code direkt und ohne einleitende Erklärungen oder langes Nachdenken (kein DeepSeek-Reasoning simulieren).
 
-Alle Ergebnisse kommen in das Verzeichnis Example
+Alle Ergebnisse kommen in das Verzeichnis Example2
 
 1. Erstelle die Datei `sessionManager.ts`:
    - Interface `UserSession` (id: string, token: string, expiresAt: Date, roles: string[])
