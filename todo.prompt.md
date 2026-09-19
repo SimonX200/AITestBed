@@ -10,4 +10,10 @@ Führe diese Aufgabe strikt isoliert aus. Ignoriere das restliche Repository und
    - Ein minimales `Dockerfile` on-the-fly erstellen (Basis node:20-alpine), das `dist/bundle.js` per CMD startet.
    - Den Docker-Container bauen und im Hintergrund ausführen.
 
+3. Erstellen von Tests
+   - Prüfe die funktionen.
+   - Prüfe die funktionen auch gegen den laufenden Container als E2E tests
+
 Nutze für beide Dateien jeweils einen eigenen, sauberen `write_to_file` Tool-Aufruf.
+
+Am Ende ein "Report-ISOTime-nur bis sekunden.md" generieren mit der Dauer aller tasks einzeln und zusammen.
