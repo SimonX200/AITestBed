@@ -1,5 +1,7 @@
 Führe diese Aufgabe strikt isoliert aus. Ignoriere das restliche Repository und lies keine anderen Dateien ein. Schreibe den Code direkt und ohne einleitende Erklärungen oder langes Nachdenken (kein DeepSeek-Reasoning simulieren).
 
+Alle Ergebnisse kommen in das Verzeichnis Example
+
 1. Erstelle die Datei `sessionManager.ts`:
    - Interface `UserSession` (id: string, token: string, expiresAt: Date, roles: string[])
    - Klasse `SessionManager` mit einer internen Map. Methode zum Hinzufügen, Prüfen und ein automatisches `setInterval` (alle 60 Sekunden), das abgelaufene Sessions löscht.
@@ -16,4 +18,4 @@ Führe diese Aufgabe strikt isoliert aus. Ignoriere das restliche Repository und
 
 Nutze für beide Dateien jeweils einen eigenen, sauberen `write_to_file` Tool-Aufruf.
 
-Am Ende ein "Report-ISOTime-nur bis sekunden.md" generieren mit der Dauer aller tasks einzeln und zusammen.
+Am Ende ein Report.md generieren mit der Dauer aller tasks einzeln und zusammen und dem AI Model und seiner parameter die genutzt wurden.
