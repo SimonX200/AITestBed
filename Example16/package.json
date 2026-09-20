@@ -1,0 +1,26 @@
+{
+  "name": "example16",
+  "version": "1.0.0",
+  "description": "SessionManager with HTTP API",
+  "main": "dist/bundle.js",
+  "scripts": {
+    "build": "npx esbuild src/sessionManager.ts --bundle --platform=node --target=node20 --outfile=dist/bundle.js --format=cjs",
+    "test": "jest --config jest.config.js",
+    "test:unit": "jest --config jest.config.js --testPathIgnorePatterns=\\.e2e\\.test\\.ts",
+    "e2e": "bash scripts/e2e_runner.sh",
+    "deploy": "bash deploy.sh deploy",
+    "deploy:stop": "bash deploy.sh stop"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^26.6.2",
+    "esbuild": "^0.28.2",
+    "express": "^5.2.1",
+    "jest": "^30.5.2",
+    "ts-jest": "^29.4.12",
+    "typescript": "^5.9.3"
+  }
+}
