@@ -1,6 +1,11 @@
 Führe diese Aufgabe strikt isoliert aus. Ignoriere das restliche Repository und lies keine anderen Dateien ein. Schreibe den Code direkt und ohne einleitende Erklärungen oder langes Nachdenken (kein DeepSeek-Reasoning simulieren).
 
-Alle Ergebnisse kommen in das Verzeichnis Example3
+Alle Ergebnisse kommen in das Verzeichnis Example4
+
+
+0. Ganz wichtig: 
+   - Keinen Task überspringen. 
+   - Überspringen ist ein fataler Fehler.
 
 1. Erstelle die Datei `sessionManager.ts`:
    - Interface `UserSession` (id: string, token: string, expiresAt: Date, roles: string[])
@@ -18,4 +23,8 @@ Alle Ergebnisse kommen in das Verzeichnis Example3
 
 Nutze für beide Dateien jeweils einen eigenen, sauberen `write_to_file` Tool-Aufruf.
 
-Am Ende ein Report.md generieren mit der Dauer aller tasks einzeln und zusammen und dem AI Model und seiner parameter die genutzt wurden.
+Am Ende ein Report.md generieren
+   - mit der Bearbeitungsdauer jedes Task.
+   - mit der Bearbeitungsdauer aller Tasks zusammen.
+
+Dann noch sicherstellen, das der neue Docker Container nicht mehr läuft.
