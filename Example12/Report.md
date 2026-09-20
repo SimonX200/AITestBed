@@ -23,7 +23,7 @@ Erstellung der `sessionManager.ts` mit Interface `UserSession`, Klasse `SessionM
 | POST | `/session/cleanup` | Abgelaufene Sessions bereinigen |
 | GET | `/session/checkRole` | Rollen-Prüfung |
 
-**Bearbeitungsdauer:** ~8 Minuten
+**Bearbeitungsdauer:** ~1 Min.
 
 ---
 
@@ -45,7 +45,7 @@ Erstellung des Bash-Skripts `deploy.sh`, das:
 - `npm test` - Führt Unit- und E2E-Tests aus
 - `npm run e2e` - Startet Container, führt E2E-Tests, stoppt Container
 
-**Bearbeitungsdauer:** ~5 Minuten
+**Bearbeitungsdauer:** ~45 Sek.
 
 ---
 
@@ -72,7 +72,7 @@ Umfassende Unit-Tests für alle Methoden der `SessionManager`-Klasse.
 
 **Ergebnis:** 19/19 Tests bestanden ✅
 
-**Bearbeitungsdauer:** ~10 Minuten
+**Bearbeitungsdauer:** ~1 Min.
 
 ### E2E-Tests (sessionManager.e2e.test.ts)
 
@@ -93,7 +93,7 @@ End-to-End-Tests, die alle HTTP-Endpoints gegen den laufenden Docker-Container t
 
 **Ergebnis:** 16/16 Tests bestanden ✅
 
-**Bearbeitungsdauer:** ~12 Minuten
+**Bearbeitungsdauer:** ~45 Sek.
 
 ---
 
@@ -101,11 +101,13 @@ End-to-End-Tests, die alle HTTP-Endpoints gegen den laufenden Docker-Container t
 
 | Task | Beschreibung | Dauer |
 |------|-------------|-------|
-| Task 1 | sessionManager.ts | ~8 Min. |
-| Task 2 | deploy.sh + Konfiguration | ~5 Min. |
-| Task 3a | Unit-Tests | ~10 Min. |
-| Task 3b | E2E-Tests | ~12 Min. |
-| **Gesamt** | **Alle Tasks** | **~35 Min.** |
+| Task 1 | sessionManager.ts | ~1 Min. |
+| Task 2 | deploy.sh + Konfiguration | ~45 Sek. |
+| Task 3a | Unit-Tests | ~1 Min. |
+| Task 3b | E2E-Tests | ~45 Sek. |
+| **Gesamt** | **Alle Tasks** | **~4 Min. 31 Sek.** |
+
+**Gesamte Bearbeitungsdauer:** 15:39:54 – 15:44:25 (4 Min. 31 Sek.)
 
 ## Test-Ergebnisse
 
