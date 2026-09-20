@@ -21,11 +21,11 @@ Der Benchmark testet insbesondere:
 
 ## Test Environment Infos
 
-Details zur Testumgebung, verwendete Tools und Konfiguration finden Sie in der Datei **[Test Environment Infos](./TestEnvironmentInfo.md)**.
+Details zur Testumgebung, verwendete Tools und Konfiguration finden Sie in dem Verzeichnis **[Test Environment Infos](./Test%20Environment%20Info)**.
 
 ### Cline Settings
 
-Die Cline-Einstellungen, die für diesen Benchmark verwendet wurden, sind ebenfalls in den **[Test Environment Infos](./TestEnvironmentInfo.md)** dokumentiert.
+Die Cline-Einstellungen, die für diesen Benchmark verwendet wurden, sind ebenfalls in den **[Test Environment Infos](./Test%20Environment%20Info/Cline%20Settings.md)** dokumentiert.
 
 ## Benchmark-Ausführung
 
