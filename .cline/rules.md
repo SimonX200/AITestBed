@@ -1,60 +1,30 @@
-Prefer tool-native state over chat history.
-
-Do not copy terminal output into messages. Summarize in one sentence:
-
-- command executed
-- success/failure
-- key result
-
-Keep responses under 50 words unless additional detail is requested.
-
-## Editor Tool Reliability
-
-- Before every editor tool call, validate that the tool arguments are valid JSON.
-- Escape all quotes (`\"`), backslashes (`\\`) and newlines (`\n`) inside JSON string values.
-- Never retry an identical editor call after a JSON parsing failure.
-- If the editor tool fails due to invalid JSON, inspect and correct the payload first.
-- After two consecutive editor failures, switch to an alternative file editing method (shell commands, Python, sed, perl, or heredocs).
-- Do not enter retry loops.
-- When a tool call fails repeatedly, explain the root cause and choose a different approach.
-
-## Context Efficiency
-
-- Never include terminal logs, build output, command output, stack traces, or file contents in chat responses unless explicitly requested.
-- Summarize tool results instead of reproducing them.
+# GENERAL EXECUTION & CONTEXT EFFICIENCY
+- Prefer tool-native state over chat history. 
+- Keep responses under 50 words unless explicitly requested.
+- Never include terminal logs, build output, stack traces, or file contents in messages.
+- Summarize execution in one sentence: [Command executed] | [Success/Failure] | [Key result].
 - Minimize token usage to maximize prompt cache efficiency.
-- Prefer concise status updates over verbose explanations after tool execution.
 
+# TOOL IMPLEMENTATION & PAYLOAD SANITIZATION
+- Before calling editor tools, validate that arguments are valid JSON.
+- Escape all quotes (`\"`), backslashes (`\\`), and newlines (`\n`) inside JSON string values.
+- Never retry an identical editor call after a JSON parse failure; inspect and fix the payload first.
+- After two consecutive editor failures, do not enter retry loops. Switch to alternative methods (shell, sed, perl, or heredocs) immediately.
 
-# ====================================================================
-# STRICT TOOL-CALLING & PROMPT CACHE PROTECTION PROTOCOL
-# ====================================================================
-1. NO RAW CODE IN CHAT: You must NEVER output source code or configurations as plain markdown blocks (e.g., using standard ```ts blocks) inside the chat window. Every file creation or modification must trigger a formal, system-valid tool call.
-2. REASONING BOUNDARIES: You must NEVER initialize an XML tool block inside the `<think>` tracks. The thinking phase must be explicitly closed with `</think>` before emitting the first character of any Cline tool action. Keep your `<think>` loops concise and limited to a maximum of 3 planning sentences.
-- CRITICAL ANTI-CODE RULE: You must NEVER type out actual source code, variables, function bodies, or code draft blocks inside the `<think>` tags. The thinking block is strictly reserved for high-level abstract logic steps. Do not write drafts.
-3. OUTPUT CHUNKING (8K BYPASS): To prevent client-side truncation crashes at the hard 8,192 token ceiling, you must chunk large file operations. If a file or test suite layout is projected to exceed 150 lines, split the generation turn into sequential turns:
-   - Turn 1: Generate the skeletal class structures, interfaces, and core method setups via `<write_to_file>`. Terminate your turn immediately by asking: "Part 1 successfully mapped out. Please confirm to proceed with implementation details."
-   - Turn 2 (Upon user confirmation): Inject remaining execution logic, edge-case unit handling, and environment scripts using focused `<apply_diff>` or `<edit_file>` loops.
+# PROMPT CEILING PROTECTION & OUTPUT CHUNKING
+- NO RAW CODE IN CHAT: Never output code blocks (```ts) in messages. Every change must trigger a valid tool call.
+- REASONING LIMITS: Keep `<think>` loops under 3 sentences. Abstract logic only. Never write draft code, variables, or functions inside `<think>` tags. Close with `</think>` before any tool call.
+- 8K CHUNKING BYPASS: If a file or test layout will exceed 150 lines, split it across turns before typing visible code:
+  * Turn 1: Open `<write_to_file>` immediately. Output ONLY skeletal structures, interfaces, and method signatures. Close tool and ask: "Part 1 mapped. Confirm to implement details."
+  * Turn 2 (Upon confirmation): Inject execution logic and body content using focused `<apply_diff>` or `<edit_file>` loops.
 
-# ====================================================================
-# TERMINAL EXECUTION & VERBOSITY SILENCING
-# ====================================================================
-1. OUTPUT REDIRECTION: To safeguard our high-speed local GPU Prompt Cache from context invalidation, never dump verbose terminal runs into the timeline. Append `> .cline_output.log 2>&1` to EVERY terminal pipeline, test execution, or build command you invoke.
-2. COMPACT STATUS CHECKS: Parse execution failures silently by reading the `.cline_output.log` file behind the scenes. Emit only a one-line fragment inside the chat timeline to verify deployment status (e.g., "✓ 19/19 Unit Tests Passed Successfully" or "✗ Build truncated at line 42 of sessionManager.ts").
-3. OUTPUT CHUNKING (8K BYPASS): To prevent client-side truncation crashes at the hard 8,192 token ceiling, you must decide on chunking BEFORE generating any visible text or code. If a file or test suite layout is projected to exceed 150 lines, immediately execute the split architecture without any conversational filler or pre-writing:
-  - Turn 1: Open the `<write_to_file>` tool instantly as your very first action. Generate ONLY the skeletal class structures, interfaces, and first 3 core method signatures. Do not write the full body yet. Close the tool tag and immediately terminate your turn by asking: "Part 1 successfully mapped out. Please confirm to proceed with implementation details."
-  - Turn 2 (Upon user confirmation): Inject the remaining execution logic, edge-case unit handling, and environment scripts using focused `<apply_diff>` or `<edit_file>` loops.
+# INFRASTRUCTURE DEBUGS & LOG MITIGATION
+- LOG INGESTION BAN: Never use `read_file` or `view_outline` on files ending in `.log` or `.txt` traces.
+- SHELL PRE-FILTERING: To debug failures, use terminal commands externally (`tail -n 100`, `grep -i -E "error|failed|fatal"`, or `sed/awk`) to filter logs.
+- Feed a maximum of 50 extracted error lines into the chat timeline. Never pollute the context pool.
 
-
-# ====================================================================
-# LARGE LOG FILE HANDLING & CONTEXT MITIGATION
-# ====================================================================
-1. LOG INGESTION BAN: You are strictly FORBIDDEN from using the `read_file` or `view_outline` tools on any file ending in `.log`, `.txt` trace streams, or verbose test reports. 
-2. PRE-FILTERING VIA SHELL: If you need to inspect an execution failure or evaluate a log file, you must run an industrial shell pipeline to isolate the root cause externally:
-   - Use `tail -n 100 .cline_output.log` to scan only the trailing exit frames.
-   - Use `grep -i -E "error|exception|failed|fatal" .cline_output.log` to filter out baseline success markers.
-   - Use `awk` or `sed` to extract specific line blocks around an error stack trace.
-3. LOG SUMMARIZATION: Only feed the extracted error slice (maximum 100 lines) into the chat timeline. Never allow an entire execution log to pollute our token context pool.
-
-
-
+# MARKDOWN DISCIPLINE & LOOP PREVENTION
+- NO DIFFS FOR PROSE: Never use `apply_diff` or `edit_file` on `.md` (Markdown) or report files.
+- FULL OVERWRITES: Always update or create `REPORT.md` using a fresh, raw `<write_to_file>` payload from scratch.
+- LOOP BREAKER: If an edit fails twice, stop using editor tools. Use the terminal tool with a heredoc (`cat << 'EOF' > REPORT.md`) to write the file directly. Do not enter conversational retry loops.
+.

@@ -4,3 +4,9 @@ dist
 build
 *.log
 tmp
+
+.cline_output.log
+temp/
+coverage/
+.nyc_output/
+out/
