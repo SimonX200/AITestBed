@@ -1,0 +1,1054 @@
+Sep 20 18:33:47 G27 llama-server[159642]: 0.00.024.891 I cmn  common_param: common_params_print_info: build 10963 (d9e03f107) with GNU 14.3.1 for Linux x86_64
+Sep 20 18:33:47 G27 llama-server[159642]: 0.00.024.895 I cmn  common_param: common_params_print_info: verbosity = 4 (adjust with the `-lv N` CLI arg)
+Sep 20 18:33:47 G27 llama-server[159642]: 0.00.024.948 I cmn  common_param: system_info: n_threads = 16 (n_threads_batch = 16) / 32 | CUDA : ARCHS = 610,860 | USE_GRAPHS = 1 | FA_QUANTS = q4_0-q4_0,q8_0-q4_0,q8_0-q5_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 |
+Sep 20 18:33:47 G27 llama-server[159642]: 0.00.024.975 I srv          init: running without SSL
+Sep 20 18:33:47 G27 llama-server[159642]: 0.00.025.044 I srv          init: using 31 threads for HTTP server
+Sep 20 18:33:47 G27 llama-server[159642]: 0.00.026.785 I srv   load_models: Loaded 0 cached model presets
+Sep 20 18:33:47 G27 llama-server[159642]: 0.00.027.695 I srv   load_models: Loaded 4 custom model presets from /home/aurelb/devops/LocalAI/models.ini
+Sep 20 18:33:47 G27 llama-server[159642]: 0.00.027.948 I srv    operator(): Available models (4) (*: custom preset)
+Sep 20 18:33:47 G27 llama-server[159642]: 0.00.027.951 I srv    operator():   * Qwen3.6-35B-A3B-UD-IQ4_NL
+Sep 20 18:33:47 G27 llama-server[159642]: 0.00.027.952 I srv    operator():   * Qwen3.6-35B-A3B-UD-Q4_K_XL
+Sep 20 18:33:47 G27 llama-server[159642]: 0.00.027.952 I srv    operator():   * Qwen3.8-27B-UD-Q4_K_XL
+Sep 20 18:33:47 G27 llama-server[159642]: 0.00.027.952 I srv    operator():   * Qwen3.8-27B-UD-Q5_K_S
+Sep 20 18:33:47 G27 llama-server[159642]: 0.00.028.039 W srv  llama_server: -----------------
+Sep 20 18:33:47 G27 llama-server[159642]: 0.00.028.042 W srv  llama_server: CORS is set to allow all origins ('*') and no API key is set
+Sep 20 18:33:47 G27 llama-server[159642]: 0.00.028.042 W srv  llama_server: this can be a security risk (cross-origin attacks)
+Sep 20 18:33:47 G27 llama-server[159642]: 0.00.028.042 W srv  llama_server: more info: https://github.com/ggml-org/llama.cpp/pull/25655
+Sep 20 18:33:47 G27 llama-server[159642]: 0.00.028.042 W srv  llama_server: -----------------
+Sep 20 18:33:47 G27 llama-server[159642]: 0.00.028.055 W srv  llama_server: -----------------
+Sep 20 18:33:47 G27 llama-server[159642]: 0.00.028.055 W srv  llama_server: the following feature(s) are enabled:
+Sep 20 18:33:47 G27 llama-server[159642]: 0.00.028.055 W srv  llama_server:     router mode
+Sep 20 18:33:47 G27 llama-server[159642]: 0.00.028.055 W srv  llama_server: do not expose the server to untrusted environments
+Sep 20 18:33:47 G27 llama-server[159642]: 0.00.028.055 W srv  llama_server: -----------------
+Sep 20 18:33:47 G27 llama-server[159642]: 0.00.028.057 I srv  llama_server: starting server in router mode. models will be automatically loaded on-demand
+Sep 20 18:33:47 G27 llama-server[159642]: 0.00.028.058 I srv         start: binding port with default address family
+Sep 20 18:33:47 G27 llama-server[159642]: 0.00.029.346 I srv  llama_server: listening on http://127.0.0.1:12434
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.190 I srv  ensure_model: model name=Qwen3.8-27B-UD-Q5_K_S is not loaded, loading...
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.265 I srv          load: spawning server instance with name=Qwen3.8-27B-UD-Q5_K_S on port 58043
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.297 I srv          load: spawning server instance with args:
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.299 I srv          load:   /home/aurelb/devops/LocalAI/llama-beta/d9e03f107-cuda12-gcc14/llama-server
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.299 I srv          load:   --cache-prompt
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.299 I srv          load:   --host
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.299 I srv          load:   127.0.0.1
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.300 I srv          load:   --jinja
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.300 I srv          load:   --port
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.300 I srv          load:   58043
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.300 I srv          load:   --reasoning-effort
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.300 I srv          load:   xhigh
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.300 I srv          load:   --reasoning-format
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.301 I srv          load:   deepseek
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.301 I srv          load:   --reasoning-preserve
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.301 I srv          load:   --sleep-idle-seconds
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.301 I srv          load:   300
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.301 I srv          load:   --spec-draft-n-max
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.301 I srv          load:   4
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.301 I srv          load:   --draft-p-min
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.302 I srv          load:   0.75
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.302 I srv          load:   --spec-type
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.302 I srv          load:   draft-mtp
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.302 I srv          load:   --alias
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.302 I srv          load:   Qwen3.8-27B-UD-Q5_K_S
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.302 I srv          load:   --batch-size
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.302 I srv          load:   4096
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.303 I srv          load:   --ctx-size
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.303 I srv          load:   90000
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.303 I srv          load:   --cont-batching
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.303 I srv          load:   --cache-type-k
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.303 I srv          load:   q8_0
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.303 I srv          load:   --cache-type-v
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.304 I srv          load:   q4_0
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.305 I srv          load:   --flash-attn
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.305 I srv          load:   true
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.305 I srv          load:   --kv-unified
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.305 I srv          load:   --load-mode
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.306 I srv          load:   mmap+mlock
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.306 I srv          load:   --log-verbosity
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.306 I srv          load:   4
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.306 I srv          load:   --lazy-mode
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.306 I srv          load:   off
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.306 I srv          load:   --model
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.306 I srv          load:   /home/aurelb/devops/LocalAI/models/Qwen3.8-27B-UD-Q5_K_S.gguf
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.307 I srv          load:   --n-gpu-layers
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.307 I srv          load:   99
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.307 I srv          load:   --parallel
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.307 I srv          load:   1
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.307 I srv          load:   --threads
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.307 I srv          load:   8
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.307 I srv          load:   --ubatch-size
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.308 I srv          load:   1024
+Sep 20 18:34:15 G27 llama-server[159642]: 0.28.235.601 I srv  ensure_model: waiting until model name=Qwen3.8-27B-UD-Q5_K_S is fully loaded...
+Sep 20 18:34:15 G27 llama-server[159642]: [58043] 0.00.054.341 I cmn  common_param: common_params_print_info: build 10963 (d9e03f107) with GNU 14.3.1 for Linux x86_64
+Sep 20 18:34:15 G27 llama-server[159642]: [58043] 0.00.054.345 I cmn  common_param: common_params_print_info: verbosity = 4 (adjust with the `-lv N` CLI arg)
+Sep 20 18:34:15 G27 llama-server[159642]: [58043] 0.00.054.345 I cmn  common_param: device_info:
+Sep 20 18:34:16 G27 llama-server[159642]: [58043] 0.00.304.788 I cmn  common_param:   - CUDA0   : NVIDIA GeForce RTX 3090 (24173 MiB, 22165 MiB free)
+Sep 20 18:34:16 G27 llama-server[159642]: [58043] 0.00.304.800 I cmn  common_param:   - CPU     : AMD Ryzen 9 5950X 16-Core Processor (128706 MiB, 128706 MiB free)
+Sep 20 18:34:16 G27 llama-server[159642]: [58043] 0.00.304.882 I cmn  common_param: system_info: n_threads = 8 (n_threads_batch = 8) / 32 | CUDA : ARCHS = 610,860 | USE_GRAPHS = 1 | FA_QUANTS = q4_0-q4_0,q8_0-q4_0,q8_0-q5_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 |
+Sep 20 18:34:16 G27 llama-server[159642]: [58043] 0.00.304.927 I srv          init: running without SSL
+Sep 20 18:34:16 G27 llama-server[159642]: [58043] 0.00.305.007 I srv          init: using 31 threads for HTTP server
+Sep 20 18:34:16 G27 llama-server[159642]: [58043] 0.00.305.480 W srv  llama_server: -----------------
+Sep 20 18:34:16 G27 llama-server[159642]: [58043] 0.00.305.482 W srv  llama_server: CORS is set to allow all origins ('*') and no API key is set
+Sep 20 18:34:16 G27 llama-server[159642]: [58043] 0.00.305.483 W srv  llama_server: this can be a security risk (cross-origin attacks)
+Sep 20 18:34:16 G27 llama-server[159642]: [58043] 0.00.305.483 W srv  llama_server: more info: https://github.com/ggml-org/llama.cpp/pull/25655
+Sep 20 18:34:16 G27 llama-server[159642]: [58043] 0.00.305.483 W srv  llama_server: -----------------
+Sep 20 18:34:16 G27 llama-server[159642]: [58043] 0.00.305.512 I srv         start: binding port with default address family
+Sep 20 18:34:16 G27 llama-server[159642]: [58043]
+Sep 20 18:34:16 G27 llama-server[159642]: [58043] 0.00.307.027 I srv    load_model: loading model '/home/aurelb/devops/LocalAI/models/Qwen3.8-27B-UD-Q5_K_S.gguf'
+Sep 20 18:34:16 G27 llama-server[159642]: [58043] 0.00.307.028 I srv    load_model: local path '/home/aurelb/devops/LocalAI/models/Qwen3.8-27B-UD-Q5_K_S.gguf'
+Sep 20 18:34:16 G27 llama-server[159642]: [58043] 0.00.307.052 I cmn  common_init_: fitting params to device memory ...
+Sep 20 18:34:16 G27 llama-server[159642]: [58043] 0.00.307.056 I cmn  common_init_: (for bugs during this step try to reproduce them with -fit off, or provide --verbose logs if the bug only occurs with -fit on)
+Sep 20 18:34:16 G27 llama-server[159642]: [58043] 0.00.307.112 I common_params_fit_impl: getting device memory data for initial parameters:
+Sep 20 18:34:16 G27 llama-server[159642]: [58043] 0.00.819.973 I common_memory_breakdown_print: | memory breakdown [MiB] | total    free     self   model   context   compute    unaccounted |
+Sep 20 18:34:16 G27 llama-server[159642]: [58043] 0.00.819.977 I common_memory_breakdown_print: |   - CUDA0 (RTX 3090)   | 24173 = 21415 + (20832 = 17108 +    3036 +     688) +      -18074 |
+Sep 20 18:34:16 G27 llama-server[159642]: [58043] 0.00.819.978 I common_memory_breakdown_print: |   - Host               |                    898 =   682 +       0 +     216                |
+Sep 20 18:34:16 G27 llama-server[159642]: [58043] 0.00.853.224 I operator(): getting device memory data for the extra model at a context size of 90000:
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.285.699 I common_memory_breakdown_print: | memory breakdown [MiB] | total    free     self   model   context   compute    unaccounted |
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.285.704 I common_memory_breakdown_print: |   - CUDA0 (RTX 3090)   | 24173 = 22169 + (17772 = 17108 +     352 +     312) +      -15768 |
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.285.705 I common_memory_breakdown_print: |   - Host               |                    898 =   682 +       0 +     216                |
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.318.164 I common_params_fit_impl: projected to use 21496 MiB of device memory vs. 21415 MiB of free device memory
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.318.168 I common_params_fit_impl: cannot meet free memory target of 1024 MiB, need to reduce device memory by 1105 MiB
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.318.169 I common_params_fit_impl: context size set by user to 90000 -> no change
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.318.245 W common_fit_params: failed to fit params to free device memory: n_gpu_layers already set by user to 99, abort
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.318.254 I common_fit_params: fitting params to free memory took 1.01 seconds
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.365.985 I llama_model_loader: loaded meta data with 50 key-value pairs and 866 tensors from /home/aurelb/devops/LocalAI/models/Qwen3.8-27B-UD-Q5_K_S.gguf (version GGUF V3 (latest))
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.019 I llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.023 I llama_model_loader: - kv   0:                       general.architecture str              = qwen35
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.024 I llama_model_loader: - kv   1:                               general.type str              = model
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.026 I llama_model_loader: - kv   2:                     general.sampling.top_k i32              = 20
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.032 I llama_model_loader: - kv   3:                     general.sampling.top_p f32              = 0.950000
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.033 I llama_model_loader: - kv   4:                      general.sampling.temp f32              = 1.000000
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.034 I llama_model_loader: - kv   5:                               general.name str              = Qwen3.8-27B
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.034 I llama_model_loader: - kv   6:                           general.basename str              = Qwen3.8-27B
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.036 I llama_model_loader: - kv   7:                        general.description str              = Renewal of the beloved Qwen model, de...
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.037 I llama_model_loader: - kv   8:                       general.quantized_by str              = Unsloth
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.037 I llama_model_loader: - kv   9:                         general.size_label str              = 27B
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.038 I llama_model_loader: - kv  10:                            general.license str              = apache-2.0
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.038 I llama_model_loader: - kv  11:                           general.repo_url str              = https://huggingface.co/unsloth
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.039 I llama_model_loader: - kv  12:                   general.base_model.count u32              = 1
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.040 I llama_model_loader: - kv  13:                  general.base_model.0.name str              = Qwen3.8 27B
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.040 I llama_model_loader: - kv  14:          general.base_model.0.organization str              = Qwen
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.049 I llama_model_loader: - kv  15:              general.base_model.0.repo_url str              = https://huggingface.co/Qwen/Qwen3.8-27B
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.055 I llama_model_loader: - kv  16:                               general.tags arr[str,1]       = ["unsloth"]
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.056 I llama_model_loader: - kv  17:                         qwen35.block_count u32              = 65
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.056 I llama_model_loader: - kv  18:                      qwen35.context_length u32              = 262144
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.057 I llama_model_loader: - kv  19:                    qwen35.embedding_length u32              = 5120
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.057 I llama_model_loader: - kv  20:                 qwen35.feed_forward_length u32              = 17408
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.058 I llama_model_loader: - kv  21:                qwen35.attention.head_count u32              = 24
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.058 I llama_model_loader: - kv  22:             qwen35.attention.head_count_kv u32              = 4
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.060 I llama_model_loader: - kv  23:             qwen35.rope.dimension_sections arr[i32,4]       = [11, 11, 10, 0]
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.062 I llama_model_loader: - kv  24:                      qwen35.rope.freq_base f32              = 10000000.000000
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.063 I llama_model_loader: - kv  25:    qwen35.attention.layer_norm_rms_epsilon f32              = 0.000001
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.064 I llama_model_loader: - kv  26:                qwen35.attention.key_length u32              = 256
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.064 I llama_model_loader: - kv  27:              qwen35.attention.value_length u32              = 256
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.064 I llama_model_loader: - kv  28:                qwen35.nextn_predict_layers u32              = 1
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.065 I llama_model_loader: - kv  29:                     qwen35.ssm.conv_kernel u32              = 4
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.065 I llama_model_loader: - kv  30:                      qwen35.ssm.state_size u32              = 128
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.066 I llama_model_loader: - kv  31:                     qwen35.ssm.group_count u32              = 16
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.066 I llama_model_loader: - kv  32:                  qwen35.ssm.time_step_rank u32              = 48
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.067 I llama_model_loader: - kv  33:                      qwen35.ssm.inner_size u32              = 6144
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.067 I llama_model_loader: - kv  34:             qwen35.full_attention_interval u32              = 4
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.067 I llama_model_loader: - kv  35:                qwen35.rope.dimension_count u32              = 64
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.068 I llama_model_loader: - kv  36:                       tokenizer.ggml.model str              = gpt2
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.366.068 I llama_model_loader: - kv  37:                         tokenizer.ggml.pre str              = qwen35
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.393.991 I llama_model_loader: - kv  38:                      tokenizer.ggml.tokens arr[str,248320]  = ["!", "\"", "#", "$", "%", "&", "'", ...
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.401.960 I llama_model_loader: - kv  39:                  tokenizer.ggml.token_type arr[i32,248320]  = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.429.733 I llama_model_loader: - kv  40:                      tokenizer.ggml.merges arr[str,247587]  = ["Ġ Ġ", "ĠĠ ĠĠ", "i n", "Ġ t",...
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.429.737 I llama_model_loader: - kv  41:                tokenizer.ggml.eos_token_id u32              = 248046
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.429.737 I llama_model_loader: - kv  42:            tokenizer.ggml.padding_token_id u32              = 248055
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.429.738 I llama_model_loader: - kv  43:                tokenizer.ggml.bos_token_id u32              = 248044
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.429.738 I llama_model_loader: - kv  44:               general.quantization_version u32              = 2
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.429.739 I llama_model_loader: - kv  45:                          general.file_type u32              = 16
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.429.740 I llama_model_loader: - kv  46:                      quantize.imatrix.file str              = Qwen3.8-27B-GGUF/imatrix_unsloth.gguf
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.429.741 I llama_model_loader: - kv  47:             quantize.imatrix.entries_count u32              = 496
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.429.741 I llama_model_loader: - kv  48:              quantize.imatrix.chunks_count u32              = 1251
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.429.744 I llama_model_loader: - kv  49:                    tokenizer.chat_template str              = {%- set image_count = namespace(value...
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.429.745 I llama_model_loader: - type  f32:  360 tensors
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.429.746 I llama_model_loader: - type q8_0:  117 tensors
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.429.746 I llama_model_loader: - type q3_K:    2 tensors
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.429.746 I llama_model_loader: - type q4_K:   35 tensors
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.429.747 I llama_model_loader: - type q5_K:  232 tensors
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.429.747 I llama_model_loader: - type q6_K:   84 tensors
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.429.747 I llama_model_loader: - type iq4_nl:    4 tensors
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.429.748 I llama_model_loader: - type iq4_xs:   32 tensors
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.429.749 I print_info: file format = GGUF V3 (latest)
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.429.750 I print_info: file type   = Q5_K - Small
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.429.753 I print_info: file size   = 17.37 GiB (5.46 BPW)
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.438.939 I llama_prepare_model_devices: using device CUDA0 (NVIDIA GeForce RTX 3090) (0000:0c:00.0) - 22169 MiB free
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.565.913 I load: 0 unused tokens
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.613.981 I load: printing all EOG tokens:
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.613.984 I load:   - 248044 ('<|endoftext|>')
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.613.985 I load:   - 248046 ('<|im_end|>')
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.613.986 I load:   - 248063 ('<|fim_pad|>')
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.613.986 I load:   - 248064 ('<|repo_name|>')
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.613.987 I load:   - 248065 ('<|file_sep|>')
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.614.535 I load: special tokens cache size = 33
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.558 I load: token to piece cache size = 1.7581 MB
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.571 I print_info: arch                  = qwen35
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.571 I print_info: vocab_only            = 0
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.571 I print_info: no_alloc              = 0
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.572 I print_info: n_ctx_train           = 262144
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.572 I print_info: n_embd_inp            = 5120
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.572 I print_info: n_embd                = 5120
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.573 I print_info: n_embd_out            = 5120
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.573 I print_info: n_layer               = 64
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.573 I print_info: n_layer_all           = 65
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.580 I print_info: n_head                = 24
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.581 I print_info: n_head_kv             = 4
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.581 I print_info: n_rot                 = 64
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.582 I print_info: n_swa                 = 0
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.582 I print_info: is_swa_any            = 0
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.584 I print_info: non_causal_type       = 0
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.584 I print_info: n_embd_head_k         = 256
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.584 I print_info: n_embd_head_v         = 256
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.586 I print_info: n_gqa                 = 6
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.588 I print_info: n_embd_k_gqa          = 1024
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.589 I print_info: n_embd_v_gqa          = 1024
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.590 I print_info: f_norm_eps            = 0.0e+00
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.592 I print_info: f_norm_rms_eps        = 1.0e-06
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.592 I print_info: f_clamp_kqv           = 0.0e+00
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.592 I print_info: f_max_alibi_bias      = 0.0e+00
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.592 I print_info: f_logit_scale         = 0.0e+00
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.593 I print_info: f_attn_scale          = 0.0e+00
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.593 I print_info: f_attn_value_scale    = 0.0000
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.595 I print_info: n_ff                  = 17408
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.595 I print_info: n_expert              = 0
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.596 I print_info: n_expert_used         = 0
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.596 I print_info: n_expert_groups       = 0
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.596 I print_info: n_group_used          = 0
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.596 I print_info: causal attn           = 1
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.597 I print_info: pooling type          = -1
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.597 I print_info: rope type             = 40
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.597 I print_info: rope scaling          = linear
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.598 I print_info: freq_base_train       = 10000000.0
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.598 I print_info: freq_scale_train      = 1
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.599 I print_info: n_ctx_orig_yarn       = 262144
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.599 I print_info: rope_yarn_log_mul     = 0.0000
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.599 I print_info: rope_finetuned        = unknown
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.600 I print_info: mrope sections        = [11, 11, 10, 0]
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.600 I print_info: ssm_d_conv            = 4
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.601 I print_info: ssm_d_inner           = 6144
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.601 I print_info: ssm_d_state           = 128
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.601 I print_info: ssm_dt_rank           = 48
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.601 I print_info: ssm_n_group           = 16
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.601 I print_info: ssm_dt_b_c_rms        = 0
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.602 I print_info: model type            = 27B
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.603 I print_info: model params          = 27.32 B
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.603 I print_info: general.name          = Qwen3.8-27B
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.604 I print_info: vocab type            = BPE
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.604 I print_info: n_vocab               = 248320
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.605 I print_info: n_merges              = 247587
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.605 I print_info: BOS token             = 248044 '<|endoftext|>'
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.605 I print_info: EOS token             = 248046 '<|im_end|>'
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.606 I print_info: EOT token             = 248046 '<|im_end|>'
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.606 I print_info: PAD token             = 248055 '<|vision_pad|>'
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.606 I print_info: LF token              = 198 'Ċ'
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.607 I print_info: FIM PRE token         = 248060 '<|fim_prefix|>'
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.607 I print_info: FIM SUF token         = 248062 '<|fim_suffix|>'
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.607 I print_info: FIM MID token         = 248061 '<|fim_middle|>'
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.607 I print_info: FIM PAD token         = 248063 '<|fim_pad|>'
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.607 I print_info: FIM REP token         = 248064 '<|repo_name|>'
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.608 I print_info: FIM SEP token         = 248065 '<|file_sep|>'
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.608 I print_info: EOG token             = 248044 '<|endoftext|>'
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.608 I print_info: EOG token             = 248046 '<|im_end|>'
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.608 I print_info: EOG token             = 248063 '<|fim_pad|>'
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.609 I print_info: EOG token             = 248064 '<|repo_name|>'
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.609 I print_info: EOG token             = 248065 '<|file_sep|>'
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.609 I print_info: max token length      = 256
+Sep 20 18:34:17 G27 llama-server[159642]: [58043] 0.01.703.610 I load_tensors: loading model tensors, this can take a while... (load_mode = mmap+mlock)
+Sep 20 18:34:18 G27 llama-server[159642]: [58043] 0.02.655.502 I load_tensors: offloading output layer to GPU
+Sep 20 18:34:18 G27 llama-server[159642]: [58043] 0.02.655.506 I load_tensors: offloading 64 repeating layers to GPU
+Sep 20 18:34:18 G27 llama-server[159642]: [58043] 0.02.655.507 I load_tensors: offloaded 66/66 layers to GPU
+Sep 20 18:34:18 G27 llama-server[159642]: [58043] 0.02.655.512 I load_tensors:   CPU_Mapped model buffer size =   682.03 MiB
+Sep 20 18:34:18 G27 llama-server[159642]: [58043] 0.02.655.513 I load_tensors:        CUDA0 model buffer size = 17108.54 MiB
+Sep 20 18:34:18 G27 llama-server[159642]: [58043]
+Sep 20 18:34:18 G27 llama-server[159642]: [58043]
+Sep 20 18:34:19 G27 llama-server[159642]: [58043]
+Sep 20 18:34:19 G27 llama-server[159642]: [58043]
+Sep 20 18:34:19 G27 llama-server[159642]: [58043]
+Sep 20 18:34:19 G27 llama-server[159642]: [58043]
+Sep 20 18:34:19 G27 llama-server[159642]: [58043]
+Sep 20 18:34:20 G27 llama-server[159642]: [58043]
+Sep 20 18:34:20 G27 llama-server[159642]: [58043]
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.362.376 I cmn  common_init_: added <|endoftext|> logit bias = -inf
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.362.380 I cmn  common_init_: added <|im_end|> logit bias = -inf
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.362.382 I cmn  common_init_: added <|fim_pad|> logit bias = -inf
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.362.382 I cmn  common_init_: added <|repo_name|> logit bias = -inf
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.362.383 I cmn  common_init_: added <|file_sep|> logit bias = -inf
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.362.465 I llama_context: constructing llama_context
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.362.473 I llama_context: n_seq_max             = 1
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.362.473 I llama_context: n_ctx                 = 90112
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.362.474 I llama_context: n_ctx_seq             = 90112
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.362.474 I llama_context: n_batch               = 4096
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.362.474 I llama_context: n_ubatch              = 1024
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.362.475 I llama_context: causal_attn           = 1
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.362.475 I llama_context: flash_attn            = enabled
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.362.476 I llama_context: kv_unified            = true
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.362.479 I llama_context: freq_base             = 10000000.0
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.362.479 I llama_context: freq_scale            = 1
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.362.480 I llama_context: n_rs_seq              = 4
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.362.480 I llama_context: n_outputs_max         = 5
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.362.480 I llama_context: n_outputs_max_per_seq = 5
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.362.481 I llama_context: n_ctx_seq (90112) < n_ctx_train (262144) -- the full capacity of the model will not be utilized
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.366.389 I llama_context:  CUDA_Host  output buffer size =     0.95 MiB
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.367.274 I llama_kv_cache:      CUDA0 KV buffer size =  2288.00 MiB
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.370.630 I llama_kv_cache: size = 2288.00 MiB ( 90112 cells,  16 layers,  1/1 seqs), K (q8_0): 1496.00 MiB, V (q4_0):  792.00 MiB
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.370.634 I llama_kv_cache: attn_rot_k = 1, n_embd_head_k_all = 256
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.370.634 I llama_kv_cache: attn_rot_v = 1, n_embd_head_k_all = 256
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.371.855 I llama_memory_recurrent:      CUDA0 RS buffer size =   748.12 MiB
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.371.865 I llama_memory_recurrent: size =  748.12 MiB (     1 cells,  64 layers,  1 seqs  4 rs_seq), R (f32):   28.12 MiB, S (f32):  720.00 MiB, P (f32):    0.00 MiB
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.372.923 I sched_reserve: reserving ...
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.377.068 I resolve_fused_ops: resolving fused DeepSeek V4 HC support:
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.378.625 I resolve_fused_ops: fused DeepSeek V4 HC pre enabled
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.379.977 I resolve_fused_ops: fused DeepSeek V4 HC comb enabled
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.381.259 I resolve_fused_ops: fused DeepSeek V4 HC post enabled
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.524.627 I sched_reserve:      CUDA0 compute buffer size =   688.30 MiB
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.524.633 I sched_reserve:  CUDA_Host compute buffer size =   216.30 MiB
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.524.634 I sched_reserve: graph nodes  = 4519
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.524.634 I sched_reserve: graph splits = 2
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.524.635 I sched_reserve: reserve took 151.71 ms, sched copies = 1
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.524.705 I cmn          init: llama threadpool init, n_threads = 8
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.526.114 I cmn  common_init_: warming up the model with an empty run - please wait ... (--no-warmup to disable)
+Sep 20 18:34:20 G27 llama-server[159642]: [58043]
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.612.898 I common_speculative_init_result: creating MTP draft context against the target model '/home/aurelb/devops/LocalAI/models/Qwen3.8-27B-UD-Q5_K_S.gguf'
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.612.940 I llama_context: constructing llama_context
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.612.946 I llama_context: n_seq_max             = 1
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.612.946 I llama_context: n_ctx                 = 90112
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.612.947 I llama_context: n_ctx_seq             = 90112
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.612.947 I llama_context: n_batch               = 4096
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.612.947 I llama_context: n_ubatch              = 1024
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.612.947 I llama_context: causal_attn           = 1
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.612.948 I llama_context: flash_attn            = enabled
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.612.949 I llama_context: kv_unified            = true
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.612.953 I llama_context: freq_base             = 10000000.0
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.612.954 I llama_context: freq_scale            = 1
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.612.954 I llama_context: n_rs_seq              = 0
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.612.955 I llama_context: n_outputs_max         = 1
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.612.955 I llama_context: n_outputs_max_per_seq = 1
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.612.955 I llama_context: n_ctx_seq (90112) < n_ctx_train (262144) -- the full capacity of the model will not be utilized
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.615.709 I llama_context:  CUDA_Host  output buffer size =     0.95 MiB
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.618.626 I llama_kv_cache:      CUDA0 KV buffer size =   352.00 MiB
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.619.193 I llama_kv_cache: size =  352.00 MiB ( 90112 cells,   1 layers,  1/1 seqs), K (f16):  176.00 MiB, V (f16):  176.00 MiB
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.619.197 I llama_kv_cache: attn_rot_k = 0, n_embd_head_k_all = 256
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.619.198 I llama_kv_cache: attn_rot_v = 0, n_embd_head_k_all = 256
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.620.776 I sched_reserve: reserving ...
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.627.082 I resolve_fused_ops: resolving fused DeepSeek V4 HC support:
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.627.265 I resolve_fused_ops: fused DeepSeek V4 HC pre enabled
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.627.342 I resolve_fused_ops: fused DeepSeek V4 HC comb enabled
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.627.409 I resolve_fused_ops: fused DeepSeek V4 HC post enabled
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.761.617 I sched_reserve:      CUDA0 compute buffer size =   312.03 MiB
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.761.623 I sched_reserve:  CUDA_Host compute buffer size =   216.04 MiB
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.761.623 I sched_reserve: graph nodes  = 50
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.761.624 I sched_reserve: graph splits = 2
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.761.625 I sched_reserve: reserve took 140.84 ms, sched copies = 1
+Sep 20 18:34:20 G27 llama-server[159642]: [58043]
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.762.355 I cmn  common_conte: the context supports bounded partial sequence removal
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.762.359 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 90112, kv_unified = 'true'
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.762.380 I spec common_specu: adding speculative implementation 'draft-mtp'
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.762.384 I spec common_specu: - n_max=4, n_min=0, p_min=0.75, n_embd=5120, backend_sampling=1
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.762.385 I spec common_specu: - gpu_layers=-1, cache_k=f16, cache_v=f16, ctx_tgt=yes, ctx_dft=yes, devices=[default]
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.763.487 I sched_reserve: reserving ...
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.949.078 I sched_reserve:      CUDA0 compute buffer size =   312.03 MiB
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.949.084 I sched_reserve:  CUDA_Host compute buffer size =   216.04 MiB
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.949.084 I sched_reserve: graph nodes  = 56
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.949.084 I sched_reserve: graph splits = 2
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.949.086 I sched_reserve: reserve took 185.59 ms, sched copies = 1
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.957.855 I srv    load_model: speculative decoding context initialized
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.957.863 I slot   load_model: id  0 | task -1 | new slot, n_ctx = 90112
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.957.932 I srv    load_model: prompt cache is enabled, size limit: 8192 MiB
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.957.937 I srv    load_model: use `--cache-ram 0` to disable the prompt cache
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.957.937 I srv    load_model: for more info see https://github.com/ggml-org/llama.cpp/pull/16391
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.957.937 I srv    load_model: context checkpoints enabled, max = 32, min spacing = 8192
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.957.954 I srv          init: idle slots will be saved to prompt cache and cleared upon starting a new task
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.965.751 I srv          init: init: chat template, example_format: '<|im_start|>system
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] Reasoning effort is set to xhigh. Please think carefully through the task, validate key assumptions, consider plausible alternatives, and prioritize correctness, consistency, and clarity in the final answer.
+Sep 20 18:34:20 G27 llama-server[159642]: [58043]
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] You are a helpful assistant<|im_end|>
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] <|im_start|>user
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] Hello<|im_end|>
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] <|im_start|>assistant
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] <think>
+Sep 20 18:34:20 G27 llama-server[159642]: [58043]
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] </think>
+Sep 20 18:34:20 G27 llama-server[159642]: [58043]
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] Hi there<|im_end|>
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] <|im_start|>user
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] How are you?<|im_end|>
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] <|im_start|>assistant
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] <think>
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] '
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.966.796 I srv          init: init: chat template, thinking = 1
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.966.805 I srv          init: preserve_reasoning kwarg: true
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.966.840 I srv  llama_server: model loaded
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.966.847 I srv  llama_server: listening on http://127.0.0.1:58043
+Sep 20 18:34:20 G27 llama-server[159642]: [58043]
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.967.180 I srv    operator(): child server monitoring thread started, waiting for EOF on stdin...
+Sep 20 18:34:20 G27 llama-server[159642]: 0.33.238.904 I srv  proxy_reques: proxying request to model Qwen3.8-27B-UD-Q5_K_S on port 58043
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.967.299 I srv  update_slots: all slots are idle
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.974.450 I srv  server_strea: conv_id= (empty=1)
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.982.899 I srv    operator(): chat format: peg-native
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.984.091 I slot get_availabl: id  0 | task -1 |  - skipping, slot is empty
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.984.094 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = -1
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.984.094 I srv  get_availabl: updating prompt cache
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.984.116 I srv          load:  - looking for better prompt, base f_keep = -1.000, f_sim = 0.000
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.984.122 I srv        update:  - cache state: 0 prompts, 0.000 MiB (limits: 8192.000 MiB, 90112 tokens, 8589934592 est)
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.984.124 I srv  get_availabl: prompt cache update took 0.03 ms
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.984.706 I cmn  common_reaso: activated, budget=2147483647 tokens
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.984.726 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> dist
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.984.735 I slot launch_slot_: id  0 | task -1 | sampler params:
+Sep 20 18:34:20 G27 llama-server[159642]: [58043]         repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
+Sep 20 18:34:20 G27 llama-server[159642]: [58043]         dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
+Sep 20 18:34:20 G27 llama-server[159642]: [58043]         top_k = 20, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
+Sep 20 18:34:20 G27 llama-server[159642]: [58043]         mirostat = 0, mirostat_lr = 0.100, mirostat_ent = 5.000, adaptive_target = -1.000, adaptive_decay = 0.900
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.984.737 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.984.749 I slot   operator(): id  0 | task 0 | new prompt, n_ctx_slot = 90112, n_keep = 0, task.n_tokens = 3593
+Sep 20 18:34:20 G27 llama-server[159642]: [58043] 0.04.984.764 I slot   operator(): id  0 | task 0 | cached n_tokens = 0, memory_seq_rm [0, end)
+Sep 20 18:34:23 G27 llama-server[159642]: [58043] 0.07.323.026 I slot   operator(): id  0 | task 0 | cached n_tokens = 2565, memory_seq_rm [2565, end)
+Sep 20 18:34:23 G27 llama-server[159642]: [58043] 0.07.353.309 I slot create_check: id  0 | task 0 | created context checkpoint 1 of 32 (pos_min = 2564, pos_max = 2564, n_tokens = 2565, size = 159.704 MiB)
+Sep 20 18:34:23 G27 llama-server[159642]: [58043] 0.07.798.170 I slot   operator(): id  0 | task 0 | cached n_tokens = 3044, memory_seq_rm [3044, end)
+Sep 20 18:34:23 G27 llama-server[159642]: [58043] 0.07.829.089 I slot create_check: id  0 | task 0 | created context checkpoint 2 of 32 (pos_min = 3043, pos_max = 3043, n_tokens = 3044, size = 161.586 MiB)
+Sep 20 18:34:24 G27 llama-server[159642]: [58043] 0.08.339.739 I slot print_timing: id  0 | task 0 | prompt processing, n_tokens =   3570, progress = 0.99, t =   3.15 s / 1132.15 tokens per second
+Sep 20 18:34:24 G27 llama-server[159642]: [58043] 0.08.339.743 I slot   operator(): id  0 | task 0 | cached n_tokens = 3570, memory_seq_rm [3570, end)
+Sep 20 18:34:24 G27 llama-server[159642]: [58043] 0.08.370.504 I slot create_check: id  0 | task 0 | created context checkpoint 3 of 32 (pos_min = 3569, pos_max = 3569, n_tokens = 3570, size = 163.653 MiB)
+Sep 20 18:34:24 G27 llama-server[159642]: [58043] 0.08.421.841 I slot print_timing: id  0 | task 0 | prompt processing, n_tokens =   3589, progress = 1.00, t =   3.42 s / 1049.68 tokens per second
+Sep 20 18:34:24 G27 llama-server[159642]: [58043] 0.08.421.844 I slot   operator(): id  0 | task 0 | cached n_tokens = 3589, memory_seq_rm [3589, end)
+Sep 20 18:34:24 G27 llama-server[159642]: [58043] 0.08.422.534 I slot init_sampler: id  0 | task 0 | init sampler, took 0.55 ms, tokens: text = 3593, total = 3593
+Sep 20 18:34:24 G27 llama-server[159642]: [58043] 0.08.452.693 I slot create_check: id  0 | task 0 | created context checkpoint 4 of 32 (pos_min = 3588, pos_max = 3588, n_tokens = 3589, size = 163.728 MiB)
+Sep 20 18:34:24 G27 llama-server[159642]: [58043] 0.09.036.323 I cmn  common_reaso: deactivated (natural end)
+Sep 20 18:34:26 G27 llama-server[159642]: [58043] 0.10.198.367 I slot print_timing: id  0 | task 0 | prompt eval time =    3509.14 ms /  3593 tokens (    0.98 ms per token,  1023.90 tokens per second)
+Sep 20 18:34:26 G27 llama-server[159642]: [58043] 0.10.198.372 I slot print_timing: id  0 | task 0 |        eval time =    1704.29 ms /   100 tokens (   17.22 ms per token,    58.09 tokens per second)
+Sep 20 18:34:26 G27 llama-server[159642]: [58043] 0.10.198.372 I slot print_timing: id  0 | task 0 |       total time =    5213.44 ms /  3693 tokens
+Sep 20 18:34:26 G27 llama-server[159642]: [58043] 0.10.198.376 I slot print_timing: id  0 | task 0 |    graphs reused =         13
+Sep 20 18:34:26 G27 llama-server[159642]: [58043] 0.10.198.380 I slot print_timing: id  0 | task 0 | draft acceptance = 0.95833 (   69 accepted /    72 generated), mean len =  4.29
+Sep 20 18:34:26 G27 llama-server[159642]: [58043] 0.10.198.380 I slot print_timing: id  0 | task 0 |      acc per pos = (1.000, 0.857, 0.762, 0.667)
+Sep 20 18:34:26 G27 llama-server[159642]: [58043] 0.10.198.400 I spec common_specu: statistics        draft-mtp: #calls(b,g,a) =    1     32     21, #gen drafts =     21, #acc drafts =    21, #gen tokens =     72, #acc tokens =    69, #mean acc len = 4.29, #acc rate/pos = (1.000, 0.857, 0.762, 0.667), dur(b,g,a) = 0.003, 194.801, 0.034 ms
+Sep 20 18:34:26 G27 llama-server[159642]: [58043] 0.10.198.621 I slot      release: id  0 | task 0 | stop processing: n_tokens = 3694, truncated = 0
+Sep 20 18:34:26 G27 llama-server[159642]: [58043] 0.10.198.634 I srv  update_slots: all slots are idle
+Sep 20 18:34:26 G27 llama-server[159642]: 0.38.613.214 I srv  proxy_reques: proxying request to model Qwen3.8-27B-UD-Q5_K_S on port 58043
+Sep 20 18:34:26 G27 llama-server[159642]: [58043] 0.10.349.779 I srv  server_strea: conv_id= (empty=1)
+Sep 20 18:34:26 G27 llama-server[159642]: [58043] 0.10.359.060 I srv    operator(): chat format: peg-native
+Sep 20 18:34:26 G27 llama-server[159642]: [58043] 0.10.360.239 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.907 (3694/4073) > 0.100
+Sep 20 18:34:26 G27 llama-server[159642]: [58043] 0.10.360.243 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.907 (> 0.100 thold), f_keep = 1.000
+Sep 20 18:34:26 G27 llama-server[159642]: [58043] 0.10.360.903 I cmn  common_reaso: activated, budget=2147483647 tokens
+Sep 20 18:34:26 G27 llama-server[159642]: [58043] 0.10.360.946 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> dist
+Sep 20 18:34:26 G27 llama-server[159642]: [58043] 0.10.360.953 I slot launch_slot_: id  0 | task -1 | sampler params:
+Sep 20 18:34:26 G27 llama-server[159642]: [58043]         repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
+Sep 20 18:34:26 G27 llama-server[159642]: [58043]         dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
+Sep 20 18:34:26 G27 llama-server[159642]: [58043]         top_k = 20, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
+Sep 20 18:34:26 G27 llama-server[159642]: [58043]         mirostat = 0, mirostat_lr = 0.100, mirostat_ent = 5.000, adaptive_target = -1.000, adaptive_decay = 0.900
+Sep 20 18:34:26 G27 llama-server[159642]: [58043] 0.10.360.956 I slot launch_slot_: id  0 | task 38 | processing task, is_child = 0
+Sep 20 18:34:26 G27 llama-server[159642]: [58043] 0.10.360.962 I slot   operator(): id  0 | task 38 | new prompt, n_ctx_slot = 90112, n_keep = 0, task.n_tokens = 4073
+Sep 20 18:34:26 G27 llama-server[159642]: [58043] 0.10.360.971 I slot   operator(): id  0 | task 38 | cached n_tokens = 3694, memory_seq_rm [3694, end)
+Sep 20 18:34:26 G27 llama-server[159642]: [58043] 0.10.391.626 I slot create_check: id  0 | task 38 | created context checkpoint 5 of 32 (pos_min = 3693, pos_max = 3693, n_tokens = 3694, size = 164.140 MiB)
+Sep 20 18:34:26 G27 llama-server[159642]: [58043] 0.10.744.466 I slot   operator(): id  0 | task 38 | cached n_tokens = 4069, memory_seq_rm [4069, end)
+Sep 20 18:34:26 G27 llama-server[159642]: [58043] 0.10.745.244 I slot init_sampler: id  0 | task 38 | init sampler, took 0.63 ms, tokens: text = 4073, total = 4073
+Sep 20 18:34:26 G27 llama-server[159642]: [58043] 0.10.775.296 I slot create_check: id  0 | task 38 | created context checkpoint 6 of 32 (pos_min = 4068, pos_max = 4068, n_tokens = 4069, size = 165.614 MiB)
+Sep 20 18:34:29 G27 llama-server[159642]: [58043] 0.13.829.470 I slot print_timing: id  0 | task 38 | n_gen =    171, tg =  56.40 t/s, tg_3s =  56.73 t/s
+Sep 20 18:34:32 G27 llama-server[159642]: [58043] 0.16.836.331 I slot print_timing: id  0 | task 38 | n_gen =    308, tg =  50.99 t/s, tg_3s =  45.56 t/s
+Sep 20 18:34:34 G27 llama-server[159642]: [58043] 0.18.521.512 I cmn  common_reaso: deactivated (natural end)
+Sep 20 18:34:35 G27 llama-server[159642]: [58043] 0.19.766.612 I slot print_timing: id  0 | task 38 | prompt eval time =     454.35 ms /   379 tokens (    1.20 ms per token,   834.17 tokens per second)
+Sep 20 18:34:35 G27 llama-server[159642]: [58043] 0.19.766.617 I slot print_timing: id  0 | task 38 |        eval time =    8951.14 ms /   472 tokens (   19.00 ms per token,    52.62 tokens per second)
+Sep 20 18:34:35 G27 llama-server[159642]: [58043] 0.19.766.618 I slot print_timing: id  0 | task 38 |       total time =    9405.49 ms /   851 tokens
+Sep 20 18:34:35 G27 llama-server[159642]: [58043] 0.19.766.618 I slot print_timing: id  0 | task 38 |    graphs reused =         83
+Sep 20 18:34:35 G27 llama-server[159642]: [58043] 0.19.766.623 I slot print_timing: id  0 | task 38 | draft acceptance = 0.88272 (  286 accepted /   324 generated), mean len =  3.40
+Sep 20 18:34:35 G27 llama-server[159642]: [58043] 0.19.766.623 I slot print_timing: id  0 | task 38 |      acc per pos = (0.975, 0.655, 0.403, 0.370)
+Sep 20 18:34:35 G27 llama-server[159642]: [58043] 0.19.766.639 I spec common_specu: statistics        draft-mtp: #calls(b,g,a) =    2    219    140, #gen drafts =    140, #acc drafts =   137, #gen tokens =    396, #acc tokens =   355, #mean acc len = 3.54, #acc rate/pos = (0.979, 0.686, 0.457, 0.414), dur(b,g,a) = 0.005, 1202.089, 0.233 ms
+Sep 20 18:34:35 G27 llama-server[159642]: [58043] 0.19.766.863 I slot      release: id  0 | task 38 | stop processing: n_tokens = 4546, truncated = 0
+Sep 20 18:34:35 G27 llama-server[159642]: [58043] 0.19.766.898 I srv  update_slots: all slots are idle
+Sep 20 18:34:35 G27 llama-server[159642]: 0.48.252.922 I srv  proxy_reques: proxying request to model Qwen3.8-27B-UD-Q5_K_S on port 58043
+Sep 20 18:34:35 G27 llama-server[159642]: [58043] 0.19.991.621 I srv  server_strea: conv_id= (empty=1)
+Sep 20 18:34:35 G27 llama-server[159642]: [58043] 0.20.002.697 I srv    operator(): chat format: peg-native
+Sep 20 18:34:35 G27 llama-server[159642]: [58043] 0.20.003.943 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.958 (4546/4747) > 0.100
+Sep 20 18:34:35 G27 llama-server[159642]: [58043] 0.20.003.947 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.958 (> 0.100 thold), f_keep = 1.000
+Sep 20 18:34:35 G27 llama-server[159642]: [58043] 0.20.004.669 I cmn  common_reaso: activated, budget=2147483647 tokens
+Sep 20 18:34:35 G27 llama-server[159642]: [58043] 0.20.004.725 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> dist
+Sep 20 18:34:35 G27 llama-server[159642]: [58043] 0.20.004.733 I slot launch_slot_: id  0 | task -1 | sampler params:
+Sep 20 18:34:35 G27 llama-server[159642]: [58043]         repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
+Sep 20 18:34:35 G27 llama-server[159642]: [58043]         dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
+Sep 20 18:34:35 G27 llama-server[159642]: [58043]         top_k = 20, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
+Sep 20 18:34:35 G27 llama-server[159642]: [58043]         mirostat = 0, mirostat_lr = 0.100, mirostat_ent = 5.000, adaptive_target = -1.000, adaptive_decay = 0.900
+Sep 20 18:34:35 G27 llama-server[159642]: [58043] 0.20.004.736 I slot launch_slot_: id  0 | task 228 | processing task, is_child = 0
+Sep 20 18:34:35 G27 llama-server[159642]: [58043] 0.20.004.744 I slot   operator(): id  0 | task 228 | new prompt, n_ctx_slot = 90112, n_keep = 0, task.n_tokens = 4747
+Sep 20 18:34:35 G27 llama-server[159642]: [58043] 0.20.004.755 I slot   operator(): id  0 | task 228 | cached n_tokens = 4546, memory_seq_rm [4546, end)
+Sep 20 18:34:35 G27 llama-server[159642]: [58043] 0.20.035.274 I slot create_check: id  0 | task 228 | created context checkpoint 7 of 32 (pos_min = 4545, pos_max = 4545, n_tokens = 4546, size = 167.488 MiB)
+Sep 20 18:34:36 G27 llama-server[159642]: [58043] 0.20.251.177 I slot   operator(): id  0 | task 228 | cached n_tokens = 4743, memory_seq_rm [4743, end)
+Sep 20 18:34:36 G27 llama-server[159642]: [58043] 0.20.252.030 I slot init_sampler: id  0 | task 228 | init sampler, took 0.71 ms, tokens: text = 4747, total = 4747
+Sep 20 18:34:36 G27 llama-server[159642]: [58043] 0.20.284.397 I slot create_check: id  0 | task 228 | created context checkpoint 8 of 32 (pos_min = 4742, pos_max = 4742, n_tokens = 4743, size = 168.262 MiB)
+Sep 20 18:34:39 G27 llama-server[159642]: [58043] 0.23.333.274 I slot print_timing: id  0 | task 228 | n_gen =    159, tg =  52.55 t/s, tg_3s =  52.88 t/s
+Sep 20 18:34:42 G27 llama-server[159642]: [58043] 0.26.382.769 I slot print_timing: id  0 | task 228 | n_gen =    329, tg =  54.16 t/s, tg_3s =  55.75 t/s
+Sep 20 18:34:45 G27 llama-server[159642]: [58043] 0.29.428.906 I slot print_timing: id  0 | task 228 | n_gen =    480, tg =  52.62 t/s, tg_3s =  49.57 t/s
+Sep 20 18:34:48 G27 llama-server[159642]: [58043] 0.32.439.380 I slot print_timing: id  0 | task 228 | n_gen =    637, tg =  52.51 t/s, tg_3s =  52.15 t/s
+Sep 20 18:34:51 G27 llama-server[159642]: [58043] 0.35.451.322 I slot print_timing: id  0 | task 228 | n_gen =    811, tg =  53.55 t/s, tg_3s =  57.77 t/s
+Sep 20 18:34:54 G27 llama-server[159642]: [58043] 0.38.482.638 I slot print_timing: id  0 | task 228 | n_gen =    929, tg =  51.11 t/s, tg_3s =  38.93 t/s
+Sep 20 18:34:57 G27 llama-server[159642]: [58043] 0.41.498.742 I slot print_timing: id  0 | task 228 | n_gen =   1057, tg =  49.88 t/s, tg_3s =  42.44 t/s
+Sep 20 18:35:00 G27 llama-server[159642]: [58043] 0.44.545.552 I slot print_timing: id  0 | task 228 | n_gen =   1252, tg =  51.65 t/s, tg_3s =  64.00 t/s
+Sep 20 18:35:03 G27 llama-server[159642]: [58043] 0.47.585.068 I slot print_timing: id  0 | task 228 | n_gen =   1483, tg =  54.37 t/s, tg_3s =  76.00 t/s
+Sep 20 18:35:06 G27 llama-server[159642]: [58043] 0.50.639.693 I slot print_timing: id  0 | task 228 | n_gen =   1675, tg =  55.22 t/s, tg_3s =  62.86 t/s
+Sep 20 18:35:09 G27 llama-server[159642]: [58043] 0.53.642.614 I slot print_timing: id  0 | task 228 | n_gen =   1839, tg =  55.17 t/s, tg_3s =  54.61 t/s
+Sep 20 18:35:12 G27 llama-server[159642]: [58043] 0.56.660.669 I slot print_timing: id  0 | task 228 | n_gen =   2025, tg =  55.71 t/s, tg_3s =  61.63 t/s
+Sep 20 18:35:15 G27 llama-server[159642]: [58043] 0.59.714.302 I slot print_timing: id  0 | task 228 | n_gen =   2245, tg =  56.97 t/s, tg_3s =  72.05 t/s
+Sep 20 18:35:18 G27 llama-server[159642]: [58043] 1.02.754.389 I slot print_timing: id  0 | task 228 | n_gen =   2439, tg =  57.46 t/s, tg_3s =  63.81 t/s
+Sep 20 18:35:21 G27 llama-server[159642]: [58043] 1.05.759.580 I slot print_timing: id  0 | task 228 | n_gen =   2590, tg =  56.98 t/s, tg_3s =  50.25 t/s
+Sep 20 18:35:24 G27 llama-server[159642]: [58043] 1.08.798.607 I slot print_timing: id  0 | task 228 | n_gen =   2768, tg =  57.08 t/s, tg_3s =  58.57 t/s
+Sep 20 18:35:27 G27 llama-server[159642]: [58043] 1.11.849.615 I slot print_timing: id  0 | task 228 | n_gen =   2916, tg =  56.58 t/s, tg_3s =  48.51 t/s
+Sep 20 18:35:29 G27 llama-server[159642]: [58043] 1.13.631.114 I cmn  common_reaso: deactivated (natural end)
+Sep 20 18:35:30 G27 llama-server[159642]: [58043] 1.14.911.627 I slot print_timing: id  0 | task 228 | n_gen =   3064, tg =  56.11 t/s, tg_3s =  48.33 t/s
+Sep 20 18:35:33 G27 llama-server[159642]: [58043] 1.17.939.385 I slot print_timing: id  0 | task 228 | n_gen =   3251, tg =  56.41 t/s, tg_3s =  61.76 t/s
+Sep 20 18:35:34 G27 llama-server[159642]: [58043] 1.18.160.668 I slot print_timing: id  0 | task 228 | prompt eval time =     321.65 ms /   201 tokens (    1.60 ms per token,   624.91 tokens per second)
+Sep 20 18:35:34 G27 llama-server[159642]: [58043] 1.18.160.672 I slot print_timing: id  0 | task 228 |        eval time =   57834.11 ms /  3263 tokens (   17.73 ms per token,    56.40 tokens per second)
+Sep 20 18:35:34 G27 llama-server[159642]: [58043] 1.18.160.673 I slot print_timing: id  0 | task 228 |       total time =   58155.75 ms /  3464 tokens
+Sep 20 18:35:34 G27 llama-server[159642]: [58043] 1.18.160.674 I slot print_timing: id  0 | task 228 |    graphs reused =        525
+Sep 20 18:35:34 G27 llama-server[159642]: [58043] 1.18.160.679 I slot print_timing: id  0 | task 228 | draft acceptance = 0.90030 ( 2113 accepted /  2347 generated), mean len =  3.68
+Sep 20 18:35:34 G27 llama-server[159642]: [58043] 1.18.160.679 I slot print_timing: id  0 | task 228 |      acc per pos = (0.957, 0.733, 0.563, 0.432)
+Sep 20 18:35:34 G27 llama-server[159642]: [58043] 1.18.160.695 I spec common_specu: statistics        draft-mtp: #calls(b,g,a) =    3   1370    927, #gen drafts =    927, #acc drafts =   890, #gen tokens =   2743, #acc tokens =  2468, #mean acc len = 3.66, #acc rate/pos = (0.960, 0.726, 0.547, 0.429), dur(b,g,a) = 0.006, 8103.112, 1.525 ms
+Sep 20 18:35:34 G27 llama-server[159642]: [58043] 1.18.160.996 I slot      release: id  0 | task 228 | stop processing: n_tokens = 8011, truncated = 0
+Sep 20 18:35:34 G27 llama-server[159642]: [58043] 1.18.161.051 I srv  update_slots: all slots are idle
+Sep 20 18:35:34 G27 llama-server[159642]: 1.46.622.988 I srv  proxy_reques: proxying request to model Qwen3.8-27B-UD-Q5_K_S on port 58043
+Sep 20 18:35:34 G27 llama-server[159642]: [58043] 1.18.363.290 I srv  server_strea: conv_id= (empty=1)
+Sep 20 18:35:34 G27 llama-server[159642]: [58043] 1.18.379.921 I srv    operator(): chat format: peg-native
+Sep 20 18:35:34 G27 llama-server[159642]: [58043] 1.18.381.218 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.987 (8011/8117) > 0.100
+Sep 20 18:35:34 G27 llama-server[159642]: [58043] 1.18.381.221 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.987 (> 0.100 thold), f_keep = 1.000
+Sep 20 18:35:34 G27 llama-server[159642]: [58043] 1.18.381.946 I cmn  common_reaso: activated, budget=2147483647 tokens
+Sep 20 18:35:34 G27 llama-server[159642]: [58043] 1.18.382.007 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> dist
+Sep 20 18:35:34 G27 llama-server[159642]: [58043] 1.18.382.014 I slot launch_slot_: id  0 | task -1 | sampler params:
+Sep 20 18:35:34 G27 llama-server[159642]: [58043]         repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
+Sep 20 18:35:34 G27 llama-server[159642]: [58043]         dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
+Sep 20 18:35:34 G27 llama-server[159642]: [58043]         top_k = 20, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
+Sep 20 18:35:34 G27 llama-server[159642]: [58043]         mirostat = 0, mirostat_lr = 0.100, mirostat_ent = 5.000, adaptive_target = -1.000, adaptive_decay = 0.900
+Sep 20 18:35:34 G27 llama-server[159642]: [58043] 1.18.382.022 I slot launch_slot_: id  0 | task 1382 | processing task, is_child = 0
+Sep 20 18:35:34 G27 llama-server[159642]: [58043] 1.18.382.028 I slot   operator(): id  0 | task 1382 | new prompt, n_ctx_slot = 90112, n_keep = 0, task.n_tokens = 8117
+Sep 20 18:35:34 G27 llama-server[159642]: [58043] 1.18.382.039 I slot   operator(): id  0 | task 1382 | cached n_tokens = 8011, memory_seq_rm [8011, end)
+Sep 20 18:35:34 G27 llama-server[159642]: [58043] 1.18.416.769 I slot create_check: id  0 | task 1382 | created context checkpoint 9 of 32 (pos_min = 8010, pos_max = 8010, n_tokens = 8011, size = 181.102 MiB)
+Sep 20 18:35:34 G27 llama-server[159642]: [58043] 1.18.539.926 I slot   operator(): id  0 | task 1382 | cached n_tokens = 8113, memory_seq_rm [8113, end)
+Sep 20 18:35:34 G27 llama-server[159642]: [58043] 1.18.541.302 I slot init_sampler: id  0 | task 1382 | init sampler, took 1.22 ms, tokens: text = 8117, total = 8117
+Sep 20 18:35:34 G27 llama-server[159642]: [58043] 1.18.576.441 I slot create_check: id  0 | task 1382 | created context checkpoint 10 of 32 (pos_min = 8112, pos_max = 8112, n_tokens = 8113, size = 181.503 MiB)
+Sep 20 18:35:34 G27 llama-server[159642]: [58043] 1.18.986.471 I cmn  common_reaso: deactivated (natural end)
+Sep 20 18:35:37 G27 llama-server[159642]: [58043] 1.21.627.307 I slot print_timing: id  0 | task 1382 | n_gen =    203, tg =  67.13 t/s, tg_3s =  67.46 t/s
+Sep 20 18:35:40 G27 llama-server[159642]: [58043] 1.24.672.021 I slot print_timing: id  0 | task 1382 | n_gen =    421, tg =  69.38 t/s, tg_3s =  71.60 t/s
+Sep 20 18:35:43 G27 llama-server[159642]: [58043] 1.27.687.960 I slot print_timing: id  0 | task 1382 | n_gen =    646, tg =  71.12 t/s, tg_3s =  74.60 t/s
+Sep 20 18:35:46 G27 llama-server[159642]: [58043] 1.30.700.734 I slot print_timing: id  0 | task 1382 | n_gen =    875, tg =  72.34 t/s, tg_3s =  76.01 t/s
+Sep 20 18:35:49 G27 llama-server[159642]: [58043] 1.33.758.519 I slot print_timing: id  0 | task 1382 | n_gen =   1102, tg =  72.72 t/s, tg_3s =  74.24 t/s
+Sep 20 18:35:52 G27 llama-server[159642]: [58043] 1.36.762.171 I slot print_timing: id  0 | task 1382 | n_gen =   1323, tg =  72.86 t/s, tg_3s =  73.58 t/s
+Sep 20 18:35:55 G27 llama-server[159642]: [58043] 1.39.767.427 I slot print_timing: id  0 | task 1382 | n_gen =   1545, tg =  73.01 t/s, tg_3s =  73.87 t/s
+Sep 20 18:35:58 G27 llama-server[159642]: [58043] 1.42.814.216 I slot print_timing: id  0 | task 1382 | n_gen =   1786, tg =  73.77 t/s, tg_3s =  79.10 t/s
+Sep 20 18:36:01 G27 llama-server[159642]: [58043] 1.45.149.085 I slot print_timing: id  0 | task 1382 | prompt eval time =     236.20 ms /   106 tokens (    2.23 ms per token,   448.78 tokens per second)
+Sep 20 18:36:01 G27 llama-server[159642]: [58043] 1.45.149.089 I slot print_timing: id  0 | task 1382 |        eval time =   26530.71 ms /  1943 tokens (   13.66 ms per token,    73.20 tokens per second)
+Sep 20 18:36:01 G27 llama-server[159642]: [58043] 1.45.149.090 I slot print_timing: id  0 | task 1382 |       total time =   26766.90 ms /  2049 tokens
+Sep 20 18:36:01 G27 llama-server[159642]: [58043] 1.45.149.091 I slot print_timing: id  0 | task 1382 |    graphs reused =        833
+Sep 20 18:36:01 G27 llama-server[159642]: [58043] 1.45.149.095 I slot print_timing: id  0 | task 1382 | draft acceptance = 0.93628 ( 1484 accepted /  1585 generated), mean len =  4.42
+Sep 20 18:36:01 G27 llama-server[159642]: [58043] 1.45.149.095 I slot print_timing: id  0 | task 1382 |      acc per pos = (0.982, 0.892, 0.816, 0.730)
+Sep 20 18:36:01 G27 llama-server[159642]: [58043] 1.45.149.108 I spec common_specu: statistics        draft-mtp: #calls(b,g,a) =    4   1829   1361, #gen drafts =   1361, #acc drafts =  1316, #gen tokens =   4328, #acc tokens =  3952, #mean acc len = 3.90, #acc rate/pos = (0.967, 0.779, 0.633, 0.525), dur(b,g,a) = 0.007, 11899.958, 2.155 ms
+Sep 20 18:36:01 G27 llama-server[159642]: [58043] 1.45.149.498 I slot      release: id  0 | task 1382 | stop processing: n_tokens = 10060, truncated = 0
+Sep 20 18:36:01 G27 llama-server[159642]: [58043] 1.45.149.538 I srv  update_slots: all slots are idle
+Sep 20 18:36:01 G27 llama-server[159642]: 2.13.541.452 I srv  proxy_reques: proxying request to model Qwen3.8-27B-UD-Q5_K_S on port 58043
+Sep 20 18:36:01 G27 llama-server[159642]: [58043] 1.45.283.931 I srv  server_strea: conv_id= (empty=1)
+Sep 20 18:36:01 G27 llama-server[159642]: [58043] 1.45.304.928 I srv    operator(): chat format: peg-native
+Sep 20 18:36:01 G27 llama-server[159642]: [58043] 1.45.306.280 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.991 (10060/10153) > 0.100
+Sep 20 18:36:01 G27 llama-server[159642]: [58043] 1.45.306.285 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.991 (> 0.100 thold), f_keep = 1.000
+Sep 20 18:36:01 G27 llama-server[159642]: [58043] 1.45.307.004 I cmn  common_reaso: activated, budget=2147483647 tokens
+Sep 20 18:36:01 G27 llama-server[159642]: [58043] 1.45.307.083 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> dist
+Sep 20 18:36:01 G27 llama-server[159642]: [58043] 1.45.307.091 I slot launch_slot_: id  0 | task -1 | sampler params:
+Sep 20 18:36:01 G27 llama-server[159642]: [58043]         repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
+Sep 20 18:36:01 G27 llama-server[159642]: [58043]         dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
+Sep 20 18:36:01 G27 llama-server[159642]: [58043]         top_k = 20, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
+Sep 20 18:36:01 G27 llama-server[159642]: [58043]         mirostat = 0, mirostat_lr = 0.100, mirostat_ent = 5.000, adaptive_target = -1.000, adaptive_decay = 0.900
+Sep 20 18:36:01 G27 llama-server[159642]: [58043] 1.45.307.095 I slot launch_slot_: id  0 | task 1844 | processing task, is_child = 0
+Sep 20 18:36:01 G27 llama-server[159642]: [58043] 1.45.307.101 I slot   operator(): id  0 | task 1844 | new prompt, n_ctx_slot = 90112, n_keep = 0, task.n_tokens = 10153
+Sep 20 18:36:01 G27 llama-server[159642]: [58043] 1.45.307.113 I slot   operator(): id  0 | task 1844 | cached n_tokens = 10060, memory_seq_rm [10060, end)
+Sep 20 18:36:01 G27 llama-server[159642]: [58043] 1.45.342.818 I slot create_check: id  0 | task 1844 | created context checkpoint 11 of 32 (pos_min = 10059, pos_max = 10059, n_tokens = 10060, size = 189.153 MiB)
+Sep 20 18:36:01 G27 llama-server[159642]: [58043] 1.45.454.903 I slot   operator(): id  0 | task 1844 | cached n_tokens = 10149, memory_seq_rm [10149, end)
+Sep 20 18:36:01 G27 llama-server[159642]: [58043] 1.45.456.583 I slot init_sampler: id  0 | task 1844 | init sampler, took 1.52 ms, tokens: text = 10153, total = 10153
+Sep 20 18:36:01 G27 llama-server[159642]: [58043] 1.45.494.258 I slot create_check: id  0 | task 1844 | created context checkpoint 12 of 32 (pos_min = 10148, pos_max = 10148, n_tokens = 10149, size = 189.503 MiB)
+Sep 20 18:36:01 G27 llama-server[159642]: [58043] 1.45.964.126 I cmn  common_reaso: deactivated (natural end)
+Sep 20 18:36:04 G27 llama-server[159642]: [58043] 1.48.586.433 I slot print_timing: id  0 | task 1844 | n_gen =    239, tg =  78.05 t/s, tg_3s =  78.37 t/s
+Sep 20 18:36:07 G27 llama-server[159642]: [58043] 1.51.634.555 I slot print_timing: id  0 | task 1844 | n_gen =    494, tg =  80.85 t/s, tg_3s =  83.66 t/s
+Sep 20 18:36:10 G27 llama-server[159642]: [58043] 1.54.643.542 I slot print_timing: id  0 | task 1844 | n_gen =    737, tg =  80.82 t/s, tg_3s =  80.76 t/s
+Sep 20 18:36:11 G27 llama-server[159642]: [58043] 1.56.013.857 I slot print_timing: id  0 | task 1844 | prompt eval time =     229.85 ms /    93 tokens (    2.47 ms per token,   404.62 tokens per second)
+Sep 20 18:36:11 G27 llama-server[159642]: [58043] 1.56.013.862 I slot print_timing: id  0 | task 1844 |        eval time =   10476.76 ms /   850 tokens (   12.34 ms per token,    81.04 tokens per second)
+Sep 20 18:36:11 G27 llama-server[159642]: [58043] 1.56.013.863 I slot print_timing: id  0 | task 1844 |       total time =   10706.61 ms /   943 tokens
+Sep 20 18:36:11 G27 llama-server[159642]: [58043] 1.56.013.864 I slot print_timing: id  0 | task 1844 |    graphs reused =        989
+Sep 20 18:36:11 G27 llama-server[159642]: [58043] 1.56.013.868 I slot print_timing: id  0 | task 1844 | draft acceptance = 0.99703 (  671 accepted /   673 generated), mean len =  4.88
+Sep 20 18:36:11 G27 llama-server[159642]: [58043] 1.56.013.868 I slot print_timing: id  0 | task 1844 |      acc per pos = (1.000, 0.988, 0.954, 0.936)
+Sep 20 18:36:11 G27 llama-server[159642]: [58043] 1.56.013.882 I spec common_specu: statistics        draft-mtp: #calls(b,g,a) =    5   2007   1534, #gen drafts =   1534, #acc drafts =  1489, #gen tokens =   5001, #acc tokens =  4623, #mean acc len = 4.01, #acc rate/pos = (0.971, 0.802, 0.669, 0.572), dur(b,g,a) = 0.007, 13468.260, 2.386 ms
+Sep 20 18:36:11 G27 llama-server[159642]: [58043] 1.56.014.365 I slot      release: id  0 | task 1844 | stop processing: n_tokens = 11002, truncated = 0
+Sep 20 18:36:11 G27 llama-server[159642]: [58043] 1.56.014.401 I srv  update_slots: all slots are idle
+Sep 20 18:36:11 G27 llama-server[159642]: 2.24.391.144 I srv  proxy_reques: proxying request to model Qwen3.8-27B-UD-Q5_K_S on port 58043
+Sep 20 18:36:11 G27 llama-server[159642]: [58043] 1.56.134.636 I srv  server_strea: conv_id= (empty=1)
+Sep 20 18:36:12 G27 llama-server[159642]: [58043] 1.56.155.061 I srv    operator(): chat format: peg-native
+Sep 20 18:36:12 G27 llama-server[159642]: [58043] 1.56.156.393 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.994 (11002/11071) > 0.100
+Sep 20 18:36:12 G27 llama-server[159642]: [58043] 1.56.156.398 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.994 (> 0.100 thold), f_keep = 1.000
+Sep 20 18:36:12 G27 llama-server[159642]: [58043] 1.56.157.176 I cmn  common_reaso: activated, budget=2147483647 tokens
+Sep 20 18:36:12 G27 llama-server[159642]: [58043] 1.56.157.265 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> dist
+Sep 20 18:36:12 G27 llama-server[159642]: [58043] 1.56.157.274 I slot launch_slot_: id  0 | task -1 | sampler params:
+Sep 20 18:36:12 G27 llama-server[159642]: [58043]         repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
+Sep 20 18:36:12 G27 llama-server[159642]: [58043]         dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
+Sep 20 18:36:12 G27 llama-server[159642]: [58043]         top_k = 20, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
+Sep 20 18:36:12 G27 llama-server[159642]: [58043]         mirostat = 0, mirostat_lr = 0.100, mirostat_ent = 5.000, adaptive_target = -1.000, adaptive_decay = 0.900
+Sep 20 18:36:12 G27 llama-server[159642]: [58043] 1.56.157.279 I slot launch_slot_: id  0 | task 2025 | processing task, is_child = 0
+Sep 20 18:36:12 G27 llama-server[159642]: [58043] 1.56.157.288 I slot   operator(): id  0 | task 2025 | new prompt, n_ctx_slot = 90112, n_keep = 0, task.n_tokens = 11071
+Sep 20 18:36:12 G27 llama-server[159642]: [58043] 1.56.157.303 I slot   operator(): id  0 | task 2025 | cached n_tokens = 11002, memory_seq_rm [11002, end)
+Sep 20 18:36:12 G27 llama-server[159642]: [58043] 1.56.193.363 I slot create_check: id  0 | task 2025 | created context checkpoint 13 of 32 (pos_min = 11001, pos_max = 11001, n_tokens = 11002, size = 192.855 MiB)
+Sep 20 18:36:12 G27 llama-server[159642]: [58043] 1.56.290.729 I slot   operator(): id  0 | task 2025 | cached n_tokens = 11067, memory_seq_rm [11067, end)
+Sep 20 18:36:12 G27 llama-server[159642]: [58043] 1.56.292.547 I slot init_sampler: id  0 | task 2025 | init sampler, took 1.68 ms, tokens: text = 11071, total = 11071
+Sep 20 18:36:12 G27 llama-server[159642]: [58043] 1.56.330.324 I slot create_check: id  0 | task 2025 | created context checkpoint 14 of 32 (pos_min = 11066, pos_max = 11066, n_tokens = 11067, size = 193.110 MiB)
+Sep 20 18:36:12 G27 llama-server[159642]: [58043] 1.56.676.824 I cmn  common_reaso: deactivated (natural end)
+Sep 20 18:36:15 G27 llama-server[159642]: [58043] 1.59.411.831 I slot print_timing: id  0 | task 2025 | n_gen =    241, tg =  79.01 t/s, tg_3s =  79.34 t/s
+Sep 20 18:36:18 G27 llama-server[159642]: [58043] 2.02.454.874 I slot print_timing: id  0 | task 2025 | n_gen =    490, tg =  80.42 t/s, tg_3s =  81.83 t/s
+Sep 20 18:36:21 G27 llama-server[159642]: [58043] 2.05.464.687 I slot print_timing: id  0 | task 2025 | n_gen =    735, tg =  80.75 t/s, tg_3s =  81.40 t/s
+Sep 20 18:36:24 G27 llama-server[159642]: [58043] 2.08.505.429 I slot print_timing: id  0 | task 2025 | n_gen =    984, tg =  81.03 t/s, tg_3s =  81.89 t/s
+Sep 20 18:36:26 G27 llama-server[159642]: [58043] 2.10.750.410 I slot print_timing: id  0 | task 2025 | prompt eval time =     216.99 ms /    69 tokens (    3.14 ms per token,   317.99 tokens per second)
+Sep 20 18:36:26 G27 llama-server[159642]: [58043] 2.10.750.416 I slot print_timing: id  0 | task 2025 |        eval time =   14375.99 ms /  1165 tokens (   12.35 ms per token,    80.97 tokens per second)
+Sep 20 18:36:26 G27 llama-server[159642]: [58043] 2.10.750.417 I slot print_timing: id  0 | task 2025 |       total time =   14592.97 ms /  1234 tokens
+Sep 20 18:36:26 G27 llama-server[159642]: [58043] 2.10.750.418 I slot print_timing: id  0 | task 2025 |    graphs reused =       1213
+Sep 20 18:36:26 G27 llama-server[159642]: [58043] 2.10.750.422 I slot print_timing: id  0 | task 2025 | draft acceptance = 0.99464 (  927 accepted /   932 generated), mean len =  4.93
+Sep 20 18:36:26 G27 llama-server[159642]: [58043] 2.10.750.423 I slot print_timing: id  0 | task 2025 |      acc per pos = (1.000, 0.987, 0.979, 0.962)
+Sep 20 18:36:26 G27 llama-server[159642]: [58043] 2.10.750.438 I spec common_specu: statistics        draft-mtp: #calls(b,g,a) =    6   2244   1770, #gen drafts =   1770, #acc drafts =  1725, #gen tokens =   5933, #acc tokens =  5550, #mean acc len = 4.14, #acc rate/pos = (0.975, 0.827, 0.710, 0.624), dur(b,g,a) = 0.008, 15606.478, 2.685 ms
+Sep 20 18:36:26 G27 llama-server[159642]: [58043] 2.10.750.911 I slot      release: id  0 | task 2025 | stop processing: n_tokens = 12235, truncated = 0
+Sep 20 18:36:26 G27 llama-server[159642]: [58043] 2.10.750.951 I srv  update_slots: all slots are idle
+Sep 20 18:36:26 G27 llama-server[159642]: 2.39.127.121 I srv  proxy_reques: proxying request to model Qwen3.8-27B-UD-Q5_K_S on port 58043
+Sep 20 18:36:26 G27 llama-server[159642]: [58043] 2.10.871.972 I srv  server_strea: conv_id= (empty=1)
+Sep 20 18:36:26 G27 llama-server[159642]: [58043] 2.10.896.513 I srv    operator(): chat format: peg-native
+Sep 20 18:36:26 G27 llama-server[159642]: [58043] 2.10.898.019 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.994 (12235/12313) > 0.100
+Sep 20 18:36:26 G27 llama-server[159642]: [58043] 2.10.898.023 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.994 (> 0.100 thold), f_keep = 1.000
+Sep 20 18:36:26 G27 llama-server[159642]: [58043] 2.10.898.753 I cmn  common_reaso: activated, budget=2147483647 tokens
+Sep 20 18:36:26 G27 llama-server[159642]: [58043] 2.10.898.816 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> dist
+Sep 20 18:36:26 G27 llama-server[159642]: [58043] 2.10.898.829 I slot launch_slot_: id  0 | task -1 | sampler params:
+Sep 20 18:36:26 G27 llama-server[159642]: [58043]         repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
+Sep 20 18:36:26 G27 llama-server[159642]: [58043]         dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
+Sep 20 18:36:26 G27 llama-server[159642]: [58043]         top_k = 20, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
+Sep 20 18:36:26 G27 llama-server[159642]: [58043]         mirostat = 0, mirostat_lr = 0.100, mirostat_ent = 5.000, adaptive_target = -1.000, adaptive_decay = 0.900
+Sep 20 18:36:26 G27 llama-server[159642]: [58043] 2.10.898.831 I slot launch_slot_: id  0 | task 2265 | processing task, is_child = 0
+Sep 20 18:36:26 G27 llama-server[159642]: [58043] 2.10.898.841 I slot   operator(): id  0 | task 2265 | new prompt, n_ctx_slot = 90112, n_keep = 0, task.n_tokens = 12313
+Sep 20 18:36:26 G27 llama-server[159642]: [58043] 2.10.898.859 I slot   operator(): id  0 | task 2265 | cached n_tokens = 12235, memory_seq_rm [12235, end)
+Sep 20 18:36:26 G27 llama-server[159642]: [58043] 2.10.935.401 I slot create_check: id  0 | task 2265 | created context checkpoint 15 of 32 (pos_min = 12234, pos_max = 12234, n_tokens = 12235, size = 197.699 MiB)
+Sep 20 18:36:26 G27 llama-server[159642]: [58043] 2.11.032.146 I slot   operator(): id  0 | task 2265 | cached n_tokens = 12309, memory_seq_rm [12309, end)
+Sep 20 18:36:26 G27 llama-server[159642]: [58043] 2.11.034.147 I slot init_sampler: id  0 | task 2265 | init sampler, took 1.86 ms, tokens: text = 12313, total = 12313
+Sep 20 18:36:26 G27 llama-server[159642]: [58043] 2.11.071.615 I slot create_check: id  0 | task 2265 | created context checkpoint 16 of 32 (pos_min = 12308, pos_max = 12308, n_tokens = 12309, size = 197.990 MiB)
+Sep 20 18:36:28 G27 llama-server[159642]: [58043] 2.12.372.292 I cmn  common_reaso: deactivated (natural end)
+Sep 20 18:36:28 G27 llama-server[159642]: [58043] 2.12.889.836 I slot print_timing: id  0 | task 2265 | prompt eval time =     217.16 ms /    78 tokens (    2.78 ms per token,   359.18 tokens per second)
+Sep 20 18:36:28 G27 llama-server[159642]: [58043] 2.12.889.840 I slot print_timing: id  0 | task 2265 |        eval time =    1773.67 ms /    91 tokens (   19.71 ms per token,    50.74 tokens per second)
+Sep 20 18:36:28 G27 llama-server[159642]: [58043] 2.12.889.841 I slot print_timing: id  0 | task 2265 |       total time =    1990.83 ms /   169 tokens
+Sep 20 18:36:28 G27 llama-server[159642]: [58043] 2.12.889.842 I slot print_timing: id  0 | task 2265 |    graphs reused =       1231
+Sep 20 18:36:28 G27 llama-server[159642]: [58043] 2.12.889.846 I slot print_timing: id  0 | task 2265 | draft acceptance = 1.00000 (   55 accepted /    55 generated), mean len =  3.50
+Sep 20 18:36:28 G27 llama-server[159642]: [58043] 2.12.889.847 I slot print_timing: id  0 | task 2265 |      acc per pos = (1.000, 0.636, 0.455, 0.409)
+Sep 20 18:36:28 G27 llama-server[159642]: [58043] 2.12.889.862 I spec common_specu: statistics        draft-mtp: #calls(b,g,a) =    7   2281   1792, #gen drafts =   1792, #acc drafts =  1747, #gen tokens =   5988, #acc tokens =  5605, #mean acc len = 4.13, #acc rate/pos = (0.975, 0.825, 0.707, 0.621), dur(b,g,a) = 0.009, 15797.501, 2.722 ms
+Sep 20 18:36:28 G27 llama-server[159642]: [58043] 2.12.890.394 I slot      release: id  0 | task 2265 | stop processing: n_tokens = 12405, truncated = 0
+Sep 20 18:36:28 G27 llama-server[159642]: [58043] 2.12.890.430 I srv  update_slots: all slots are idle
+Sep 20 18:36:28 G27 llama-server[159642]: 2.41.253.486 I srv  proxy_reques: proxying request to model Qwen3.8-27B-UD-Q5_K_S on port 58043
+Sep 20 18:36:28 G27 llama-server[159642]: [58043] 2.12.999.931 I srv  server_strea: conv_id= (empty=1)
+Sep 20 18:36:28 G27 llama-server[159642]: [58043] 2.13.023.255 I srv    operator(): chat format: peg-native
+Sep 20 18:36:28 G27 llama-server[159642]: [58043] 2.13.024.680 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.996 (12405/12450) > 0.100
+Sep 20 18:36:28 G27 llama-server[159642]: [58043] 2.13.024.684 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.996 (> 0.100 thold), f_keep = 1.000
+Sep 20 18:36:28 G27 llama-server[159642]: [58043] 2.13.025.421 I cmn  common_reaso: activated, budget=2147483647 tokens
+Sep 20 18:36:28 G27 llama-server[159642]: [58043] 2.13.025.486 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> dist
+Sep 20 18:36:28 G27 llama-server[159642]: [58043] 2.13.025.494 I slot launch_slot_: id  0 | task -1 | sampler params:
+Sep 20 18:36:28 G27 llama-server[159642]: [58043]         repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
+Sep 20 18:36:28 G27 llama-server[159642]: [58043]         dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
+Sep 20 18:36:28 G27 llama-server[159642]: [58043]         top_k = 20, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
+Sep 20 18:36:28 G27 llama-server[159642]: [58043]         mirostat = 0, mirostat_lr = 0.100, mirostat_ent = 5.000, adaptive_target = -1.000, adaptive_decay = 0.900
+Sep 20 18:36:28 G27 llama-server[159642]: [58043] 2.13.025.496 I slot launch_slot_: id  0 | task 2305 | processing task, is_child = 0
+Sep 20 18:36:28 G27 llama-server[159642]: [58043] 2.13.025.505 I slot   operator(): id  0 | task 2305 | new prompt, n_ctx_slot = 90112, n_keep = 0, task.n_tokens = 12450
+Sep 20 18:36:28 G27 llama-server[159642]: [58043] 2.13.025.519 I slot   operator(): id  0 | task 2305 | cached n_tokens = 12405, memory_seq_rm [12405, end)
+Sep 20 18:36:28 G27 llama-server[159642]: [58043] 2.13.062.733 I slot create_check: id  0 | task 2305 | created context checkpoint 17 of 32 (pos_min = 12404, pos_max = 12404, n_tokens = 12405, size = 198.367 MiB)
+Sep 20 18:36:28 G27 llama-server[159642]: [58043] 2.13.137.156 I slot   operator(): id  0 | task 2305 | cached n_tokens = 12446, memory_seq_rm [12446, end)
+Sep 20 18:36:28 G27 llama-server[159642]: [58043] 2.13.139.177 I slot init_sampler: id  0 | task 2305 | init sampler, took 1.88 ms, tokens: text = 12450, total = 12450
+Sep 20 18:36:29 G27 llama-server[159642]: [58043] 2.13.176.034 I slot create_check: id  0 | task 2305 | created context checkpoint 18 of 32 (pos_min = 12445, pos_max = 12445, n_tokens = 12446, size = 198.528 MiB)
+Sep 20 18:36:29 G27 llama-server[159642]: [58043] 2.13.798.198 I cmn  common_reaso: deactivated (natural end)
+Sep 20 18:36:32 G27 llama-server[159642]: [58043] 2.16.234.440 I slot print_timing: id  0 | task 2305 | n_gen =    225, tg =  74.28 t/s, tg_3s =  74.61 t/s
+Sep 20 18:36:35 G27 llama-server[159642]: [58043] 2.19.246.510 I slot print_timing: id  0 | task 2305 | n_gen =    475, tg =  78.64 t/s, tg_3s =  83.00 t/s
+Sep 20 18:36:38 G27 llama-server[159642]: [58043] 2.22.261.840 I slot print_timing: id  0 | task 2305 | n_gen =    725, tg =  80.06 t/s, tg_3s =  82.91 t/s
+Sep 20 18:36:41 G27 llama-server[159642]: [58043] 2.25.288.267 I slot print_timing: id  0 | task 2305 | n_gen =    975, tg =  80.70 t/s, tg_3s =  82.61 t/s
+Sep 20 18:36:43 G27 llama-server[159642]: [58043] 2.27.913.321 I slot print_timing: id  0 | task 2305 | prompt eval time =     193.28 ms /    45 tokens (    4.29 ms per token,   232.83 tokens per second)
+Sep 20 18:36:43 G27 llama-server[159642]: [58043] 2.27.913.325 I slot print_timing: id  0 | task 2305 |        eval time =   14694.37 ms /  1183 tokens (   12.43 ms per token,    80.44 tokens per second)
+Sep 20 18:36:43 G27 llama-server[159642]: [58043] 2.27.913.326 I slot print_timing: id  0 | task 2305 |       total time =   14887.64 ms /  1228 tokens
+Sep 20 18:36:43 G27 llama-server[159642]: [58043] 2.27.913.327 I slot print_timing: id  0 | task 2305 |    graphs reused =       1457
+Sep 20 18:36:43 G27 llama-server[159642]: [58043] 2.27.913.331 I slot print_timing: id  0 | task 2305 | draft acceptance = 0.99470 (  939 accepted /   944 generated), mean len =  4.95
+Sep 20 18:36:43 G27 llama-server[159642]: [58043] 2.27.913.331 I slot print_timing: id  0 | task 2305 |      acc per pos = (0.996, 0.987, 0.983, 0.979)
+Sep 20 18:36:43 G27 llama-server[159642]: [58043] 2.27.913.347 I spec common_specu: statistics        draft-mtp: #calls(b,g,a) =    8   2526   2030, #gen drafts =   2030, #acc drafts =  1984, #gen tokens =   6932, #acc tokens =  6544, #mean acc len = 4.22, #acc rate/pos = (0.977, 0.844, 0.739, 0.663), dur(b,g,a) = 0.011, 17987.275, 3.022 ms
+Sep 20 18:36:43 G27 llama-server[159642]: [58043] 2.27.913.859 I slot      release: id  0 | task 2305 | stop processing: n_tokens = 13634, truncated = 0
+Sep 20 18:36:43 G27 llama-server[159642]: [58043] 2.27.913.900 I srv  update_slots: all slots are idle
+Sep 20 18:36:43 G27 llama-server[159642]: 2.56.295.609 I srv  proxy_reques: proxying request to model Qwen3.8-27B-UD-Q5_K_S on port 58043
+Sep 20 18:36:43 G27 llama-server[159642]: [58043] 2.28.044.547 I srv  server_strea: conv_id= (empty=1)
+Sep 20 18:36:43 G27 llama-server[159642]: [58043] 2.28.071.123 I srv    operator(): chat format: peg-native
+Sep 20 18:36:43 G27 llama-server[159642]: [58043] 2.28.072.537 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.913 (12515/13704) > 0.100
+Sep 20 18:36:43 G27 llama-server[159642]: [58043] 2.28.072.540 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.913 (> 0.100 thold), f_keep = 0.918
+Sep 20 18:36:43 G27 llama-server[159642]: [58043] 2.28.073.294 I cmn  common_reaso: activated, budget=2147483647 tokens
+Sep 20 18:36:43 G27 llama-server[159642]: [58043] 2.28.073.361 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> dist
+Sep 20 18:36:43 G27 llama-server[159642]: [58043] 2.28.073.370 I slot launch_slot_: id  0 | task -1 | sampler params:
+Sep 20 18:36:43 G27 llama-server[159642]: [58043]         repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
+Sep 20 18:36:43 G27 llama-server[159642]: [58043]         dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
+Sep 20 18:36:43 G27 llama-server[159642]: [58043]         top_k = 20, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
+Sep 20 18:36:43 G27 llama-server[159642]: [58043]         mirostat = 0, mirostat_lr = 0.100, mirostat_ent = 5.000, adaptive_target = -1.000, adaptive_decay = 0.900
+Sep 20 18:36:43 G27 llama-server[159642]: [58043] 2.28.073.373 I slot launch_slot_: id  0 | task 2553 | processing task, is_child = 0
+Sep 20 18:36:43 G27 llama-server[159642]: [58043] 2.28.073.381 I slot   operator(): id  0 | task 2553 | new prompt, n_ctx_slot = 90112, n_keep = 0, task.n_tokens = 13704
+Sep 20 18:36:43 G27 llama-server[159642]: [58043] 2.28.073.392 I slot   operator(): id  0 | task 2553 | checking checkpoint with [12445, 12445] against 12515...
+Sep 20 18:36:43 G27 llama-server[159642]: [58043] 2.28.096.073 I slot   operator(): id  0 | task 2553 | restored context checkpoint (pos_min = 12445, pos_max = 12445, n_tokens = 12446, n_past = 12446, size = 198.528 MiB)
+Sep 20 18:36:43 G27 llama-server[159642]: [58043] 2.28.096.087 I slot   operator(): id  0 | task 2553 | cached n_tokens = 12446, memory_seq_rm [12446, end)
+Sep 20 18:36:44 G27 llama-server[159642]: [58043] 2.28.352.704 I slot   operator(): id  0 | task 2553 | cached n_tokens = 12676, memory_seq_rm [12676, end)
+Sep 20 18:36:44 G27 llama-server[159642]: [58043] 2.28.389.938 I slot create_check: id  0 | task 2553 | created context checkpoint 19 of 32 (pos_min = 12675, pos_max = 12675, n_tokens = 12676, size = 199.432 MiB)
+Sep 20 18:36:45 G27 llama-server[159642]: [58043] 2.29.376.823 I slot   operator(): id  0 | task 2553 | cached n_tokens = 13700, memory_seq_rm [13700, end)
+Sep 20 18:36:45 G27 llama-server[159642]: [58043] 2.29.379.072 I slot init_sampler: id  0 | task 2553 | init sampler, took 2.10 ms, tokens: text = 13704, total = 13704
+Sep 20 18:36:45 G27 llama-server[159642]: [58043] 2.29.417.265 I slot create_check: id  0 | task 2553 | created context checkpoint 20 of 32 (pos_min = 13699, pos_max = 13699, n_tokens = 13700, size = 203.455 MiB)
+Sep 20 18:36:45 G27 llama-server[159642]: [58043] 2.29.834.948 I cmn  common_reaso: deactivated (natural end)
+Sep 20 18:36:48 G27 llama-server[159642]: [58043] 2.32.496.275 I slot print_timing: id  0 | task 2553 | n_gen =    198, tg =  64.90 t/s, tg_3s =  65.23 t/s
+Sep 20 18:36:51 G27 llama-server[159642]: [58043] 2.35.544.367 I slot print_timing: id  0 | task 2553 | n_gen =    415, tg =  68.05 t/s, tg_3s =  71.19 t/s
+Sep 20 18:36:54 G27 llama-server[159642]: [58043] 2.38.609.697 I slot print_timing: id  0 | task 2553 | n_gen =    632, tg =  68.97 t/s, tg_3s =  70.79 t/s
+Sep 20 18:36:54 G27 llama-server[159642]: [58043] 2.38.918.286 I slot print_timing: id  0 | task 2553 | prompt eval time =    1387.33 ms /  1258 tokens (    1.10 ms per token,   906.78 tokens per second)
+Sep 20 18:36:54 G27 llama-server[159642]: [58043] 2.38.918.290 I slot print_timing: id  0 | task 2553 |        eval time =    9457.43 ms /   653 tokens (   14.51 ms per token,    68.94 tokens per second)
+Sep 20 18:36:54 G27 llama-server[159642]: [58043] 2.38.918.291 I slot print_timing: id  0 | task 2553 |       total time =   10844.76 ms /  1911 tokens
+Sep 20 18:36:54 G27 llama-server[159642]: [58043] 2.38.918.292 I slot print_timing: id  0 | task 2553 |    graphs reused =       1556
+Sep 20 18:36:54 G27 llama-server[159642]: [58043] 2.38.918.296 I slot print_timing: id  0 | task 2553 | draft acceptance = 0.93359 (  492 accepted /   527 generated), mean len =  4.32
+Sep 20 18:36:54 G27 llama-server[159642]: [58043] 2.38.918.296 I slot print_timing: id  0 | task 2553 |      acc per pos = (0.980, 0.878, 0.764, 0.703)
+Sep 20 18:36:54 G27 llama-server[159642]: [58043] 2.38.918.310 I spec common_specu: statistics        draft-mtp: #calls(b,g,a) =    9   2686   2178, #gen drafts =   2178, #acc drafts =  2129, #gen tokens =   7459, #acc tokens =  7036, #mean acc len = 4.23, #acc rate/pos = (0.978, 0.846, 0.741, 0.666), dur(b,g,a) = 0.011, 19300.037, 3.259 ms
+Sep 20 18:36:54 G27 llama-server[159642]: [58043] 2.38.918.865 I slot      release: id  0 | task 2553 | stop processing: n_tokens = 14356, truncated = 0
+Sep 20 18:36:54 G27 llama-server[159642]: [58043] 2.38.918.899 I srv  update_slots: all slots are idle
+Sep 20 18:36:54 G27 llama-server[159642]: 3.07.363.268 I srv  proxy_reques: proxying request to model Qwen3.8-27B-UD-Q5_K_S on port 58043
+Sep 20 18:36:54 G27 llama-server[159642]: [58043] 2.39.114.976 I srv  server_strea: conv_id= (empty=1)
+Sep 20 18:36:54 G27 llama-server[159642]: [58043] 2.39.143.233 I srv    operator(): chat format: peg-native
+Sep 20 18:36:54 G27 llama-server[159642]: [58043] 2.39.144.673 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.993 (14356/14452) > 0.100
+Sep 20 18:36:54 G27 llama-server[159642]: [58043] 2.39.144.678 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.993 (> 0.100 thold), f_keep = 1.000
+Sep 20 18:36:54 G27 llama-server[159642]: [58043] 2.39.145.438 I cmn  common_reaso: activated, budget=2147483647 tokens
+Sep 20 18:36:54 G27 llama-server[159642]: [58043] 2.39.145.506 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> dist
+Sep 20 18:36:54 G27 llama-server[159642]: [58043] 2.39.145.513 I slot launch_slot_: id  0 | task -1 | sampler params:
+Sep 20 18:36:54 G27 llama-server[159642]: [58043]         repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
+Sep 20 18:36:54 G27 llama-server[159642]: [58043]         dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
+Sep 20 18:36:54 G27 llama-server[159642]: [58043]         top_k = 20, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
+Sep 20 18:36:54 G27 llama-server[159642]: [58043]         mirostat = 0, mirostat_lr = 0.100, mirostat_ent = 5.000, adaptive_target = -1.000, adaptive_decay = 0.900
+Sep 20 18:36:54 G27 llama-server[159642]: [58043] 2.39.145.519 I slot launch_slot_: id  0 | task 2717 | processing task, is_child = 0
+Sep 20 18:36:54 G27 llama-server[159642]: [58043] 2.39.145.527 I slot   operator(): id  0 | task 2717 | new prompt, n_ctx_slot = 90112, n_keep = 0, task.n_tokens = 14452
+Sep 20 18:36:54 G27 llama-server[159642]: [58043] 2.39.145.550 I slot   operator(): id  0 | task 2717 | cached n_tokens = 14356, memory_seq_rm [14356, end)
+Sep 20 18:36:55 G27 llama-server[159642]: [58043] 2.39.187.796 I slot create_check: id  0 | task 2717 | created context checkpoint 21 of 32 (pos_min = 14355, pos_max = 14355, n_tokens = 14356, size = 206.033 MiB)
+Sep 20 18:36:55 G27 llama-server[159642]: [58043] 2.39.307.352 I slot   operator(): id  0 | task 2717 | cached n_tokens = 14448, memory_seq_rm [14448, end)
+Sep 20 18:36:55 G27 llama-server[159642]: [58043] 2.39.309.664 I slot init_sampler: id  0 | task 2717 | init sampler, took 2.17 ms, tokens: text = 14452, total = 14452
+Sep 20 18:36:55 G27 llama-server[159642]: [58043] 2.39.349.684 I slot create_check: id  0 | task 2717 | created context checkpoint 22 of 32 (pos_min = 14447, pos_max = 14447, n_tokens = 14448, size = 206.394 MiB)
+Sep 20 18:36:56 G27 llama-server[159642]: [58043] 2.40.221.329 I cmn  common_reaso: deactivated (natural end)
+Sep 20 18:36:58 G27 llama-server[159642]: [58043] 2.42.397.596 I slot print_timing: id  0 | task 2717 | n_gen =    202, tg =  66.87 t/s, tg_3s =  67.20 t/s
+Sep 20 18:36:59 G27 llama-server[159642]: [58043] 2.44.001.646 I slot print_timing: id  0 | task 2717 | prompt eval time =     246.14 ms /    96 tokens (    2.56 ms per token,   390.03 tokens per second)
+Sep 20 18:36:59 G27 llama-server[159642]: [58043] 2.44.001.651 I slot print_timing: id  0 | task 2717 |        eval time =    4609.81 ms /   325 tokens (   14.23 ms per token,    70.28 tokens per second)
+Sep 20 18:36:59 G27 llama-server[159642]: [58043] 2.44.001.652 I slot print_timing: id  0 | task 2717 |       total time =    4855.95 ms /   421 tokens
+Sep 20 18:36:59 G27 llama-server[159642]: [58043] 2.44.001.653 I slot print_timing: id  0 | task 2717 |    graphs reused =       1610
+Sep 20 18:36:59 G27 llama-server[159642]: [58043] 2.44.001.657 I slot print_timing: id  0 | task 2717 | draft acceptance = 0.95000 (  247 accepted /   260 generated), mean len =  4.53
+Sep 20 18:36:59 G27 llama-server[159642]: [58043] 2.44.001.657 I slot print_timing: id  0 | task 2717 |      acc per pos = (0.986, 0.957, 0.814, 0.771)
+Sep 20 18:36:59 G27 llama-server[159642]: [58043] 2.44.001.674 I spec common_specu: statistics        draft-mtp: #calls(b,g,a) =   10   2765   2248, #gen drafts =   2248, #acc drafts =  2198, #gen tokens =   7719, #acc tokens =  7283, #mean acc len = 4.24, #acc rate/pos = (0.978, 0.850, 0.743, 0.669), dur(b,g,a) = 0.013, 19947.177, 3.361 ms
+Sep 20 18:36:59 G27 llama-server[159642]: [58043] 2.44.002.254 I slot      release: id  0 | task 2717 | stop processing: n_tokens = 14778, truncated = 0
+Sep 20 18:36:59 G27 llama-server[159642]: [58043] 2.44.002.292 I srv  update_slots: all slots are idle
+Sep 20 18:37:00 G27 llama-server[159642]: 3.12.424.447 I srv  proxy_reques: proxying request to model Qwen3.8-27B-UD-Q5_K_S on port 58043
+Sep 20 18:37:00 G27 llama-server[159642]: [58043] 2.44.179.466 I srv  server_strea: conv_id= (empty=1)
+Sep 20 18:37:00 G27 llama-server[159642]: [58043] 2.44.205.776 I srv    operator(): chat format: peg-native
+Sep 20 18:37:00 G27 llama-server[159642]: [58043] 2.44.207.198 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.993 (14778/14880) > 0.100
+Sep 20 18:37:00 G27 llama-server[159642]: [58043] 2.44.207.203 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.993 (> 0.100 thold), f_keep = 1.000
+Sep 20 18:37:00 G27 llama-server[159642]: [58043] 2.44.207.965 I cmn  common_reaso: activated, budget=2147483647 tokens
+Sep 20 18:37:00 G27 llama-server[159642]: [58043] 2.44.208.029 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> dist
+Sep 20 18:37:00 G27 llama-server[159642]: [58043] 2.44.208.037 I slot launch_slot_: id  0 | task -1 | sampler params:
+Sep 20 18:37:00 G27 llama-server[159642]: [58043]         repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
+Sep 20 18:37:00 G27 llama-server[159642]: [58043]         dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
+Sep 20 18:37:00 G27 llama-server[159642]: [58043]         top_k = 20, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
+Sep 20 18:37:00 G27 llama-server[159642]: [58043]         mirostat = 0, mirostat_lr = 0.100, mirostat_ent = 5.000, adaptive_target = -1.000, adaptive_decay = 0.900
+Sep 20 18:37:00 G27 llama-server[159642]: [58043] 2.44.208.040 I slot launch_slot_: id  0 | task 2799 | processing task, is_child = 0
+Sep 20 18:37:00 G27 llama-server[159642]: [58043] 2.44.208.060 I slot   operator(): id  0 | task 2799 | new prompt, n_ctx_slot = 90112, n_keep = 0, task.n_tokens = 14880
+Sep 20 18:37:00 G27 llama-server[159642]: [58043] 2.44.208.077 I slot   operator(): id  0 | task 2799 | cached n_tokens = 14778, memory_seq_rm [14778, end)
+Sep 20 18:37:00 G27 llama-server[159642]: [58043] 2.44.246.932 I slot create_check: id  0 | task 2799 | created context checkpoint 23 of 32 (pos_min = 14777, pos_max = 14777, n_tokens = 14778, size = 207.691 MiB)
+Sep 20 18:37:00 G27 llama-server[159642]: [58043] 2.44.370.161 I slot   operator(): id  0 | task 2799 | cached n_tokens = 14876, memory_seq_rm [14876, end)
+Sep 20 18:37:00 G27 llama-server[159642]: [58043] 2.44.372.539 I slot init_sampler: id  0 | task 2799 | init sampler, took 2.24 ms, tokens: text = 14880, total = 14880
+Sep 20 18:37:00 G27 llama-server[159642]: [58043] 2.44.412.088 I slot create_check: id  0 | task 2799 | created context checkpoint 24 of 32 (pos_min = 14875, pos_max = 14875, n_tokens = 14876, size = 208.076 MiB)
+Sep 20 18:37:00 G27 llama-server[159642]: [58043] 2.44.816.394 I cmn  common_reaso: deactivated (natural end)
+Sep 20 18:37:03 G27 llama-server[159642]: [58043] 2.47.469.694 I slot print_timing: id  0 | task 2799 | n_gen =    213, tg =  70.38 t/s, tg_3s =  70.71 t/s
+Sep 20 18:37:06 G27 llama-server[159642]: [58043] 2.50.522.446 I slot print_timing: id  0 | task 2799 | n_gen =    427, tg =  70.24 t/s, tg_3s =  70.10 t/s
+Sep 20 18:37:09 G27 llama-server[159642]: [58043] 2.53.568.156 I slot print_timing: id  0 | task 2799 | n_gen =    632, tg =  69.26 t/s, tg_3s =  67.31 t/s
+Sep 20 18:37:12 G27 llama-server[159642]: [58043] 2.56.608.419 I slot print_timing: id  0 | task 2799 | n_gen =    853, tg =  70.12 t/s, tg_3s =  72.69 t/s
+Sep 20 18:37:15 G27 llama-server[159642]: [58043] 2.59.640.973 I slot print_timing: id  0 | task 2799 | n_gen =   1062, tg =  69.88 t/s, tg_3s =  68.92 t/s
+Sep 20 18:37:18 G27 llama-server[159642]: [58043] 3.02.653.939 I slot print_timing: id  0 | task 2799 | n_gen =   1239, tg =  68.03 t/s, tg_3s =  58.75 t/s
+Sep 20 18:37:19 G27 llama-server[159642]: [58043] 3.03.510.364 I slot print_timing: id  0 | task 2799 | prompt eval time =     249.20 ms /   102 tokens (    2.44 ms per token,   409.30 tokens per second)
+Sep 20 18:37:19 G27 llama-server[159642]: [58043] 3.03.510.368 I slot print_timing: id  0 | task 2799 |        eval time =   19052.95 ms /  1305 tokens (   14.61 ms per token,    68.44 tokens per second)
+Sep 20 18:37:19 G27 llama-server[159642]: [58043] 3.03.510.369 I slot print_timing: id  0 | task 2799 |       total time =   19302.16 ms /  1407 tokens
+Sep 20 18:37:19 G27 llama-server[159642]: [58043] 3.03.510.370 I slot print_timing: id  0 | task 2799 |    graphs reused =       1795
+Sep 20 18:37:19 G27 llama-server[159642]: [58043] 3.03.510.374 I slot print_timing: id  0 | task 2799 | draft acceptance = 0.91535 (  984 accepted /  1075 generated), mean len =  4.29
+Sep 20 18:37:19 G27 llama-server[159642]: [58043] 3.03.510.374 I slot print_timing: id  0 | task 2799 |      acc per pos = (0.977, 0.873, 0.779, 0.662)
+Sep 20 18:37:19 G27 llama-server[159642]: [58043] 3.03.510.388 I spec common_specu: statistics        draft-mtp: #calls(b,g,a) =   11   3086   2547, #gen drafts =   2547, #acc drafts =  2490, #gen tokens =   8794, #acc tokens =  8267, #mean acc len = 4.25, #acc rate/pos = (0.978, 0.852, 0.748, 0.668), dur(b,g,a) = 0.014, 22618.868, 3.796 ms
+Sep 20 18:37:19 G27 llama-server[159642]: [58043] 3.03.510.969 I slot      release: id  0 | task 2799 | stop processing: n_tokens = 16185, truncated = 0
+Sep 20 18:37:19 G27 llama-server[159642]: [58043] 3.03.511.009 I srv  update_slots: all slots are idle
+Sep 20 18:37:19 G27 llama-server[159642]: 3.31.900.035 I srv  proxy_reques: proxying request to model Qwen3.8-27B-UD-Q5_K_S on port 58043
+Sep 20 18:37:19 G27 llama-server[159642]: [58043] 3.03.656.291 I srv  server_strea: conv_id= (empty=1)
+Sep 20 18:37:19 G27 llama-server[159642]: [58043] 3.03.685.514 I srv    operator(): chat format: peg-native
+Sep 20 18:37:19 G27 llama-server[159642]: [58043] 3.03.686.986 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.996 (16185/16255) > 0.100
+Sep 20 18:37:19 G27 llama-server[159642]: [58043] 3.03.686.991 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.996 (> 0.100 thold), f_keep = 1.000
+Sep 20 18:37:19 G27 llama-server[159642]: [58043] 3.03.687.774 I cmn  common_reaso: activated, budget=2147483647 tokens
+Sep 20 18:37:19 G27 llama-server[159642]: [58043] 3.03.687.856 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> dist
+Sep 20 18:37:19 G27 llama-server[159642]: [58043] 3.03.687.866 I slot launch_slot_: id  0 | task -1 | sampler params:
+Sep 20 18:37:19 G27 llama-server[159642]: [58043]         repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
+Sep 20 18:37:19 G27 llama-server[159642]: [58043]         dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
+Sep 20 18:37:19 G27 llama-server[159642]: [58043]         top_k = 20, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
+Sep 20 18:37:19 G27 llama-server[159642]: [58043]         mirostat = 0, mirostat_lr = 0.100, mirostat_ent = 5.000, adaptive_target = -1.000, adaptive_decay = 0.900
+Sep 20 18:37:19 G27 llama-server[159642]: [58043] 3.03.687.870 I slot launch_slot_: id  0 | task 3123 | processing task, is_child = 0
+Sep 20 18:37:19 G27 llama-server[159642]: [58043] 3.03.687.876 I slot   operator(): id  0 | task 3123 | new prompt, n_ctx_slot = 90112, n_keep = 0, task.n_tokens = 16255
+Sep 20 18:37:19 G27 llama-server[159642]: [58043] 3.03.687.893 I slot   operator(): id  0 | task 3123 | cached n_tokens = 16185, memory_seq_rm [16185, end)
+Sep 20 18:37:19 G27 llama-server[159642]: [58043] 3.03.727.704 I slot create_check: id  0 | task 3123 | created context checkpoint 25 of 32 (pos_min = 16184, pos_max = 16184, n_tokens = 16185, size = 213.219 MiB)
+Sep 20 18:37:19 G27 llama-server[159642]: [58043] 3.03.830.230 I slot   operator(): id  0 | task 3123 | cached n_tokens = 16251, memory_seq_rm [16251, end)
+Sep 20 18:37:19 G27 llama-server[159642]: [58043] 3.03.832.822 I slot init_sampler: id  0 | task 3123 | init sampler, took 2.45 ms, tokens: text = 16255, total = 16255
+Sep 20 18:37:19 G27 llama-server[159642]: [58043] 3.03.873.014 I slot create_check: id  0 | task 3123 | created context checkpoint 26 of 32 (pos_min = 16250, pos_max = 16250, n_tokens = 16251, size = 213.479 MiB)
+Sep 20 18:37:21 G27 llama-server[159642]: [58043] 3.05.941.578 I cmn  common_reaso: deactivated (natural end)
+Sep 20 18:37:22 G27 llama-server[159642]: [58043] 3.06.978.965 I slot print_timing: id  0 | task 3123 | n_gen =    191, tg =  62.09 t/s, tg_3s =  62.42 t/s
+Sep 20 18:37:25 G27 llama-server[159642]: [58043] 3.09.991.975 I slot print_timing: id  0 | task 3123 | n_gen =    396, tg =  65.04 t/s, tg_3s =  68.04 t/s
+Sep 20 18:37:28 G27 llama-server[159642]: [58043] 3.13.039.941 I slot print_timing: id  0 | task 3123 | n_gen =    629, tg =  68.85 t/s, tg_3s =  76.44 t/s
+Sep 20 18:37:31 G27 llama-server[159642]: [58043] 3.16.061.538 I slot print_timing: id  0 | task 3123 | n_gen =    859, tg =  70.66 t/s, tg_3s =  76.12 t/s
+Sep 20 18:37:34 G27 llama-server[159642]: [58043] 3.19.113.808 I slot print_timing: id  0 | task 3123 | n_gen =   1081, tg =  71.08 t/s, tg_3s =  72.73 t/s
+Sep 20 18:37:38 G27 llama-server[159642]: [58043] 3.22.167.613 I slot print_timing: id  0 | task 3123 | n_gen =   1306, tg =  71.51 t/s, tg_3s =  73.68 t/s
+Sep 20 18:37:41 G27 llama-server[159642]: [58043] 3.25.196.148 I slot print_timing: id  0 | task 3123 | n_gen =   1537, tg =  72.19 t/s, tg_3s =  76.27 t/s
+Sep 20 18:37:43 G27 llama-server[159642]: [58043] 3.27.393.196 I slot print_timing: id  0 | task 3123 | prompt eval time =     230.93 ms /    70 tokens (    3.30 ms per token,   303.12 tokens per second)
+Sep 20 18:37:43 G27 llama-server[159642]: [58043] 3.27.393.201 I slot print_timing: id  0 | task 3123 |        eval time =   23474.25 ms /  1706 tokens (   13.77 ms per token,    72.63 tokens per second)
+Sep 20 18:37:43 G27 llama-server[159642]: [58043] 3.27.393.201 I slot print_timing: id  0 | task 3123 |       total time =   23705.17 ms /  1776 tokens
+Sep 20 18:37:43 G27 llama-server[159642]: [58043] 3.27.393.202 I slot print_timing: id  0 | task 3123 |    graphs reused =       2082
+Sep 20 18:37:43 G27 llama-server[159642]: [58043] 3.27.393.206 I slot print_timing: id  0 | task 3123 | draft acceptance = 0.96408 ( 1315 accepted /  1364 generated), mean len =  4.59
+Sep 20 18:37:43 G27 llama-server[159642]: [58043] 3.27.393.206 I slot print_timing: id  0 | task 3123 |      acc per pos = (0.995, 0.921, 0.872, 0.806)
+Sep 20 18:37:43 G27 llama-server[159642]: [58043] 3.27.393.219 I spec common_specu: statistics        draft-mtp: #calls(b,g,a) =   12   3477   2913, #gen drafts =   2913, #acc drafts =  2854, #gen tokens =  10158, #acc tokens =  9582, #mean acc len = 4.29, #acc rate/pos = (0.980, 0.861, 0.763, 0.686), dur(b,g,a) = 0.015, 25948.807, 4.278 ms
+Sep 20 18:37:43 G27 llama-server[159642]: [58043] 3.27.393.847 I slot      release: id  0 | task 3123 | stop processing: n_tokens = 17961, truncated = 0
+Sep 20 18:37:43 G27 llama-server[159642]: [58043] 3.27.393.884 I srv  update_slots: all slots are idle
+Sep 20 18:37:43 G27 llama-server[159642]: 3.55.789.023 I srv  proxy_reques: proxying request to model Qwen3.8-27B-UD-Q5_K_S on port 58043
+Sep 20 18:37:43 G27 llama-server[159642]: [58043] 3.27.546.281 I srv  server_strea: conv_id= (empty=1)
+Sep 20 18:37:43 G27 llama-server[159642]: [58043] 3.27.577.136 I srv    operator(): chat format: peg-native
+Sep 20 18:37:43 G27 llama-server[159642]: [58043] 3.27.578.595 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.996 (17961/18037) > 0.100
+Sep 20 18:37:43 G27 llama-server[159642]: [58043] 3.27.578.600 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.996 (> 0.100 thold), f_keep = 1.000
+Sep 20 18:37:43 G27 llama-server[159642]: [58043] 3.27.579.340 I cmn  common_reaso: activated, budget=2147483647 tokens
+Sep 20 18:37:43 G27 llama-server[159642]: [58043] 3.27.579.418 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> dist
+Sep 20 18:37:43 G27 llama-server[159642]: [58043] 3.27.579.426 I slot launch_slot_: id  0 | task -1 | sampler params:
+Sep 20 18:37:43 G27 llama-server[159642]: [58043]         repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
+Sep 20 18:37:43 G27 llama-server[159642]: [58043]         dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
+Sep 20 18:37:43 G27 llama-server[159642]: [58043]         top_k = 20, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
+Sep 20 18:37:43 G27 llama-server[159642]: [58043]         mirostat = 0, mirostat_lr = 0.100, mirostat_ent = 5.000, adaptive_target = -1.000, adaptive_decay = 0.900
+Sep 20 18:37:43 G27 llama-server[159642]: [58043] 3.27.579.432 I slot launch_slot_: id  0 | task 3517 | processing task, is_child = 0
+Sep 20 18:37:43 G27 llama-server[159642]: [58043] 3.27.579.441 I slot   operator(): id  0 | task 3517 | new prompt, n_ctx_slot = 90112, n_keep = 0, task.n_tokens = 18037
+Sep 20 18:37:43 G27 llama-server[159642]: [58043] 3.27.579.459 I slot   operator(): id  0 | task 3517 | cached n_tokens = 17961, memory_seq_rm [17961, end)
+Sep 20 18:37:43 G27 llama-server[159642]: [58043] 3.27.621.389 I slot create_check: id  0 | task 3517 | created context checkpoint 27 of 32 (pos_min = 17960, pos_max = 17960, n_tokens = 17961, size = 220.197 MiB)
+Sep 20 18:37:43 G27 llama-server[159642]: [58043] 3.27.727.218 I slot   operator(): id  0 | task 3517 | cached n_tokens = 18033, memory_seq_rm [18033, end)
+Sep 20 18:37:43 G27 llama-server[159642]: [58043] 3.27.730.056 I slot init_sampler: id  0 | task 3517 | init sampler, took 2.69 ms, tokens: text = 18037, total = 18037
+Sep 20 18:37:43 G27 llama-server[159642]: [58043] 3.27.771.869 I slot create_check: id  0 | task 3517 | created context checkpoint 28 of 32 (pos_min = 18032, pos_max = 18032, n_tokens = 18033, size = 220.480 MiB)
+Sep 20 18:37:44 G27 llama-server[159642]: [58043] 3.28.434.021 I cmn  common_reaso: deactivated (natural end)
+Sep 20 18:37:45 G27 llama-server[159642]: [58043] 3.29.550.465 I slot print_timing: id  0 | task 3517 | prompt eval time =     234.75 ms /    76 tokens (    3.09 ms per token,   323.76 tokens per second)
+Sep 20 18:37:45 G27 llama-server[159642]: [58043] 3.29.550.469 I slot print_timing: id  0 | task 3517 |        eval time =    1736.11 ms /   108 tokens (   16.23 ms per token,    61.63 tokens per second)
+Sep 20 18:37:45 G27 llama-server[159642]: [58043] 3.29.550.470 I slot print_timing: id  0 | task 3517 |       total time =    1970.86 ms /   184 tokens
+Sep 20 18:37:45 G27 llama-server[159642]: [58043] 3.29.550.471 I slot print_timing: id  0 | task 3517 |    graphs reused =       2100
+Sep 20 18:37:45 G27 llama-server[159642]: [58043] 3.29.550.476 I slot print_timing: id  0 | task 3517 | draft acceptance = 0.95181 (   79 accepted /    83 generated), mean len =  4.16
+Sep 20 18:37:45 G27 llama-server[159642]: [58043] 3.29.550.477 I slot print_timing: id  0 | task 3517 |      acc per pos = (1.000, 0.880, 0.640, 0.640)
+Sep 20 18:37:45 G27 llama-server[159642]: [58043] 3.29.550.494 I spec common_specu: statistics        draft-mtp: #calls(b,g,a) =   13   3507   2938, #gen drafts =   2938, #acc drafts =  2879, #gen tokens =  10241, #acc tokens =  9661, #mean acc len = 4.29, #acc rate/pos = (0.980, 0.861, 0.762, 0.685), dur(b,g,a) = 0.016, 26171.455, 4.322 ms
+Sep 20 18:37:45 G27 llama-server[159642]: [58043] 3.29.551.192 I slot      release: id  0 | task 3517 | stop processing: n_tokens = 18146, truncated = 0
+Sep 20 18:37:45 G27 llama-server[159642]: [58043] 3.29.551.229 I srv  update_slots: all slots are idle
+Sep 20 18:37:47 G27 llama-server[159642]: 3.59.730.980 I srv  proxy_reques: proxying request to model Qwen3.8-27B-UD-Q5_K_S on port 58043
+Sep 20 18:37:47 G27 llama-server[159642]: [58043] 3.31.489.267 I srv  server_strea: conv_id= (empty=1)
+Sep 20 18:37:47 G27 llama-server[159642]: [58043] 3.31.523.470 I srv    operator(): chat format: peg-native
+Sep 20 18:37:47 G27 llama-server[159642]: [58043] 3.31.525.005 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.991 (18146/18313) > 0.100
+Sep 20 18:37:47 G27 llama-server[159642]: [58043] 3.31.525.010 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.991 (> 0.100 thold), f_keep = 1.000
+Sep 20 18:37:47 G27 llama-server[159642]: [58043] 3.31.525.814 I cmn  common_reaso: activated, budget=2147483647 tokens
+Sep 20 18:37:47 G27 llama-server[159642]: [58043] 3.31.525.883 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> dist
+Sep 20 18:37:47 G27 llama-server[159642]: [58043] 3.31.525.893 I slot launch_slot_: id  0 | task -1 | sampler params:
+Sep 20 18:37:47 G27 llama-server[159642]: [58043]         repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
+Sep 20 18:37:47 G27 llama-server[159642]: [58043]         dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
+Sep 20 18:37:47 G27 llama-server[159642]: [58043]         top_k = 20, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
+Sep 20 18:37:47 G27 llama-server[159642]: [58043]         mirostat = 0, mirostat_lr = 0.100, mirostat_ent = 5.000, adaptive_target = -1.000, adaptive_decay = 0.900
+Sep 20 18:37:47 G27 llama-server[159642]: [58043] 3.31.525.897 I slot launch_slot_: id  0 | task 3550 | processing task, is_child = 0
+Sep 20 18:37:47 G27 llama-server[159642]: [58043] 3.31.525.904 I slot   operator(): id  0 | task 3550 | new prompt, n_ctx_slot = 90112, n_keep = 0, task.n_tokens = 18313
+Sep 20 18:37:47 G27 llama-server[159642]: [58043] 3.31.525.921 I slot   operator(): id  0 | task 3550 | cached n_tokens = 18146, memory_seq_rm [18146, end)
+Sep 20 18:37:47 G27 llama-server[159642]: [58043] 3.31.569.466 I slot create_check: id  0 | task 3550 | created context checkpoint 29 of 32 (pos_min = 18145, pos_max = 18145, n_tokens = 18146, size = 220.924 MiB)
+Sep 20 18:37:47 G27 llama-server[159642]: [58043] 3.31.909.895 I slot   operator(): id  0 | task 3550 | cached n_tokens = 18309, memory_seq_rm [18309, end)
+Sep 20 18:37:47 G27 llama-server[159642]: [58043] 3.31.912.834 I slot init_sampler: id  0 | task 3550 | init sampler, took 2.79 ms, tokens: text = 18313, total = 18313
+Sep 20 18:37:47 G27 llama-server[159642]: [58043] 3.31.955.804 I slot create_check: id  0 | task 3550 | created context checkpoint 30 of 32 (pos_min = 18308, pos_max = 18308, n_tokens = 18309, size = 221.565 MiB)
+Sep 20 18:37:48 G27 llama-server[159642]: [58043] 3.32.231.149 I cmn  common_reaso: deactivated (natural end)
+Sep 20 18:37:48 G27 llama-server[159642]: [58043] 3.33.000.617 I slot print_timing: id  0 | task 3550 | prompt eval time =     476.52 ms /   167 tokens (    2.85 ms per token,   350.46 tokens per second)
+Sep 20 18:37:48 G27 llama-server[159642]: [58043] 3.33.000.623 I slot print_timing: id  0 | task 3550 |        eval time =     998.03 ms /    68 tokens (   14.90 ms per token,    67.13 tokens per second)
+Sep 20 18:37:48 G27 llama-server[159642]: [58043] 3.33.000.624 I slot print_timing: id  0 | task 3550 |       total time =    1474.55 ms /   235 tokens
+Sep 20 18:37:48 G27 llama-server[159642]: [58043] 3.33.000.625 I slot print_timing: id  0 | task 3550 |    graphs reused =       2109
+Sep 20 18:37:48 G27 llama-server[159642]: [58043] 3.33.000.629 I slot print_timing: id  0 | task 3550 | draft acceptance = 0.96364 (   53 accepted /    55 generated), mean len =  4.53
+Sep 20 18:37:48 G27 llama-server[159642]: [58043] 3.33.000.629 I slot print_timing: id  0 | task 3550 |      acc per pos = (1.000, 1.000, 0.800, 0.733)
+Sep 20 18:37:48 G27 llama-server[159642]: [58043] 3.33.000.649 I spec common_specu: statistics        draft-mtp: #calls(b,g,a) =   14   3523   2953, #gen drafts =   2953, #acc drafts =  2894, #gen tokens =  10296, #acc tokens =  9714, #mean acc len = 4.29, #acc rate/pos = (0.980, 0.862, 0.762, 0.685), dur(b,g,a) = 0.017, 26309.477, 4.348 ms
+Sep 20 18:37:48 G27 llama-server[159642]: [58043] 3.33.001.412 I slot      release: id  0 | task 3550 | stop processing: n_tokens = 18382, truncated = 0
+Sep 20 18:37:48 G27 llama-server[159642]: [58043] 3.33.001.455 I srv  update_slots: all slots are idle
+Sep 20 18:37:49 G27 llama-server[159642]: 4.02.402.933 I srv  proxy_reques: proxying request to model Qwen3.8-27B-UD-Q5_K_S on port 58043
+Sep 20 18:37:50 G27 llama-server[159642]: [58043] 3.34.162.689 I srv  server_strea: conv_id= (empty=1)
+Sep 20 18:37:50 G27 llama-server[159642]: [58043] 3.34.194.196 I srv    operator(): chat format: peg-native
+Sep 20 18:37:50 G27 llama-server[159642]: [58043] 3.34.195.681 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.980 (18382/18751) > 0.100
+Sep 20 18:37:50 G27 llama-server[159642]: [58043] 3.34.195.685 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.980 (> 0.100 thold), f_keep = 1.000
+Sep 20 18:37:50 G27 llama-server[159642]: [58043] 3.34.196.499 I cmn  common_reaso: activated, budget=2147483647 tokens
+Sep 20 18:37:50 G27 llama-server[159642]: [58043] 3.34.196.574 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> dist
+Sep 20 18:37:50 G27 llama-server[159642]: [58043] 3.34.196.582 I slot launch_slot_: id  0 | task -1 | sampler params:
+Sep 20 18:37:50 G27 llama-server[159642]: [58043]         repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
+Sep 20 18:37:50 G27 llama-server[159642]: [58043]         dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
+Sep 20 18:37:50 G27 llama-server[159642]: [58043]         top_k = 20, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
+Sep 20 18:37:50 G27 llama-server[159642]: [58043]         mirostat = 0, mirostat_lr = 0.100, mirostat_ent = 5.000, adaptive_target = -1.000, adaptive_decay = 0.900
+Sep 20 18:37:50 G27 llama-server[159642]: [58043] 3.34.196.586 I slot launch_slot_: id  0 | task 3569 | processing task, is_child = 0
+Sep 20 18:37:50 G27 llama-server[159642]: [58043] 3.34.196.594 I slot   operator(): id  0 | task 3569 | new prompt, n_ctx_slot = 90112, n_keep = 0, task.n_tokens = 18751
+Sep 20 18:37:50 G27 llama-server[159642]: [58043] 3.34.196.614 I slot   operator(): id  0 | task 3569 | cached n_tokens = 18382, memory_seq_rm [18382, end)
+Sep 20 18:37:50 G27 llama-server[159642]: [58043] 3.34.239.063 I slot create_check: id  0 | task 3569 | created context checkpoint 31 of 32 (pos_min = 18381, pos_max = 18381, n_tokens = 18382, size = 221.852 MiB)
+Sep 20 18:37:50 G27 llama-server[159642]: [58043] 3.34.655.700 I slot   operator(): id  0 | task 3569 | cached n_tokens = 18747, memory_seq_rm [18747, end)
+Sep 20 18:37:50 G27 llama-server[159642]: [58043] 3.34.658.677 I slot init_sampler: id  0 | task 3569 | init sampler, took 2.83 ms, tokens: text = 18751, total = 18751
+Sep 20 18:37:50 G27 llama-server[159642]: [58043] 3.34.658.684 I slot create_check: id  0 | task 3569 | erasing context checkpoint too close to an earlier one (pos_min = 3043, pos_max = 3043, n_tokens = 3044, size = 161.586 MiB)
+Sep 20 18:37:50 G27 llama-server[159642]: [58043] 3.34.702.574 I slot create_check: id  0 | task 3569 | created context checkpoint 31 of 32 (pos_min = 18746, pos_max = 18746, n_tokens = 18747, size = 223.286 MiB)
+Sep 20 18:37:51 G27 llama-server[159642]: [58043] 3.35.521.085 I cmn  common_reaso: deactivated (natural end)
+Sep 20 18:37:52 G27 llama-server[159642]: [58043] 3.36.263.225 I slot print_timing: id  0 | task 3569 | prompt eval time =     552.24 ms /   369 tokens (    1.50 ms per token,   668.19 tokens per second)
+Sep 20 18:37:52 G27 llama-server[159642]: [58043] 3.36.263.229 I slot print_timing: id  0 | task 3569 |        eval time =    1514.23 ms /    80 tokens (   19.17 ms per token,    52.17 tokens per second)
+Sep 20 18:37:52 G27 llama-server[159642]: [58043] 3.36.263.230 I slot print_timing: id  0 | task 3569 |       total time =    2066.47 ms /   449 tokens
+Sep 20 18:37:52 G27 llama-server[159642]: [58043] 3.36.263.231 I slot print_timing: id  0 | task 3569 |    graphs reused =       2123
+Sep 20 18:37:52 G27 llama-server[159642]: [58043] 3.36.263.235 I slot print_timing: id  0 | task 3569 | draft acceptance = 0.94643 (   53 accepted /    56 generated), mean len =  3.94
+Sep 20 18:37:52 G27 llama-server[159642]: [58043] 3.36.263.236 I slot print_timing: id  0 | task 3569 |      acc per pos = (1.000, 0.833, 0.611, 0.500)
+Sep 20 18:37:52 G27 llama-server[159642]: [58043] 3.36.263.252 I spec common_specu: statistics        draft-mtp: #calls(b,g,a) =   15   3551   2971, #gen drafts =   2971, #acc drafts =  2912, #gen tokens =  10352, #acc tokens =  9767, #mean acc len = 4.29, #acc rate/pos = (0.980, 0.862, 0.761, 0.684), dur(b,g,a) = 0.019, 26478.552, 4.376 ms
+Sep 20 18:37:52 G27 llama-server[159642]: [58043] 3.36.263.938 I slot      release: id  0 | task 3569 | stop processing: n_tokens = 18832, truncated = 0
+Sep 20 18:37:52 G27 llama-server[159642]: [58043] 3.36.263.977 I srv  update_slots: all slots are idle
+Sep 20 18:37:58 G27 llama-server[159642]: 4.11.323.377 I srv  proxy_reques: proxying request to model Qwen3.8-27B-UD-Q5_K_S on port 58043
+Sep 20 18:37:58 G27 llama-server[159642]: [58043] 3.43.083.987 I srv  server_strea: conv_id= (empty=1)
+Sep 20 18:37:58 G27 llama-server[159642]: [58043] 3.43.117.255 I srv    operator(): chat format: peg-native
+Sep 20 18:37:58 G27 llama-server[159642]: [58043] 3.43.118.768 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.958 (18832/19659) > 0.100
+Sep 20 18:37:58 G27 llama-server[159642]: [58043] 3.43.118.771 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.958 (> 0.100 thold), f_keep = 1.000
+Sep 20 18:37:58 G27 llama-server[159642]: [58043] 3.43.119.501 I cmn  common_reaso: activated, budget=2147483647 tokens
+Sep 20 18:37:58 G27 llama-server[159642]: [58043] 3.43.119.567 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> dist
+Sep 20 18:37:58 G27 llama-server[159642]: [58043] 3.43.119.574 I slot launch_slot_: id  0 | task -1 | sampler params:
+Sep 20 18:37:58 G27 llama-server[159642]: [58043]         repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
+Sep 20 18:37:58 G27 llama-server[159642]: [58043]         dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
+Sep 20 18:37:58 G27 llama-server[159642]: [58043]         top_k = 20, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
+Sep 20 18:37:58 G27 llama-server[159642]: [58043]         mirostat = 0, mirostat_lr = 0.100, mirostat_ent = 5.000, adaptive_target = -1.000, adaptive_decay = 0.900
+Sep 20 18:37:58 G27 llama-server[159642]: [58043] 3.43.119.580 I slot launch_slot_: id  0 | task 3600 | processing task, is_child = 0
+Sep 20 18:37:58 G27 llama-server[159642]: [58043] 3.43.119.587 I slot   operator(): id  0 | task 3600 | new prompt, n_ctx_slot = 90112, n_keep = 0, task.n_tokens = 19659
+Sep 20 18:37:58 G27 llama-server[159642]: [58043] 3.43.119.605 I slot   operator(): id  0 | task 3600 | cached n_tokens = 18832, memory_seq_rm [18832, end)
+Sep 20 18:37:58 G27 llama-server[159642]: [58043] 3.43.119.762 I slot create_check: id  0 | task 3600 | erasing context checkpoint too close to an earlier one (pos_min = 3569, pos_max = 3569, n_tokens = 3570, size = 163.653 MiB)
+Sep 20 18:37:59 G27 llama-server[159642]: [58043] 3.43.208.026 I slot create_check: id  0 | task 3600 | created context checkpoint 31 of 32 (pos_min = 18831, pos_max = 18831, n_tokens = 18832, size = 223.620 MiB)
+Sep 20 18:38:00 G27 llama-server[159642]: [58043] 3.44.249.024 I slot   operator(): id  0 | task 3600 | cached n_tokens = 19655, memory_seq_rm [19655, end)
+Sep 20 18:38:00 G27 llama-server[159642]: [58043] 3.44.252.154 I slot init_sampler: id  0 | task 3600 | init sampler, took 2.97 ms, tokens: text = 19659, total = 19659
+Sep 20 18:38:00 G27 llama-server[159642]: [58043] 3.44.252.161 I slot create_check: id  0 | task 3600 | erasing context checkpoint too close to an earlier one (pos_min = 3588, pos_max = 3588, n_tokens = 3589, size = 163.728 MiB)
+Sep 20 18:38:00 G27 llama-server[159642]: [58043] 3.44.295.130 I slot create_check: id  0 | task 3600 | created context checkpoint 31 of 32 (pos_min = 19654, pos_max = 19654, n_tokens = 19655, size = 226.853 MiB)
+Sep 20 18:38:01 G27 llama-server[159642]: [58043] 3.45.449.831 I cmn  common_reaso: deactivated (natural end)
+Sep 20 18:38:03 G27 llama-server[159642]: [58043] 3.47.225.728 I slot print_timing: id  0 | task 3600 | prompt eval time =    1221.33 ms /   827 tokens (    1.48 ms per token,   677.13 tokens per second)
+Sep 20 18:38:03 G27 llama-server[159642]: [58043] 3.47.225.732 I slot print_timing: id  0 | task 3600 |        eval time =    2884.65 ms /   170 tokens (   17.07 ms per token,    58.59 tokens per second)
+Sep 20 18:38:03 G27 llama-server[159642]: [58043] 3.47.225.732 I slot print_timing: id  0 | task 3600 |       total time =    4105.98 ms /   997 tokens
+Sep 20 18:38:03 G27 llama-server[159642]: [58043] 3.47.225.734 I slot print_timing: id  0 | task 3600 |    graphs reused =       2142
+Sep 20 18:38:03 G27 llama-server[159642]: [58043] 3.47.225.738 I slot print_timing: id  0 | task 3600 | draft acceptance = 0.90299 (  121 accepted /   134 generated), mean len =  4.10
+Sep 20 18:38:03 G27 llama-server[159642]: [58043] 3.47.225.738 I slot print_timing: id  0 | task 3600 |      acc per pos = (1.000, 0.923, 0.667, 0.513)
+Sep 20 18:38:03 G27 llama-server[159642]: [58043] 3.47.225.754 I spec common_specu: statistics        draft-mtp: #calls(b,g,a) =   16   3601   3010, #gen drafts =   3010, #acc drafts =  2951, #gen tokens =  10486, #acc tokens =  9888, #mean acc len = 4.29, #acc rate/pos = (0.980, 0.862, 0.760, 0.682), dur(b,g,a) = 0.020, 26845.960, 4.434 ms
+Sep 20 18:38:03 G27 llama-server[159642]: [58043] 3.47.226.497 I slot      release: id  0 | task 3600 | stop processing: n_tokens = 19830, truncated = 0
+Sep 20 18:38:03 G27 llama-server[159642]: [58043] 3.47.226.543 I srv  update_slots: all slots are idle
+Sep 20 18:38:03 G27 llama-server[159642]: 4.15.625.389 I srv  proxy_reques: proxying request to model Qwen3.8-27B-UD-Q5_K_S on port 58043
+Sep 20 18:38:03 G27 llama-server[159642]: [58043] 3.47.390.466 I srv  server_strea: conv_id= (empty=1)
+Sep 20 18:38:03 G27 llama-server[159642]: [58043] 3.47.425.159 I srv    operator(): chat format: peg-native
+Sep 20 18:38:03 G27 llama-server[159642]: [58043] 3.47.426.716 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.995 (19830/19938) > 0.100
+Sep 20 18:38:03 G27 llama-server[159642]: [58043] 3.47.426.722 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.995 (> 0.100 thold), f_keep = 1.000
+Sep 20 18:38:03 G27 llama-server[159642]: [58043] 3.47.427.550 I cmn  common_reaso: activated, budget=2147483647 tokens
+Sep 20 18:38:03 G27 llama-server[159642]: [58043] 3.47.427.615 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> dist
+Sep 20 18:38:03 G27 llama-server[159642]: [58043] 3.47.427.626 I slot launch_slot_: id  0 | task -1 | sampler params:
+Sep 20 18:38:03 G27 llama-server[159642]: [58043]         repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
+Sep 20 18:38:03 G27 llama-server[159642]: [58043]         dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
+Sep 20 18:38:03 G27 llama-server[159642]: [58043]         top_k = 20, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
+Sep 20 18:38:03 G27 llama-server[159642]: [58043]         mirostat = 0, mirostat_lr = 0.100, mirostat_ent = 5.000, adaptive_target = -1.000, adaptive_decay = 0.900
+Sep 20 18:38:03 G27 llama-server[159642]: [58043] 3.47.427.632 I slot launch_slot_: id  0 | task 3653 | processing task, is_child = 0
+Sep 20 18:38:03 G27 llama-server[159642]: [58043] 3.47.427.641 I slot   operator(): id  0 | task 3653 | new prompt, n_ctx_slot = 90112, n_keep = 0, task.n_tokens = 19938
+Sep 20 18:38:03 G27 llama-server[159642]: [58043] 3.47.427.662 I slot   operator(): id  0 | task 3653 | cached n_tokens = 19830, memory_seq_rm [19830, end)
+Sep 20 18:38:03 G27 llama-server[159642]: [58043] 3.47.427.801 I slot create_check: id  0 | task 3653 | erasing context checkpoint too close to an earlier one (pos_min = 3693, pos_max = 3693, n_tokens = 3694, size = 164.140 MiB)
+Sep 20 18:38:03 G27 llama-server[159642]: [58043] 3.47.475.006 I slot create_check: id  0 | task 3653 | created context checkpoint 31 of 32 (pos_min = 19829, pos_max = 19829, n_tokens = 19830, size = 227.541 MiB)
+Sep 20 18:38:03 G27 llama-server[159642]: [58043] 3.47.605.563 I slot   operator(): id  0 | task 3653 | cached n_tokens = 19934, memory_seq_rm [19934, end)
+Sep 20 18:38:03 G27 llama-server[159642]: [58043] 3.47.608.703 I slot init_sampler: id  0 | task 3653 | init sampler, took 3.00 ms, tokens: text = 19938, total = 19938
+Sep 20 18:38:03 G27 llama-server[159642]: [58043] 3.47.608.709 I slot create_check: id  0 | task 3653 | erasing context checkpoint too close to an earlier one (pos_min = 4068, pos_max = 4068, n_tokens = 4069, size = 165.614 MiB)
+Sep 20 18:38:03 G27 llama-server[159642]: [58043] 3.47.651.266 I slot create_check: id  0 | task 3653 | created context checkpoint 31 of 32 (pos_min = 19933, pos_max = 19933, n_tokens = 19934, size = 227.950 MiB)
+Sep 20 18:38:05 G27 llama-server[159642]: [58043] 3.49.172.468 I cmn  common_reaso: deactivated (natural end)
+Sep 20 18:38:06 G27 llama-server[159642]: [58043] 3.50.739.143 I slot print_timing: id  0 | task 3653 | n_gen =    145, tg =  47.33 t/s, tg_3s =  47.66 t/s
+Sep 20 18:38:08 G27 llama-server[159642]: [58043] 3.52.783.647 I slot print_timing: id  0 | task 3653 | prompt eval time =     269.21 ms /   108 tokens (    2.49 ms per token,   401.18 tokens per second)
+Sep 20 18:38:08 G27 llama-server[159642]: [58043] 3.52.783.652 I slot print_timing: id  0 | task 3653 |        eval time =    5086.63 ms /   283 tokens (   18.04 ms per token,    55.44 tokens per second)
+Sep 20 18:38:08 G27 llama-server[159642]: [58043] 3.52.783.653 I slot print_timing: id  0 | task 3653 |       total time =    5355.84 ms /   391 tokens
+Sep 20 18:38:08 G27 llama-server[159642]: [58043] 3.52.783.654 I slot print_timing: id  0 | task 3653 |    graphs reused =       2179
+Sep 20 18:38:08 G27 llama-server[159642]: [58043] 3.52.783.658 I slot print_timing: id  0 | task 3653 | draft acceptance = 0.90909 (  190 accepted /   209 generated), mean len =  3.68
+Sep 20 18:38:08 G27 llama-server[159642]: [58043] 3.52.783.659 I slot print_timing: id  0 | task 3653 |      acc per pos = (0.930, 0.704, 0.549, 0.493)
+Sep 20 18:38:08 G27 llama-server[159642]: [58043] 3.52.783.676 I spec common_specu: statistics        draft-mtp: #calls(b,g,a) =   17   3695   3081, #gen drafts =   3081, #acc drafts =  3017, #gen tokens =  10695, #acc tokens = 10078, #mean acc len = 4.27, #acc rate/pos = (0.979, 0.859, 0.755, 0.678), dur(b,g,a) = 0.021, 27457.811, 4.543 ms
+Sep 20 18:38:08 G27 llama-server[159642]: [58043] 3.52.784.430 I slot      release: id  0 | task 3653 | stop processing: n_tokens = 20222, truncated = 0
+Sep 20 18:38:08 G27 llama-server[159642]: [58043] 3.52.784.474 I srv  update_slots: all slots are idle
+Sep 20 18:38:08 G27 llama-server[159642]: 4.21.163.991 I srv  proxy_reques: proxying request to model Qwen3.8-27B-UD-Q5_K_S on port 58043
+Sep 20 18:38:08 G27 llama-server[159642]: [58043] 3.52.927.871 I srv  server_strea: conv_id= (empty=1)
+Sep 20 18:38:08 G27 llama-server[159642]: [58043] 3.52.962.075 I srv    operator(): chat format: peg-native
+Sep 20 18:38:08 G27 llama-server[159642]: [58043] 3.52.963.605 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.989 (20222/20445) > 0.100
+Sep 20 18:38:08 G27 llama-server[159642]: [58043] 3.52.963.608 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.989 (> 0.100 thold), f_keep = 1.000
+Sep 20 18:38:08 G27 llama-server[159642]: [58043] 3.52.964.402 I cmn  common_reaso: activated, budget=2147483647 tokens
+Sep 20 18:38:08 G27 llama-server[159642]: [58043] 3.52.964.478 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> dist
+Sep 20 18:38:08 G27 llama-server[159642]: [58043] 3.52.964.487 I slot launch_slot_: id  0 | task -1 | sampler params:
+Sep 20 18:38:08 G27 llama-server[159642]: [58043]         repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
+Sep 20 18:38:08 G27 llama-server[159642]: [58043]         dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
+Sep 20 18:38:08 G27 llama-server[159642]: [58043]         top_k = 20, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
+Sep 20 18:38:08 G27 llama-server[159642]: [58043]         mirostat = 0, mirostat_lr = 0.100, mirostat_ent = 5.000, adaptive_target = -1.000, adaptive_decay = 0.900
+Sep 20 18:38:08 G27 llama-server[159642]: [58043] 3.52.964.490 I slot launch_slot_: id  0 | task 3750 | processing task, is_child = 0
+Sep 20 18:38:08 G27 llama-server[159642]: [58043] 3.52.964.498 I slot   operator(): id  0 | task 3750 | new prompt, n_ctx_slot = 90112, n_keep = 0, task.n_tokens = 20445
+Sep 20 18:38:08 G27 llama-server[159642]: [58043] 3.52.964.518 I slot   operator(): id  0 | task 3750 | cached n_tokens = 20222, memory_seq_rm [20222, end)
+Sep 20 18:38:08 G27 llama-server[159642]: [58043] 3.52.964.663 I slot create_check: id  0 | task 3750 | erasing context checkpoint too close to an earlier one (pos_min = 4545, pos_max = 4545, n_tokens = 4546, size = 167.488 MiB)
+Sep 20 18:38:08 G27 llama-server[159642]: [58043] 3.53.009.444 I slot create_check: id  0 | task 3750 | created context checkpoint 31 of 32 (pos_min = 20221, pos_max = 20221, n_tokens = 20222, size = 229.081 MiB)
+Sep 20 18:38:09 G27 llama-server[159642]: [58043] 3.53.271.221 I slot   operator(): id  0 | task 3750 | cached n_tokens = 20441, memory_seq_rm [20441, end)
+Sep 20 18:38:09 G27 llama-server[159642]: [58043] 3.53.274.463 I slot init_sampler: id  0 | task 3750 | init sampler, took 3.10 ms, tokens: text = 20445, total = 20445
+Sep 20 18:38:09 G27 llama-server[159642]: [58043] 3.53.274.470 I slot create_check: id  0 | task 3750 | erasing context checkpoint too close to an earlier one (pos_min = 4742, pos_max = 4742, n_tokens = 4743, size = 168.262 MiB)
+Sep 20 18:38:09 G27 llama-server[159642]: [58043] 3.53.318.586 I slot create_check: id  0 | task 3750 | created context checkpoint 31 of 32 (pos_min = 20440, pos_max = 20440, n_tokens = 20441, size = 229.942 MiB)
+Sep 20 18:38:10 G27 llama-server[159642]: [58043] 3.54.453.463 I cmn  common_reaso: deactivated (natural end)
+Sep 20 18:38:12 G27 llama-server[159642]: [58043] 3.56.391.592 I slot print_timing: id  0 | task 3750 | n_gen =    197, tg =  64.72 t/s, tg_3s =  65.05 t/s
+Sep 20 18:38:15 G27 llama-server[159642]: [58043] 3.59.399.318 I slot print_timing: id  0 | task 3750 | n_gen =    384, tg =  63.45 t/s, tg_3s =  62.17 t/s
+Sep 20 18:38:18 G27 llama-server[159642]: [58043] 4.02.452.418 I slot print_timing: id  0 | task 3750 | n_gen =    566, tg =  62.16 t/s, tg_3s =  59.61 t/s
+Sep 20 18:38:21 G27 llama-server[159642]: [58043] 4.05.461.985 I slot print_timing: id  0 | task 3750 | n_gen =    760, tg =  62.73 t/s, tg_3s =  64.46 t/s
+Sep 20 18:38:23 G27 llama-server[159642]: [58043] 4.08.085.749 I slot print_timing: id  0 | task 3750 | prompt eval time =     398.69 ms /   223 tokens (    1.79 ms per token,   559.32 tokens per second)
+Sep 20 18:38:23 G27 llama-server[159642]: [58043] 4.08.085.754 I slot print_timing: id  0 | task 3750 |        eval time =   14722.41 ms /   913 tokens (   16.14 ms per token,    61.95 tokens per second)
+Sep 20 18:38:23 G27 llama-server[159642]: [58043] 4.08.085.755 I slot print_timing: id  0 | task 3750 |       total time =   15121.10 ms /  1136 tokens
+Sep 20 18:38:23 G27 llama-server[159642]: [58043] 4.08.085.756 I slot print_timing: id  0 | task 3750 |    graphs reused =       2285
+Sep 20 18:38:23 G27 llama-server[159642]: [58043] 4.08.085.760 I slot print_timing: id  0 | task 3750 | draft acceptance = 0.92514 (  655 accepted /   708 generated), mean len =  4.03
+Sep 20 18:38:23 G27 llama-server[159642]: [58043] 4.08.085.761 I slot print_timing: id  0 | task 3750 |      acc per pos = (0.986, 0.806, 0.681, 0.560)
+Sep 20 18:38:23 G27 llama-server[159642]: [58043] 4.08.085.775 I spec common_specu: statistics        draft-mtp: #calls(b,g,a) =   18   3952   3297, #gen drafts =   3297, #acc drafts =  3230, #gen tokens =  11403, #acc tokens = 10733, #mean acc len = 4.26, #acc rate/pos = (0.980, 0.855, 0.750, 0.670), dur(b,g,a) = 0.022, 29360.372, 4.858 ms
+Sep 20 18:38:23 G27 llama-server[159642]: [58043] 4.08.086.547 I slot      release: id  0 | task 3750 | stop processing: n_tokens = 21357, truncated = 0
+Sep 20 18:38:23 G27 llama-server[159642]: [58043] 4.08.086.584 I srv  update_slots: all slots are idle
+Sep 20 18:38:24 G27 llama-server[159642]: 4.36.473.964 I srv  proxy_reques: proxying request to model Qwen3.8-27B-UD-Q5_K_S on port 58043
+Sep 20 18:38:24 G27 llama-server[159642]: [58043] 4.08.242.587 I srv  server_strea: conv_id= (empty=1)
+Sep 20 18:38:24 G27 llama-server[159642]: [58043] 4.08.277.354 I srv    operator(): chat format: peg-native
+Sep 20 18:38:24 G27 llama-server[159642]: [58043] 4.08.278.906 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.997 (21357/21426) > 0.100
+Sep 20 18:38:24 G27 llama-server[159642]: [58043] 4.08.278.911 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.997 (> 0.100 thold), f_keep = 1.000
+Sep 20 18:38:24 G27 llama-server[159642]: [58043] 4.08.279.824 I cmn  common_reaso: activated, budget=2147483647 tokens
+Sep 20 18:38:24 G27 llama-server[159642]: [58043] 4.08.279.902 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> dist
+Sep 20 18:38:24 G27 llama-server[159642]: [58043] 4.08.279.914 I slot launch_slot_: id  0 | task -1 | sampler params:
+Sep 20 18:38:24 G27 llama-server[159642]: [58043]         repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
+Sep 20 18:38:24 G27 llama-server[159642]: [58043]         dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
+Sep 20 18:38:24 G27 llama-server[159642]: [58043]         top_k = 20, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
+Sep 20 18:38:24 G27 llama-server[159642]: [58043]         mirostat = 0, mirostat_lr = 0.100, mirostat_ent = 5.000, adaptive_target = -1.000, adaptive_decay = 0.900
+Sep 20 18:38:24 G27 llama-server[159642]: [58043] 4.08.279.924 I slot launch_slot_: id  0 | task 4010 | processing task, is_child = 0
+Sep 20 18:38:24 G27 llama-server[159642]: [58043] 4.08.279.932 I slot   operator(): id  0 | task 4010 | new prompt, n_ctx_slot = 90112, n_keep = 0, task.n_tokens = 21426
+Sep 20 18:38:24 G27 llama-server[159642]: [58043] 4.08.279.955 I slot   operator(): id  0 | task 4010 | cached n_tokens = 21357, memory_seq_rm [21357, end)
+Sep 20 18:38:24 G27 llama-server[159642]: [58043] 4.08.280.112 I slot create_check: id  0 | task 4010 | erasing context checkpoint too close to an earlier one (pos_min = 8010, pos_max = 8010, n_tokens = 8011, size = 181.102 MiB)
+Sep 20 18:38:24 G27 llama-server[159642]: [58043] 4.08.319.815 I slot create_check: id  0 | task 4010 | created context checkpoint 31 of 32 (pos_min = 21356, pos_max = 21356, n_tokens = 21357, size = 233.541 MiB)
+Sep 20 18:38:24 G27 llama-server[159642]: [58043] 4.08.425.026 I slot   operator(): id  0 | task 4010 | cached n_tokens = 21422, memory_seq_rm [21422, end)
+Sep 20 18:38:24 G27 llama-server[159642]: [58043] 4.08.428.394 I slot init_sampler: id  0 | task 4010 | init sampler, took 3.21 ms, tokens: text = 21426, total = 21426
+Sep 20 18:38:24 G27 llama-server[159642]: [58043] 4.08.428.400 I slot create_check: id  0 | task 4010 | erasing context checkpoint too close to an earlier one (pos_min = 8112, pos_max = 8112, n_tokens = 8113, size = 181.503 MiB)
+Sep 20 18:38:24 G27 llama-server[159642]: [58043] 4.08.472.194 I slot create_check: id  0 | task 4010 | created context checkpoint 31 of 32 (pos_min = 21421, pos_max = 21421, n_tokens = 21422, size = 233.796 MiB)
+Sep 20 18:38:25 G27 llama-server[159642]: [58043] 4.09.403.840 I cmn  common_reaso: deactivated (natural end)
+Sep 20 18:38:27 G27 llama-server[159642]: [58043] 4.11.533.916 I slot print_timing: id  0 | task 4010 | prompt eval time =     239.30 ms /    69 tokens (    3.47 ms per token,   288.34 tokens per second)
+Sep 20 18:38:27 G27 llama-server[159642]: [58043] 4.11.533.921 I slot print_timing: id  0 | task 4010 |        eval time =    3014.52 ms /   165 tokens (   18.38 ms per token,    54.40 tokens per second)
+Sep 20 18:38:27 G27 llama-server[159642]: [58043] 4.11.533.921 I slot print_timing: id  0 | task 4010 |       total time =    3253.82 ms /   234 tokens
+Sep 20 18:38:27 G27 llama-server[159642]: [58043] 4.11.533.922 I slot print_timing: id  0 | task 4010 |    graphs reused =       2308
+Sep 20 18:38:27 G27 llama-server[159642]: [58043] 4.11.533.927 I slot print_timing: id  0 | task 4010 | draft acceptance = 0.89600 (  112 accepted /   125 generated), mean len =  3.73
+Sep 20 18:38:27 G27 llama-server[159642]: [58043] 4.11.533.927 I slot print_timing: id  0 | task 4010 |      acc per pos = (0.976, 0.707, 0.585, 0.463)
+Sep 20 18:38:27 G27 llama-server[159642]: [58043] 4.11.533.944 I spec common_specu: statistics        draft-mtp: #calls(b,g,a) =   19   4006   3338, #gen drafts =   3338, #acc drafts =  3270, #gen tokens =  11528, #acc tokens = 10845, #mean acc len = 4.25, #acc rate/pos = (0.980, 0.854, 0.748, 0.667), dur(b,g,a) = 0.023, 29726.249, 4.925 ms
+Sep 20 18:38:27 G27 llama-server[159642]: [58043] 4.11.534.740 I slot      release: id  0 | task 4010 | stop processing: n_tokens = 21592, truncated = 0
+Sep 20 18:38:27 G27 llama-server[159642]: [58043] 4.11.534.776 I srv  update_slots: all slots are idle
+Sep 20 18:38:28 G27 llama-server[159642]: 4.40.897.225 I srv  proxy_reques: proxying request to model Qwen3.8-27B-UD-Q5_K_S on port 58043
+Sep 20 18:38:28 G27 llama-server[159642]: [58043] 4.12.664.446 I srv  server_strea: conv_id= (empty=1)
+Sep 20 18:38:28 G27 llama-server[159642]: [58043] 4.12.700.415 I srv    operator(): chat format: peg-native
+Sep 20 18:38:28 G27 llama-server[159642]: [58043] 4.12.701.981 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.974 (21592/22163) > 0.100
+Sep 20 18:38:28 G27 llama-server[159642]: [58043] 4.12.701.986 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.974 (> 0.100 thold), f_keep = 1.000
+Sep 20 18:38:28 G27 llama-server[159642]: [58043] 4.12.702.725 I cmn  common_reaso: activated, budget=2147483647 tokens
+Sep 20 18:38:28 G27 llama-server[159642]: [58043] 4.12.702.797 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> dist
+Sep 20 18:38:28 G27 llama-server[159642]: [58043] 4.12.702.804 I slot launch_slot_: id  0 | task -1 | sampler params:
+Sep 20 18:38:28 G27 llama-server[159642]: [58043]         repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
+Sep 20 18:38:28 G27 llama-server[159642]: [58043]         dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
+Sep 20 18:38:28 G27 llama-server[159642]: [58043]         top_k = 20, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
+Sep 20 18:38:28 G27 llama-server[159642]: [58043]         mirostat = 0, mirostat_lr = 0.100, mirostat_ent = 5.000, adaptive_target = -1.000, adaptive_decay = 0.900
+Sep 20 18:38:28 G27 llama-server[159642]: [58043] 4.12.702.808 I slot launch_slot_: id  0 | task 4067 | processing task, is_child = 0
+Sep 20 18:38:28 G27 llama-server[159642]: [58043] 4.12.702.814 I slot   operator(): id  0 | task 4067 | new prompt, n_ctx_slot = 90112, n_keep = 0, task.n_tokens = 22163
+Sep 20 18:38:28 G27 llama-server[159642]: [58043] 4.12.702.833 I slot   operator(): id  0 | task 4067 | cached n_tokens = 21592, memory_seq_rm [21592, end)
+Sep 20 18:38:28 G27 llama-server[159642]: [58043] 4.12.702.985 I slot create_check: id  0 | task 4067 | erasing context checkpoint too close to an earlier one (pos_min = 10059, pos_max = 10059, n_tokens = 10060, size = 189.153 MiB)
+Sep 20 18:38:28 G27 llama-server[159642]: [58043] 4.12.747.190 I slot create_check: id  0 | task 4067 | created context checkpoint 31 of 32 (pos_min = 21591, pos_max = 21591, n_tokens = 21592, size = 234.464 MiB)
+Sep 20 18:38:29 G27 llama-server[159642]: [58043] 4.13.394.473 I slot   operator(): id  0 | task 4067 | cached n_tokens = 22159, memory_seq_rm [22159, end)
+Sep 20 18:38:29 G27 llama-server[159642]: [58043] 4.13.397.949 I slot init_sampler: id  0 | task 4067 | init sampler, took 3.33 ms, tokens: text = 22163, total = 22163
+Sep 20 18:38:29 G27 llama-server[159642]: [58043] 4.13.397.956 I slot create_check: id  0 | task 4067 | erasing context checkpoint too close to an earlier one (pos_min = 10148, pos_max = 10148, n_tokens = 10149, size = 189.503 MiB)
+Sep 20 18:38:29 G27 llama-server[159642]: [58043] 4.13.444.055 I slot create_check: id  0 | task 4067 | created context checkpoint 31 of 32 (pos_min = 22158, pos_max = 22158, n_tokens = 22159, size = 236.692 MiB)
+Sep 20 18:38:31 G27 llama-server[159642]: [58043] 4.15.171.272 I cmn  common_reaso: deactivated (natural end)
+Sep 20 18:38:32 G27 llama-server[159642]: [58043] 4.16.530.343 I slot print_timing: id  0 | task 4067 | n_gen =    167, tg =  54.59 t/s, tg_3s =  54.92 t/s
+Sep 20 18:38:35 G27 llama-server[159642]: [58043] 4.19.532.065 I slot print_timing: id  0 | task 4067 | n_gen =    346, tg =  57.10 t/s, tg_3s =  59.63 t/s
+Sep 20 18:38:38 G27 llama-server[159642]: [58043] 4.22.546.798 I slot print_timing: id  0 | task 4067 | n_gen =    528, tg =  58.19 t/s, tg_3s =  60.37 t/s
+Sep 20 18:38:40 G27 llama-server[159642]: [58043] 4.25.065.884 I slot print_timing: id  0 | task 4067 | prompt eval time =     786.74 ms /   571 tokens (    1.38 ms per token,   725.78 tokens per second)
+Sep 20 18:38:40 G27 llama-server[159642]: [58043] 4.25.065.888 I slot print_timing: id  0 | task 4067 |        eval time =   11576.19 ms /   657 tokens (   17.65 ms per token,    56.67 tokens per second)
+Sep 20 18:38:40 G27 llama-server[159642]: [58043] 4.25.065.889 I slot print_timing: id  0 | task 4067 |       total time =   12362.92 ms /  1228 tokens
+Sep 20 18:38:40 G27 llama-server[159642]: [58043] 4.25.065.890 I slot print_timing: id  0 | task 4067 |    graphs reused =       2382
+Sep 20 18:38:40 G27 llama-server[159642]: [58043] 4.25.065.894 I slot print_timing: id  0 | task 4067 | draft acceptance = 0.87954 (  460 accepted /   523 generated), mean len =  3.88
+Sep 20 18:38:40 G27 llama-server[159642]: [58043] 4.25.065.894 I slot print_timing: id  0 | task 4067 |      acc per pos = (0.956, 0.750, 0.644, 0.525)
+Sep 20 18:38:40 G27 llama-server[159642]: [58043] 4.25.065.909 I spec common_specu: statistics        draft-mtp: #calls(b,g,a) =   20   4206   3498, #gen drafts =   3498, #acc drafts =  3423, #gen tokens =  12051, #acc tokens = 11305, #mean acc len = 4.23, #acc rate/pos = (0.979, 0.849, 0.744, 0.661), dur(b,g,a) = 0.025, 31180.625, 5.194 ms
+Sep 20 18:38:40 G27 llama-server[159642]: [58043] 4.25.066.740 I slot      release: id  0 | task 4067 | stop processing: n_tokens = 22823, truncated = 0
+Sep 20 18:38:40 G27 llama-server[159642]: [58043] 4.25.066.775 I srv  update_slots: all slots are idle

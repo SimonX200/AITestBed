@@ -1,0 +1,17 @@
+{
+  "name": "example13-session-manager",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SessionManager with unit tests and Docker E2E tests",
+  "scripts": {
+    "build": "esbuild sessionManager.ts --bundle --platform=node --format=cjs --outfile=dist/bundle.js",
+    "test": "tsx --test sessionManager.test.ts",
+    "e2e": "bash deploy.sh && npx tsx --test sessionManager.e2e.test.ts; rc=$?; docker rm -f sessionmanager-example13 >/dev/null 2>&1 || true; exit $rc"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.2",
+    "esbuild": "^0.28.2",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
