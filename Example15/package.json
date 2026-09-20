@@ -1,0 +1,28 @@
+{
+  "name": "example15",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc && esbuild sessionManager.ts --bundle --outfile=dist/bundle.js --platform=node --target=node20",
+    "start": "node dist/bundle.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "e2e": "docker stop session-manager 2>/dev/null; docker rm session-manager 2>/dev/null; bash deploy.sh && sleep 3 && vitest run e2e",
+    "e2e:clean": "docker stop session-manager 2>/dev/null; docker rm session-manager 2>/dev/null"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "allowScripts": {
+    "esbuild": "node install.js"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.2",
+    "axios": "^1.20.0",
+    "esbuild": "^0.28.2",
+    "express": "^5.2.1",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.1"
+  }
+}
