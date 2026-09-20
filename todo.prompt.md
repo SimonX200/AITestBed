@@ -1,6 +1,6 @@
 Führe diese Aufgabe strikt isoliert aus. Ignoriere das restliche Repository und lies keine anderen Dateien ein. Schreibe den Code direkt und ohne einleitende Erklärungen oder langes Nachdenken (kein DeepSeek-Reasoning simulieren).
 
-Alle Ergebnisse kommen in das Verzeichnis Example5
+Alle Ergebnisse kommen in das Verzeichnis Example6
 
 
 0. Ganz wichtig: 
