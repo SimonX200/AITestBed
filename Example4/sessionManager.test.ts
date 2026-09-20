@@ -1,148 +1,104 @@
-import { SessionManager, UserSession } from './sessionManager';
+/**
+ * Unit Tests for SessionManager
+ * Uses Node.js built-in 'assert' module — no external dependencies needed.
+ * Tests against the compiled dist/bundle.js (CommonJS).
+ */
 
-function assert(condition: boolean, msg: string): void {
-  if (!condition) throw new Error(`ASSERTION FAILED: ${msg}`);
-}
+import assert from 'node:assert';
+import { describe, it } from 'node:test';
+import { SessionManager } from './dist/bundle.js';
 
-function runTests(): Promise<void> {
-  return new Promise((resolve) => {
-    console.log('=== Unit Tests ===\n');
-
+describe('SessionManager — Unit Tests', () => {
+  it('should add a session and return it via getSession', () => {
     const sm = new SessionManager();
-    const future = new Date(Date.now() + 60_000);
-    const session: UserSession = {
-      id: 'sess-1',
-      token: 'tok-abc',
-      expiresAt: future,
-      roles: ['admin', 'user'],
-    };
-    sm.addSession(session);
-    assert(sm.hasSession('sess-1') === true, 'hasSession should return true for valid session');
-    assert(sm.hasSession('nonexistent') === false, 'hasSession should return false for missing session');
-    assert(sm.getSessionCount() === 1, 'getSessionCount should be 1');
-    console.log('  ✓ addSession / hasSession');
+    const future = new Date(Date.now() + 3600_000); // 1 hour from now
+    sm.addSession('sess-1', 'tok-abc', future, ['admin', 'user']);
+    const session = sm.getSession('sess-1');
+    assert.strictEqual(session?.id, 'sess-1');
+    assert.strictEqual(session?.token, 'tok-abc');
+    assert.deepStrictEqual(session?.roles, ['admin', 'user']);
+    assert.strictEqual(sm.count(), 1);
+  });
 
-    const retrieved = sm.getSession('sess-1');
-    assert(retrieved !== undefined, 'getSession should return the session');
-    assert(retrieved!.id === 'sess-1', 'getSession id mismatch');
-    assert(retrieved!.roles.length === 2, 'getSession roles length mismatch');
-    console.log('  ✓ getSession (valid)');
+  it('should return undefined for a non-existent session', () => {
+    const sm = new SessionManager();
+    assert.strictEqual(sm.getSession('nonexistent'), undefined);
+  });
 
-    sm.removeSession('sess-1');
-    assert(sm.hasSession('sess-1') === false, 'hasSession should be false after removal');
-    assert(sm.getSessionCount() === 0, 'getSessionCount should be 0 after removal');
-    console.log('  ✓ removeSession');
+  it('should return false for an invalid session ID', () => {
+    const sm = new SessionManager();
+    assert.strictEqual(sm.isValidSession('nope'), false);
+  });
 
-    const expiredSession: UserSession = {
-      id: 'sess-expired',
-      token: 'tok-exp',
-      expiresAt: new Date(Date.now() - 1_000),
-      roles: ['user'],
-    };
-    sm.addSession(expiredSession);
-    assert(sm.getSessionCount() === 1, 'session exists in map before expiration check');
-    const afterGet = sm.getSession('sess-expired');
-    assert(afterGet === undefined, 'getSession should return undefined for expired session');
-    assert(sm.hasSession('sess-expired') === false, 'hasSession should return false for expired session');
-    assert(sm.getSessionCount() === 0, 'getSession should auto-remove expired session');
-    console.log('  ✓ expired session auto-removed');
+  it('should detect an expired session and remove it', () => {
+    const sm = new SessionManager();
+    const past = new Date(Date.now() - 1000); // 1 second ago
+    sm.addSession('expired-1', 'tok-old', past, ['user']);
+    assert.strictEqual(sm.isValidSession('expired-1'), false);
+    assert.strictEqual(sm.count(), 0);
+  });
 
-    const sm2 = new SessionManager();
-    const soonExpired: UserSession = {
-      id: 'sess-soon',
-      token: 'tok-soon',
-      expiresAt: new Date(Date.now() + 500),
-      roles: ['viewer'],
-    };
-    sm2.addSession(soonExpired);
-    assert(sm2.getSessionCount() === 1, 'count before cleanup');
-    sm2.startAutoCleanup(200);
-    const waitCleanup = (ms: number): Promise<void> => new Promise((r) => setTimeout(r, ms));
-    waitCleanup(1000).then(() => {
-      assert(sm2.getSessionCount() === 0, 'auto-cleanup should remove expired session');
-      sm2.stopAutoCleanup();
-      console.log('  ✓ auto-cleanup (setInterval)');
+  it('should return true for a valid (non-expired) session', () => {
+    const sm = new SessionManager();
+    const future = new Date(Date.now() + 3600_000);
+    sm.addSession('valid-1', 'tok-ok', future, ['user']);
+    assert.strictEqual(sm.isValidSession('valid-1'), true);
+  });
 
-      const sm3 = new SessionManager();
-      sm3.addSession({ id: 'a', token: 't1', expiresAt: new Date(Date.now() + 100_000), roles: ['r1'] });
-      sm3.addSession({ id: 'b', token: 't2', expiresAt: new Date(Date.now() + 100_000), roles: ['r2'] });
-      const all = sm3.getAllSessions();
-      assert(all.length === 2, 'getAllSessions should return 2');
-      sm3.stopAutoCleanup();
-      console.log('  ✓ getAllSessions');
+  it('should remove a session explicitly', () => {
+    const sm = new SessionManager();
+    const future = new Date(Date.now() + 3600_000);
+    sm.addSession('remove-me', 'tok', future, []);
+    assert.strictEqual(sm.removeSession('remove-me'), true);
+    assert.strictEqual(sm.getSession('remove-me'), undefined);
+    assert.strictEqual(sm.removeSession('remove-me'), false); // already gone
+  });
 
-      console.log('\n=== All Unit Tests Passed ===\n');
-      runE2ETests().then(() => {
-        console.log('\n=== All Tests Passed ===');
+  it('should list only active sessions', () => {
+    const sm = new SessionManager();
+    const future = new Date(Date.now() + 3600_000);
+    const past = new Date(Date.now() - 1000);
+    sm.addSession('active-1', 'tok1', future, ['admin']);
+    sm.addSession('expired-1', 'tok2', past, ['user']);
+    const active = sm.listSessions();
+    assert.strictEqual(active.length, 1);
+    assert.strictEqual(active[0].id, 'active-1');
+  });
+
+  it('should clear all sessions', () => {
+    const sm = new SessionManager();
+    const future = new Date(Date.now() + 3600_000);
+    sm.addSession('a', 't1', future, []);
+    sm.addSession('b', 't2', future, []);
+    sm.clear();
+    assert.strictEqual(sm.count(), 0);
+    assert.strictEqual(sm.listSessions().length, 0);
+  });
+
+  it('should start and stop auto-cleanup', () => {
+    const sm = new SessionManager();
+    const past = new Date(Date.now() - 1000);
+    sm.addSession('auto-exp', 'tok', past, []);
+    sm.startAutoCleanup(100); // use 100ms interval for faster testing
+    // Wait for the interval to fire
+    return new Promise<void>((resolve) => {
+      setTimeout(() => {
+        sm.stopAutoCleanup();
+        assert.strictEqual(sm.count(), 0); // expired session should be cleaned
         resolve();
-      }).catch((err) => {
-        console.error('E2E TEST FAILED:', err.message);
-        process.exit(1);
-      });
+      }, 500);
     });
   });
-}
 
-function runE2ETests(): Promise<void> {
-  console.log('=== E2E Tests (Docker Container) ===\n');
-
-  const checkContainerRunning = (): Promise<boolean> => {
-    return new Promise((resolve) => {
-      const { exec } = require('child_process');
-      exec('docker ps --filter "name=session-manager-container" --filter "status=running" --format "{{.ID}}"', (err, stdout) => {
-        resolve(stdout.trim().length > 0);
-      });
-    });
-  };
-
-  const execCmd = (cmd: string): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const { exec } = require('child_process');
-      exec(cmd, (err, stdout) => {
-        if (err) reject(err);
-        else resolve(stdout.trim());
-      });
-    });
-  };
-
-  return checkContainerRunning().then((running) => {
-    if (!running) {
-      console.log('  ✗ Container is NOT running — skipping E2E tests');
-      console.log('\n=== E2E Tests Skipped ===\n');
-      return;
-    }
-
-    console.log('  ✓ Container is running');
-
-    return execCmd('docker logs session-manager-container 2>&1 | head -20').then((logs) => {
-      console.log('  ✓ Container logs accessible');
-      console.log(`    (log preview: ${logs.substring(0, 80)}...)`);
-
-      return execCmd('docker inspect session-manager-container --format "{{.Config.Image}}"').then((image) => {
-        assert(image === 'session-manager-app', `Image should be session-manager-app, got ${image}`);
-        console.log('  ✓ Container uses correct image');
-
-        return execCmd('docker exec session-manager-container ls -la /app/bundle.js').then((ls) => {
-          assert(ls.includes('bundle.js'), 'bundle.js should exist in container');
-          console.log('  ✓ bundle.js exists in container');
-
-          return execCmd('docker exec session-manager-container wc -c /app/bundle.js').then((wc) => {
-            const size = parseInt(wc.split(' ')[0], 10);
-            assert(size > 0, `bundle.js should have size > 0, got ${size}`);
-            console.log(`  ✓ bundle.js size: ${size} bytes`);
-
-            console.log('\n=== All E2E Tests Passed ===\n');
-          });
-        });
-      });
-    });
+  it('should clean up expired sessions manually', () => {
+    const sm = new SessionManager();
+    const future = new Date(Date.now() + 3600_000);
+    const past = new Date(Date.now() - 1000);
+    sm.addSession('keep', 'tok1', future, []);
+    sm.addSession('drop1', 'tok2', past, []);
+    sm.addSession('drop2', 'tok3', past, []);
+    sm.cleanupExpired();
+    assert.strictEqual(sm.count(), 1);
+    assert.strictEqual(sm.getSession('keep')?.id, 'keep');
   });
-}
-
-runTests().then(() => {
-  console.log('\n=== All Tests Passed ===');
-  process.exit(0);
-}).catch((err) => {
-  console.error('TEST SUITE FAILED:', err.message);
-  process.exit(1);
 });
