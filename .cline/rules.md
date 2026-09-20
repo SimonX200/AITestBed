@@ -45,3 +45,16 @@ Keep responses under 50 words unless additional detail is requested.
   - Turn 1: Open the `<write_to_file>` tool instantly as your very first action. Generate ONLY the skeletal class structures, interfaces, and first 3 core method signatures. Do not write the full body yet. Close the tool tag and immediately terminate your turn by asking: "Part 1 successfully mapped out. Please confirm to proceed with implementation details."
   - Turn 2 (Upon user confirmation): Inject the remaining execution logic, edge-case unit handling, and environment scripts using focused `<apply_diff>` or `<edit_file>` loops.
 
+
+# ====================================================================
+# LARGE LOG FILE HANDLING & CONTEXT MITIGATION
+# ====================================================================
+1. LOG INGESTION BAN: You are strictly FORBIDDEN from using the `read_file` or `view_outline` tools on any file ending in `.log`, `.txt` trace streams, or verbose test reports. 
+2. PRE-FILTERING VIA SHELL: If you need to inspect an execution failure or evaluate a log file, you must run an industrial shell pipeline to isolate the root cause externally:
+   - Use `tail -n 100 .cline_output.log` to scan only the trailing exit frames.
+   - Use `grep -i -E "error|exception|failed|fatal" .cline_output.log` to filter out baseline success markers.
+   - Use `awk` or `sed` to extract specific line blocks around an error stack trace.
+3. LOG SUMMARIZATION: Only feed the extracted error slice (maximum 100 lines) into the chat timeline. Never allow an entire execution log to pollute our token context pool.
+
+
+
