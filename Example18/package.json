@@ -1,0 +1,21 @@
+{
+  "name": "sessionmanager",
+  "version": "1.0.0",
+  "description": "In-memory session manager with HTTP API",
+  "main": "dist/bundle.js",
+  "type": "module",
+  "scripts": {
+    "build": "npx esbuild sessionManager.ts --bundle --platform=node --target=node20 --outfile=dist/bundle.js --format=esm",
+    "start": "node dist/bundle.js",
+    "test": "npx jest --verbose --testPathPattern=sessionManager.test --testPathIgnorePatterns=e2e",
+    "test:e2e": "EXAMPLE_SessionManager_Port=${EXAMPLE_SessionManager_Port:-3500} npx jest --verbose --testPathPattern=sessionManager.e2e",
+    "e2e": "bash -c 'cd /home/aurelb/devops/AITestBed/Example18 && ./deploy.sh run && sleep 3 && npm run test:e2e && ./deploy.sh stop'"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "esbuild-jest": "^0.4.0",
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.14",
+    "typescript": "^5.7.0"
+  }
+}

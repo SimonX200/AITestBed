@@ -1,0 +1,214 @@
+openapi: "3.0.3"
+info:
+  title: SessionManager API
+  description: REST-API zum Verwalten von Benutzersessions mit Redis-Persistenz
+  version: 1.0.0
+  contact:
+    name: SessionManager Team
+
+servers:
+  - url: http://localhost:3000
+    description: Lokaler Server
+
+paths:
+  /health:
+    get:
+      summary: Health Check
+      description: Prüft ob der SessionManager verfügbar ist
+      tags:
+        - System
+      responses:
+        "200":
+          description: Dienst ist gesund
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthResponse"
+
+  /sessions:
+    post:
+      summary: Session erstellen
+      description: Erzeugt eine neue Benutzersession mit Rollen
+      tags:
+        - Sessions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateSessionRequest"
+      responses:
+        "201":
+          description: Session erfolgreich erstellt
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserSession"
+        "400":
+          description: Ungültige Anfrage (userId fehlt)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Interner Serverfehler
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /sessions/{id}:
+    get:
+      summary: Session abrufen
+      description: Holt eine Session anhand ihrer ID. Prüft automatisch auf Ablauf.
+      tags:
+        - Sessions
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Die Session-ID
+      responses:
+        "200":
+          description: Session gefunden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserSession"
+        "404":
+          description: Session nicht gefunden oder abgelaufen
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Interner Serverfehler
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /sessions/{id}/valid:
+    get:
+      summary: Session Gültigkeit prüfen
+      description: Prüft ob eine Session existiert und nicht abgelaufen ist
+      tags:
+        - Sessions
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Die Session-ID
+      responses:
+        "200":
+          description: Validierungsergebnis
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidResponse"
+        "500":
+          description: Interner Serverfehler
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /sessions/expired:
+    delete:
+      summary: Abgelaufene Sessions löschen
+      description: Entfernt alle abgelaufenen Sessions aus Speicher und Redis
+      tags:
+        - Sessions
+      responses:
+        "200":
+          description: Cleanup abgeschlossen
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CleanupResponse"
+        "500":
+          description: Interner Serverfehler
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+components:
+  schemas:
+    UserSession:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Eindeutige Session-ID
+          example: "550e8400-e29b-41d4-a716-446655440000"
+        token:
+          type: string
+          description: Authentifizierungs-Token
+          example: "a1b2c3d4e5f6..."
+        expiresAt:
+          type: string
+          format: date-time
+          description: Ablaufzeitpunkt der Session
+          example: "2024-01-15T10:30:00.000Z"
+        roles:
+          type: array
+          items:
+            type: string
+          description: Rollen der Session
+          example:
+            - admin
+            - user
+
+    CreateSessionRequest:
+      type: object
+      required:
+        - userId
+      properties:
+        userId:
+          type: string
+          description: Eindeutige Benutzer-ID
+          example: "user123"
+        roles:
+          type: array
+          items:
+            type: string
+          description: Rollen der Session (optional, Standard: [])
+          example:
+            - admin
+
+    HealthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: "ok"
+
+    ValidResponse:
+      type: object
+      properties:
+        valid:
+          type: boolean
+          description: true wenn die Session gültig ist
+          example: true
+
+    CleanupResponse:
+      type: object
+      properties:
+        cleaned:
+          type: integer
+          description: Anzahl der gelöschten Sessions
+          example: 5
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Fehlerbeschreibung
+          example: "Session not found"

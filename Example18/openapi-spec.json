@@ -1,0 +1,250 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "SessionManager API",
+    "description": "RESTful API for managing user sessions with automatic expiration cleanup. Sessions are stored in memory and automatically cleaned up every 60 seconds.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "SessionManager Team"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3500",
+      "description": "Local development server"
+    }
+  ],
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Health check",
+        "description": "Returns the health status of the SessionManager service including the number of active sessions.",
+        "tags": ["System"],
+        "responses": {
+          "200": {
+            "description": "Service is healthy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sessions": {
+      "get": {
+        "summary": "List active sessions",
+        "description": "Returns all non-expired sessions currently stored in the manager.",
+        "tags": ["Sessions"],
+        "responses": {
+          "200": {
+            "description": "List of active sessions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserSession"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new session",
+        "description": "Creates a new user session with the specified userId, roles, and optional TTL.",
+        "tags": ["Sessions"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSessionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Session created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserSession"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid JSON or malformed body"
+          }
+        }
+      }
+    },
+    "/sessions/{id}": {
+      "get": {
+        "summary": "Get session by ID",
+        "description": "Retrieves the details of a specific session by its unique identifier.",
+        "tags": ["Sessions"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The unique session identifier",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Session found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserSession"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Session not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete session",
+        "description": "Removes a session from the store. Returns 404 if the session does not exist.",
+        "tags": ["Sessions"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The unique session identifier",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Session deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteSessionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Session not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "UserSession": {
+        "type": "object",
+        "description": "Represents an authenticated user session.",
+        "required": ["id", "token", "expiresAt", "roles"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Unique session identifier (UUID v4)",
+            "example": "550e8400-e29b-41d4-a716-446655440000"
+          },
+          "token": {
+            "type": "string",
+            "description": "Authentication token (64-character hex string)",
+            "example": "a1b2c3d4e5f6..."
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when this session expires (ISO 8601)",
+            "example": "2026-09-22T00:00:00.000Z"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Roles assigned to the session",
+            "example": ["admin", "user"]
+          }
+        }
+      },
+      "CreateSessionRequest": {
+        "type": "object",
+        "description": "Request body for creating a new session.",
+        "required": ["userId"],
+        "properties": {
+          "userId": {
+            "type": "string",
+            "description": "The user identifier to associate with the session",
+            "example": "user123"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Roles to assign to the session (default: [\"user\"])",
+            "example": ["admin", "user"]
+          },
+          "ttlMs": {
+            "type": "integer",
+            "description": "Time-to-live in milliseconds (default: 3600000 = 1 hour)",
+            "example": 3600000
+          }
+        }
+      },
+      "HealthResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "ok"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2026-09-21T23:00:00.000Z"
+          },
+          "activeSessions": {
+            "type": "integer",
+            "description": "Number of currently active (non-expired) sessions",
+            "example": 5
+          }
+        }
+      },
+      "DeleteSessionResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Session deleted"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "550e8400-e29b-41d4-a716-446655440000"
+          }
+        }
+      }
+    }
+  }
+}
