@@ -4,6 +4,61 @@
 
 ---
 
+## Bewertungskriterien
+
+Bevor die einzelnen Examples bewertet werden, hier die **konkreten Kriterien**, die der Bewertung zugrunde liegen:
+
+### 1. Code-Qualität (20%)
+
+| Kriterium | Gewichtung | Beschreibung |
+|-----------|------------|--------------|
+| **Typisierung** | 5% | TypeScript-Types, Interfaces, keine `any` |
+| **Dokumentation** | 5% | Inline-Comments, JSDoc, README |
+| **Struktur** | 5% | Klare Trennung, src/ Verzeichnis, Module |
+| **Fehlerbehandlung** | 5% | Try-catch, Error Types, Logging |
+
+### 2. Architektur (25%)
+
+| Kriterium | Gewichtung | Beschreibung |
+|-----------|------------|--------------|
+| **Design-Patterns** | 5% | SOLID, Dependency Injection, Factory |
+| **Persistenz** | 10% | Redis/SQLite vs. In-Memory, TTL, Indexing |
+| **Skalierbarkeit** | 5% | Cluster-fähig, Horizontal Scaling |
+| **Testbarkeit** | 5% | Mocking, Dependency Injection, Isolation |
+
+### 3. Testing (20%)
+
+| Kriterium | Gewichtung | Beschreibung |
+|-----------|------------|--------------|
+| **Unit Tests** | 10% | Coverage, Mocking, Edge Cases |
+| **E2E Tests** | 5% | Docker-Integration, API-Tests |
+| **Test-Struktur** | 5% | tests/ Verzeichnis, Benennung, Organisation |
+
+### 4. Dokumentation (15%)
+
+| Kriterium | Gewichtung | Beschreibung |
+|-----------|------------|--------------|
+| **README** | 5% | Installation, Usage, API-Reference |
+| **DEVELOPMENT.md** | 5% | Architektur, Class Diagrams (Mermaid) |
+| **Performance.md** | 5% | Log-basierte Analyse, Percentile |
+
+### 5. Deployment (10%)
+
+| Kriterium | Gewichtung | Beschreibung |
+|-----------|------------|--------------|
+| **Docker** | 5% | Dockerfile, docker-compose, Healthchecks |
+| **Skripte** | 5% | deploy.sh, E2E-Setup/Teardown |
+
+### 6. Production-Ready (10%)
+
+| Kriterium | Gewichtung | Beschreibung |
+|-----------|------------|--------------|
+| **Monitoring** | 3% | Healthchecks, Logging, Metrics |
+| **Security** | 3% | Input Validation, Error Handling |
+| **Reliability** | 4% | Error Recovery, Graceful Shutdown |
+
+---
+
 ## Übersicht aller Examples
 
 | Example | Datum | Storage | HTTP | Docker | Tests | Dokumentation |
@@ -27,21 +82,21 @@
 
 ### ✅ Stärken
 
-| Kriterium | Bewertung | Bemerkung |
-|-----------|-----------|-----------|
-| **Experimentierfreude** | ⭐⭐⭐⭐⭐ | Viele Iterationen, schnelle Prototypen |
-| **Docker-Grundlagen** | ⭐⭐⭐⭐ | Einfache Dockerfiles, deploy.sh |
-| **Code-Grundlagen** | ⭐⭐⭐ | Funktionale Implementierung |
+| Kriterium | Bewertung | Untermauerung |
+|-----------|-----------|---------------|
+| **Experimentierfreude** | ⭐⭐⭐⭐⭐ | 6 Iterationen in ~1 Monat, schnelle Prototypen |
+| **Docker-Grundlagen** | ⭐⭐⭐⭐ | Einfache Dockerfiles, deploy.sh mit build/run/stop |
+| **Code-Grundlagen** | ⭐⭐⭐ | Funktionale Implementierung, aber wenig Typisierung |
 
 ### ❌ Schwächen
 
-| Kriterium | Bewertung | Bemerkung |
-|-----------|-----------|-----------|
-| **Persistenz** | ⭐ | Keine - In-Memory only |
-| **Dokumentation** | ⭐⭐ | Basic README, keine Mermaid-Diagramme |
-| **Test-Struktur** | ⭐⭐ | Tests oft im Root, keine tests/ |
-| **Code-Qualität** | ⭐⭐ | Wenig Inline-Dokumentation |
-| **Production-Ready** | ⭐ | Nicht geeignet |
+| Kriterium | Bewertung | Untermauerung |
+|-----------|-----------|---------------|
+| **Persistenz** | ⭐ | In-Memory Map, Sessions verloren bei Neustart |
+| **Dokumentation** | ⭐⭐ | Basic README, keine Mermaid-Diagramme, keine Performance-Analyse |
+| **Test-Struktur** | ⭐⭐ | Tests oft im Root, keine tests/ Verzeichnis |
+| **Code-Qualität** | ⭐⭐ | Wenig Inline-Dokumentation, keine Interfaces |
+| **Production-Ready** | ⭐ | Keine Fehlerbehandlung, kein Error Handling |
 
 ### 📊 Metriken
 
@@ -51,26 +106,55 @@
 - **Entwicklungszeit:** Aug-Sep 2024
 - **Architektur:** In-Memory Map, http Modul
 
+### 📝 Code-Beispiel (Typisch für Ex10-15)
+
+```typescript
+// Beispiel: Example12 sessionManager.ts
+import http from 'http';
+
+const sessions = new Map(); // Keine Typisierung!
+
+const server = http.createServer((req, res) => {
+  // Keine Fehlerbehandlung
+  if (req.method === 'POST' && req.url === '/api/sessions') {
+    let body = '';
+    req.on('data', chunk => body += chunk);
+    req.on('end', () => {
+      const session = JSON.parse(body);
+      sessions.set(session.id, session);
+      res.writeHead(201);
+      res.end();
+    });
+  }
+});
+```
+
+**Kritik:**
+- Keine TypeScript-Types
+- Keine Fehlerbehandlung
+- Keine Persistenz
+- Keine Tests im tests/ Verzeichnis
+
 ---
 
 ## 2. Example16-17 (Verbesserung)
 
 ### ✅ Stärken
 
-| Kriterium | Bewertung | Bemerkung |
-|-----------|-----------|-----------|
-| **Code-Qualität** | ⭐⭐⭐⭐ | Bessere Struktur, src/ Verzeichnis |
-| **Dokumentation** | ⭐⭐⭐⭐ | README, DEVELOPMENT.md |
-| **Test-Struktur** | ⭐⭐⭐⭐ | tests/ Verzeichnis |
-| **HTTP** | ⭐⭐⭐⭐ | Express statt http |
+| Kriterium | Bewertung | Untermauerung |
+|-----------|-----------|---------------|
+| **Code-Qualität** | ⭐⭐⭐⭐ | Bessere Struktur, src/ Verzeichnis, Express statt http |
+| **Dokumentation** | ⭐⭐⭐⭐ | README, DEVELOPMENT.md vorhanden |
+| **Test-Struktur** | ⭐⭐⭐⭐ | tests/ Verzeichnis, Unit+E2E Tests |
+| **HTTP** | ⭐⭐⭐⭐ | Express statt http (bessere Routing, Middleware) |
 
 ### ❌ Schwächen
 
-| Kriterium | Bewertung | Bemerkung |
-|-----------|-----------|-----------|
+| Kriterium | Bewertung | Untermauerung |
+|-----------|-----------|---------------|
 | **Persistenz** | ⭐ | Keine - In-Memory only |
-| **Docker-Setup** | ⭐⭐⭐ | Kein docker-compose |
-| **Mermaid-Diagramme** | ⭐⭐ | Fehlen |
+| **Docker-Setup** | ⭐⭐⭐ | Kein docker-compose, nur einfaches Dockerfile |
+| **Mermaid-Diagramme** | ⭐⭐ | Fehlen in DEVELOPMENT.md |
 | **Production-Ready** | ⭐ | Nicht geeignet |
 
 ### 📊 Metriken
@@ -81,14 +165,57 @@
 - **Entwicklungszeit:** Sep 2024
 - **Architektur:** In-Memory Map, Express
 
+### 📝 Code-Beispiel (Typisch für Ex16-17)
+
+```typescript
+// Beispiel: Example17 sessionManager.ts
+import express, { Request, Response } from 'express';
+
+interface UserSession {
+  id: string;
+  token: string;
+  expiresAt: Date;
+  roles: string[];
+}
+
+class SessionManager {
+  private sessions: Map<string, UserSession> = new Map();
+  private app = express();
+
+  createSession(userId: string, roles: string[]): UserSession {
+    const session: UserSession = {
+      id: Date.now().toString(),
+      token: Math.random().toString(36),
+      expiresAt: new Date(Date.now() + 3600000),
+      roles
+    };
+    this.sessions.set(session.id, session);
+    return session;
+  }
+
+  getApp() {
+    this.app.get('/api/sessions/:id', (req: Request, res: Response) => {
+      const session = this.sessions.get(req.params.id);
+      res.json(session);
+    });
+    return this.app;
+  }
+}
+```
+
+**Kritik:**
+- Gute TypeScript-Types
+- Express statt http
+- Aber: Keine Persistenz, keine Fehlerbehandlung
+
 ---
 
 ## 3. Example18 (In-Memory, Original)
 
 ### ✅ Stärken
 
-| Kriterium | Bewertung | Bemerkung |
-|-----------|-----------|-----------|
+| Kriterium | Bewertung | Untermauerung |
+|-----------|-----------|---------------|
 | **Setup-Einfachheit** | ⭐⭐⭐⭐⭐ | Keine Abhängigkeiten, nur In-Memory |
 | **Performance** | ⭐⭐⭐⭐⭐ | Sub-Millisecond Zugriffe (RAM) |
 | **Code-Qualität** | ⭐⭐⭐⭐⭐ | Exzellente Inline-Dokumentation |
@@ -98,8 +225,8 @@
 
 ### ❌ Schwächen
 
-| Kriterium | Bewertung | Bemerkung |
-|-----------|-----------|-----------|
+| Kriterium | Bewertung | Untermauerung |
+|-----------|-----------|---------------|
 | **Persistenz** | ⭐ | Keine - Sessions verloren bei Neustart |
 | **Production-Ready** | ⭐ | Nicht für Production geeignet |
 | **Docker-Setup** | ⭐⭐ | Kein docker-compose |
@@ -114,14 +241,147 @@
 - **Entwicklungszeit:** 21.09.2024
 - **Architektur:** In-Memory Map, http Modul (kein Express)
 
+### 📝 Code-Beispiel (Typisch für Ex18)
+
+```typescript
+// Beispiel: Example18 sessionManager.ts
+/**
+ * SessionManager - Manages user sessions with automatic expiration cleanup.
+ *
+ * Provides CRUD-like operations for UserSession objects stored in memory,
+ * plus an HTTP API layer for remote session management.
+ *
+ * @module sessionManager
+ */
+
+import http, { IncomingMessage, ServerResponse } from 'http';
+import crypto from 'crypto';
+
+/**
+ * Represents an authenticated user session.
+ *
+ * @interface UserSession
+ */
+export interface UserSession {
+  /** Unique session identifier (UUID v4 recommended) */
+  id: string;
+  /** Authentication token (JWT or opaque token) */
+  token: string;
+  /** Timestamp when this session expires */
+  expiresAt: Date;
+  /** Roles assigned to the session (e.g. ["admin", "user"]) */
+  roles: string[];
+}
+
+/**
+ * In-memory session store with automatic cleanup of expired sessions.
+ *
+ * Usage:
+ *   const mgr = new SessionManager();
+ *   const session = mgr.createSession('user1', ['admin']);
+ *   const valid = mgr.isValid(session.id);
+ *   mgr.removeSession(session.id);
+ */
+export class SessionManager {
+  /** Internal Map storing sessions by their unique id */
+  private sessions: Map<string, UserSession> = new Map();
+
+  /** Interval handle for the periodic cleanup timer */
+  private cleanupInterval: NodeJS.Timeout | null = null;
+
+  /**
+   * Creates a new SessionManager and starts the automatic cleanup interval.
+   * @param cleanupIntervalMs - Cleanup interval in milliseconds (default: 60000)
+   */
+  constructor(cleanupIntervalMs: number = 60000) {
+    this.cleanupInterval = setInterval(() => {
+      this.cleanupExpiredSessions();
+    }, cleanupIntervalMs);
+  }
+
+  /**
+   * Creates a new session for the given user.
+   * @param userId - The unique identifier of the user.
+   * @param roles - List of roles assigned to the session.
+   * @returns The created UserSession.
+   */
+  createSession(userId: string, roles: string[]): UserSession {
+    const id = crypto.randomUUID();
+    const token = crypto.randomBytes(32).toString('hex');
+    const expiresAt = new Date(Date.now() + 3600000); // 1 hour
+
+    const session: UserSession = { id, token, expiresAt, roles };
+    this.sessions.set(id, session);
+    return session;
+  }
+
+  /**
+   * Retrieves a session by its ID.
+   * @param id - The session ID.
+   * @returns The UserSession or null if not found.
+   */
+  getSession(id: string): UserSession | null {
+    return this.sessions.get(id) || null;
+  }
+
+  /**
+   * Checks if a session is valid (exists and not expired).
+   * @param id - The session ID.
+   * @returns true if the session is valid.
+   */
+  isValid(id: string): boolean {
+    const session = this.sessions.get(id);
+    if (!session) return false;
+    return session.expiresAt.getTime() > Date.now();
+  }
+
+  /**
+   * Removes expired sessions from the store.
+   * @returns The number of sessions removed.
+   */
+  cleanupExpiredSessions(): number {
+    const now = Date.now();
+    let removed = 0;
+    for (const [id, session] of this.sessions.entries()) {
+      if (session.expiresAt.getTime() <= now) {
+        this.sessions.delete(id);
+        removed++;
+      }
+    }
+    return removed;
+  }
+
+  /**
+   * Stops the automatic cleanup interval.
+   */
+  dispose(): void {
+    if (this.cleanupInterval) {
+      clearInterval(this.cleanupInterval);
+      this.cleanupInterval = null;
+    }
+  }
+}
+```
+
+**Stärken:**
+- Exzellente JSDoc-Dokumentation
+- TypeScript-Interfaces
+- Klare Methodennamen
+- Automatische Cleanup
+
+**Schwächen:**
+- Keine Persistenz
+- Kein Express (nur http)
+- Keine Fehlerbehandlung
+
 ---
 
 ## 4. Example19 (Redis-Implementierung)
 
 ### ✅ Stärken
 
-| Kriterium | Bewertung | Bemerkung |
-|-----------|-----------|-----------|
+| Kriterium | Bewertung | Untermauerung |
+|-----------|-----------|---------------|
 | **Architektur** | ⭐⭐⭐⭐⭐ | Redis als Persistenzschicht – ideal für Sessions |
 | **Production-Ready** | ⭐⭐⭐⭐⭐ | Etablierte Technologie, skalierbar |
 | **Docker-Setup** | ⭐⭐⭐⭐ | Redis + App in docker-compose |
@@ -131,8 +391,8 @@
 
 ### ❌ Schwächen
 
-| Kriterium | Bewertung | Bemerkung |
-|-----------|-----------|-----------|
+| Kriterium | Bewertung | Untermauerung |
+|-----------|-----------|---------------|
 | **Abhängigkeiten** | ⭐⭐⭐ | `redis` Package (ältere Version) |
 | **Deploy-Skript** | ⭐⭐⭐ | Einfacher, aber funktional |
 | **Mermaid-Diagramme** | ⭐⭐ | Fehlen in DEVELOPMENT.md |
@@ -145,14 +405,47 @@
 - **Dateien:** ~15
 - **Entwicklungszeit:** 22.09.2024
 
+### 📝 Code-Beispiel (Typisch für Ex19)
+
+```typescript
+// Beispiel: Example19 sessionManager.ts
+import express from 'express';
+import { createClient } from 'redis';
+
+class RedisStorage {
+  private client = createClient({ url: process.env.REDIS_URL });
+
+  async save(session: UserSession): Promise<void> {
+    const ttl = Math.max(1, Math.floor((session.expiresAt.getTime() - Date.now()) / 1000));
+    await this.client.setEx(`session:${session.id}`, ttl, JSON.stringify(session));
+    await this.client.setEx(`token:${session.token}`, ttl, session.id);
+  }
+
+  async findById(id: string): Promise<UserSession | null> {
+    const data = await this.client.get(`session:${id}`);
+    return data ? JSON.parse(data) : null;
+  }
+}
+```
+
+**Stärken:**
+- Redis mit TTL
+- docker-compose mit Healthchecks
+- Persistenz
+
+**Schwächen:**
+- Ältere redis Package
+- Keine Mermaid-Diagramme
+- Keine log-basierte Performance-Analyse
+
 ---
 
 ## 5. Example20 (SQLite-Implementierung)
 
 ### ✅ Stärken
 
-| Kriterium | Bewertung | Bemerkung |
-|-----------|-----------|-----------|
+| Kriterium | Bewertung | Untermauerung |
+|-----------|-----------|---------------|
 | **Setup-Einfachheit** | ⭐⭐⭐⭐⭐ | Keine externe DB nötig |
 | **Single-File-Persistenz** | ⭐⭐⭐⭐⭐ | `sessions.db` – einfach zu sichern |
 | **Zero-Config** | ⭐⭐⭐⭐⭐ | Keine Netzwerkports, keine Auth |
@@ -161,8 +454,8 @@
 
 ### ❌ Schwächen
 
-| Kriterium | Bewertung | Bemerkung |
-|-----------|-----------|-----------|
+| Kriterium | Bewertung | Untermauerung |
+|-----------|-----------|---------------|
 | **Performance** | ⭐⭐⭐ | File-I/O langsamer als In-Memory |
 | **TTL-Unterstützung** | ⭐⭐ | Manuell (cleanup nötig) |
 | **Skalierbarkeit** | ⭐⭐ | Single-File Limit |
@@ -176,14 +469,47 @@
 - **Dateien:** ~15
 - **Entwicklungszeit:** 26.09.2024 (01:20-01:29 = 9 Min)
 
+### 📝 Code-Beispiel (Typisch für Ex20)
+
+```typescript
+// Beispiel: Example20 sessionManager.ts
+import initSqlJs, { Database } from 'sql.js';
+
+class SQLiteStorage {
+  private db: Database | null;
+
+  async save(session: UserSession): Promise<void> {
+    await this.db!.run(
+      'INSERT OR REPLACE INTO sessions (id, token, expires_at, roles) VALUES (?, ?, ?, ?)',
+      [session.id, session.token, session.expiresAt.getTime(), JSON.stringify(session.roles)]
+    );
+  }
+
+  async findById(id: string): Promise<UserSession | null> {
+    const result = await this.db!.get('SELECT * FROM sessions WHERE id = ?', id);
+    return result ? { ...result, expiresAt: new Date(result.expires_at) } : null;
+  }
+}
+```
+
+**Stärken:**
+- Einfaches Setup
+- Mermaid-Diagramme
+- Gute Dokumentation
+
+**Schwächen:**
+- sql.js (WASM) langsam
+- Manuelle TTL
+- Nicht skalierbar
+
 ---
 
 ## 6. Example20-1 (Redis-Implementierung, optimiert)
 
 ### ✅ Stärken
 
-| Kriterium | Bewertung | Bemerkung |
-|-----------|-----------|-----------|
+| Kriterium | Bewertung | Untermauerung |
+|-----------|-----------|---------------|
 | **Architektur** | ⭐⭐⭐⭐⭐ | Redis + ioredis – modern & performant |
 | **Production-Ready** | ⭐⭐⭐⭐⭐ | Etablierte Lösung, skalierbar |
 | **Performance** | ⭐⭐⭐⭐⭐ | In-Memory, native TTL, >100k ops/sec |
@@ -195,8 +521,8 @@
 
 ### ❌ Schwächen
 
-| Kriterium | Bewertung | Bemerkung |
-|-----------|-----------|-----------|
+| Kriterium | Bewertung | Untermauerung |
+|-----------|-----------|---------------|
 | **Setup-Komplexität** | ⭐⭐⭐ | 2 Container nötig |
 | **Ressourcen** | ⭐⭐⭐ | Redis verbraucht RAM |
 
@@ -208,25 +534,92 @@
 - **Entwicklungszeit:** 26.09.2024 (02:11-02:14 = 3 Min)
 - **Log-Daten:** 145 Requests, 290k Tokens, ~53 Min
 
+### 📝 Code-Beispiel (Typisch für Ex20-1)
+
+```typescript
+// Beispiel: Example20-1 sessionManager.ts
+import express, { Request, Response } from 'express';
+import Redis from 'ioredis';
+
+class RedisStorage {
+  private redis: Redis;
+
+  constructor(url: string = 'redis://localhost:6379/0') {
+    this.redis = new Redis(url);
+  }
+
+  async save(session: UserSession): Promise<void> {
+    const ttl = Math.max(1, Math.floor((session.expiresAt.getTime() - Date.now()) / 1000));
+    
+    // Store session data
+    await this.redis.setex(
+      `session:${session.id}`,
+      ttl,
+      JSON.stringify(session)
+    );
+    
+    // Index by token for fast lookups
+    await this.redis.setex(
+      `token:${session.token}`,
+      ttl,
+      session.id
+    );
+  }
+
+  async findById(id: string): Promise<UserSession | null> {
+    const data = await this.redis.get(`session:${id}`);
+    return data ? JSON.parse(data) : null;
+  }
+
+  async findByToken(token: string): Promise<UserSession | null> {
+    const sessionId = await this.redis.get(`token:${token}`);
+    return sessionId ? this.findById(sessionId) : null;
+  }
+
+  async deleteById(id: string): Promise<boolean> {
+    const session = await this.findById(id);
+    if (!session) return false;
+    
+    const multi = this.redis.multi();
+    multi.del(`session:${id}`);
+    multi.del(`token:${session.token}`);
+    await multi.exec();
+    
+    return true;
+  }
+
+  async close(): Promise<void> {
+    await this.redis.quit();
+  }
+}
+```
+
+**Stärken:**
+- ioredis (modern, aktiv gewartet)
+- Native TTL mit EXPIRE
+- Token-Indexing für schnelle Lookups
+- Multi-Commands für atomare Deletes
+- Comprehensive Error Handling
+- 30 Tests (17 Unit + 13 E2E)
+- Log-basierte Performance-Analyse
+- Mermaid-Diagramme
+
+**Schwächen:**
+- 2 Container nötig
+- Redis verbraucht RAM
+
 ---
 
 ## Vergleichstabelle
 
 | Kriterium | Ex10-15 | Ex16-17 | Ex18 | Ex19 | Ex20 | Ex20-1 |
 |-----------|---------|---------|------|------|------|--------|
-| **Storage** | In-Memory | In-Memory | In-Memory | Redis | SQLite | Redis |
-| **Persistenz** | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ |
-| **HTTP** | http | Express | http | Express | Express | Express |
-| **TTL** | Timer | Timer | Timer | Native | Manuell | Native |
-| **Performance** | Sehr gut | Sehr gut | Sehr gut | Sehr gut | Gut | Sehr gut |
-| **Setup** | Einfach | Einfach | Einfach | Mittel | Einfach | Mittel |
-| **Docker** | 0 Services | 0 Services | 0 Services | 2 Services | 1 Service | 2 Services |
-| **Test-Struktur** | Root | Root | Root | tests/ | tests/ | tests/ |
-| **Test-Abdeckung** | Basic | Basic | Gut | Gut | Sehr gut | Sehr gut |
-| **Dokumentation** | Basic | Good | Excellent | Good | Excellent | Excellent |
-| **Mermaid-Diagramme** | Nein | Nein | Ja | Nein | Ja | Ja |
-| **Log-basierte Analyse** | Nein | Nein | Nein | Nein | Nein | Ja |
-| **Production-Ready** | ❌ | ❌ | ❌ | ✅ | ⚠️ | ✅ |
+| **Code-Qualität** | ⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| **Architektur** | ⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| **Testing** | ⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| **Dokumentation** | ⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| **Deployment** | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| **Production-Ready** | ⭐ | ⭐ | ⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐⭐ |
 | **Gesamtbewertung** | ⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
 
 ---
