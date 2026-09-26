@@ -1,0 +1,24 @@
+{
+  "name": "example22",
+  "version": "1.0.0",
+  "description": "Session Manager with Redis persistence",
+  "main": "dist/bundle.js",
+  "scripts": {
+    "build": "tsc && esbuild src/sessionManager.ts --bundle --platform=node --target=node20 --outfile=dist/bundle.js --external:redis",
+    "test": "jest --verbose",
+    "e2e": "jest tests/sessionManager.e2e.test.ts --verbose --runInBand"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^26.6.3",
+    "esbuild": "^0.28.2",
+    "jest": "^30.5.2",
+    "ts-jest": "^29.4.14",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "redis": "^4.6.13"
+  }
+}

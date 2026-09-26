@@ -1,0 +1,271 @@
+openapi: "3.0.3"
+info:
+  title: Session Manager API
+  description: RESTful API for managing user sessions with Redis persistence
+  version: 1.0.0
+  contact:
+    name: Session Manager
+servers:
+  - url: http://localhost:3000
+    description: Local development server
+
+paths:
+  /api/health:
+    get:
+      summary: Health check endpoint
+      description: Returns the health status of the Session Manager service
+      tags:
+        - Health
+      responses:
+        "200":
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthResponse"
+
+  /api/sessions:
+    post:
+      summary: Create a new session
+      description: Creates a new user session with the provided token and roles
+      tags:
+        - Sessions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateSessionRequest"
+      responses:
+        "201":
+          description: Session created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserSession"
+        "400":
+          description: Invalid request body or missing required fields
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    get:
+      summary: List all active sessions
+      description: Returns all non-expired sessions
+      tags:
+        - Sessions
+      responses:
+        "200":
+          description: List of active sessions
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListSessionsResponse"
+
+  /api/sessions/{sessionId}:
+    get:
+      summary: Get session by ID
+      description: Retrieves a session by its ID. Returns null if expired.
+      tags:
+        - Sessions
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The session ID
+      responses:
+        "200":
+          description: Session found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserSession"
+        "404":
+          description: Session not found or expired
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      summary: Delete a session
+      description: Deletes a session by its ID
+      tags:
+        - Sessions
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The session ID
+      responses:
+        "200":
+          description: Session deleted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeleteSessionResponse"
+        "404":
+          description: Session not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/sessions/token/{token}:
+    get:
+      summary: Get session by token
+      description: Retrieves a session by its authentication token
+      tags:
+        - Sessions
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The authentication token
+      responses:
+        "200":
+          description: Session found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserSession"
+        "404":
+          description: No session found for the given token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/sessions/cleanup:
+    post:
+      summary: Cleanup expired sessions
+      description: Manually triggers cleanup of all expired sessions
+      tags:
+        - Sessions
+      responses:
+        "200":
+          description: Cleanup completed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CleanupResponse"
+
+components:
+  schemas:
+    UserSession:
+      type: object
+      required:
+        - id
+        - token
+        - expiresAt
+        - roles
+      properties:
+        id:
+          type: string
+          description: Unique session identifier
+          example: "sess_123_abc"
+        token:
+          type: string
+          description: Authentication token
+          example: "user-auth-token-xyz"
+        expiresAt:
+          type: string
+          format: date-time
+          description: Session expiration timestamp
+          example: "2026-09-26T15:58:26.513Z"
+        roles:
+          type: array
+          items:
+            type: string
+          description: User roles
+          example: ["user", "admin"]
+
+    CreateSessionRequest:
+      type: object
+      required:
+        - token
+      properties:
+        id:
+          type: string
+          description: Custom session ID (optional, auto-generated if not provided)
+          example: "custom-session-id"
+        token:
+          type: string
+          description: Authentication token
+          example: "user-auth-token-xyz"
+        roles:
+          type: array
+          items:
+            type: string
+          description: User roles
+          example: ["user", "admin"]
+        expiresIn:
+          type: integer
+          description: Session expiration time in seconds
+          default: 3600
+          example: 3600
+
+    HealthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: "ok"
+        redisConnected:
+          type: boolean
+          example: true
+        sessionCount:
+          type: integer
+          example: 5
+        timestamp:
+          type: string
+          format: date-time
+          example: "2026-09-26T14:58:26.513Z"
+
+    ListSessionsResponse:
+      type: object
+      properties:
+        sessions:
+          type: array
+          items:
+            $ref: "#/components/schemas/UserSession"
+        count:
+          type: integer
+          description: Number of sessions returned
+          example: 5
+
+    DeleteSessionResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Session deleted"
+        id:
+          type: string
+          example: "sess_123_abc"
+
+    CleanupResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Cleanup completed"
+        removed:
+          type: integer
+          description: Number of expired sessions removed
+          example: 3
+
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+          example: "Session not found"
