@@ -5,8 +5,8 @@
   "main": "dist/bundle.js",
   "scripts": {
     "build": "bash deploy.sh",
-    "test": "jest --verbose",
-    "e2e": "bash e2e-tests.sh"
+    "test": "jest --verbose --testPathIgnorePatterns=e2e",
+    "e2e": "npm test && bash e2e-tests.sh"
   },
   "devDependencies": {
     "@types/jest": "^29.5.0",

@@ -5,8 +5,8 @@
   "main": "dist/bundle.js",
   "scripts": {
     "build": "esbuild sessionManager.ts --bundle --platform=node --outfile=dist/bundle.js --format=cjs --minify",
-    "test": "jest --forceExit --detectOpenHandles",
-    "e2e": "docker stop session-manager-app 2>/dev/null || true; docker rm session-manager-app 2>/dev/null || true; bash deploy.sh && jest --testPathPattern=e2e --forceExit --detectOpenHandles; docker stop session-manager-app 2>/dev/null || true; docker rm session-manager-app 2>/dev/null || true",
+    "test": "jest --forceExit --detectOpenHandles --testPathIgnorePatterns=e2e",
+    "e2e": "npm test && docker stop session-manager-app 2>/dev/null || true; docker rm session-manager-app 2>/dev/null || true; bash deploy.sh && jest --testPathPattern=e2e --forceExit --detectOpenHandles; docker stop session-manager-app 2>/dev/null || true; docker rm session-manager-app 2>/dev/null || true",
     "start": "node dist/bundle.js"
   },
   "devDependencies": {

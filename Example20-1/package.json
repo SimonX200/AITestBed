@@ -5,8 +5,8 @@
   "main": "dist/bundle.js",
   "scripts": {
     "build": "esbuild src/sessionManager.ts --bundle --outfile=dist/bundle.js --platform=node --target=node20",
-    "test": "jest --forceExit --detectOpenHandles",
-    "e2e": "bash deploy.sh e2e",
+    "test": "jest --forceExit --detectOpenHandles --testPathIgnorePatterns=e2e",
+    "e2e": "npm test && bash deploy.sh e2e",
     "e2e:setup": "bash deploy.sh e2e-setup",
     "e2e:teardown": "bash deploy.sh e2e-teardown"
   },

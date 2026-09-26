@@ -5,9 +5,9 @@
   "main": "dist/bundle.js",
   "scripts": {
     "build": "npx esbuild src/sessionManager.ts --bundle --platform=node --target=node20 --outfile=dist/bundle.js --format=cjs",
-    "test": "jest --config jest.config.js",
+    "test": "jest --config jest.config.js --testPathIgnorePatterns=e2e",
     "test:unit": "jest --config jest.config.js --testPathIgnorePatterns=\\.e2e\\.test\\.ts",
-    "e2e": "bash scripts/e2e_runner.sh",
+    "e2e": "npm test && bash scripts/e2e_runner.sh",
     "deploy": "bash deploy.sh deploy",
     "deploy:stop": "bash deploy.sh stop"
   },

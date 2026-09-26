@@ -6,8 +6,8 @@
   "scripts": {
     "build": "esbuild sessionManager.ts --bundle --platform=node --outfile=dist/bundle.js --minify",
     "start": "node dist/bundle.js",
-    "test": "jest --forceExit --detectOpenHandles",
-    "e2e": "bash run-e2e.sh"
+    "test": "jest --forceExit --detectOpenHandles --testPathIgnorePatterns=e2e",
+    "e2e": "npm test && bash run-e2e.sh"
   },
   "devDependencies": {
     "esbuild": "^0.20.0",

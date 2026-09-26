@@ -5,8 +5,8 @@
   "main": "dist/bundle.js",
   "scripts": {
     "build": "npx esbuild sessionManager.ts --bundle --outfile=dist/bundle.js --platform=node",
-    "test": "npx jest --forceExit --detectOpenHandles",
-    "e2e": "bash e2e-run.sh"
+    "test": "npx jest --forceExit --detectOpenHandles --testPathIgnorePatterns=e2e",
+    "e2e": "npm test && bash e2e-run.sh"
   },
   "devDependencies": {
     "typescript": "^5.0.0",

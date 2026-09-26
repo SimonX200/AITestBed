@@ -5,9 +5,9 @@
   "main": "dist/bundle.js",
   "scripts": {
     "build": "tsc",
-    "test": "jest --config jest.config.js",
+    "test": "jest --config jest.config.js --testPathIgnorePatterns=e2e",
     "test:unit": "jest --config jest.config.js --testPathPattern=tests/sessionManager.test.ts",
-    "e2e": "bash deploy.sh e2e",
+    "e2e": "npm test && bash deploy.sh e2e",
     "start": "node dist/bundle.js"
   },
   "keywords": [

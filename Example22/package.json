@@ -5,8 +5,8 @@
   "main": "dist/bundle.js",
   "scripts": {
     "build": "tsc && esbuild src/sessionManager.ts --bundle --platform=node --target=node20 --outfile=dist/bundle.js --external:redis",
-    "test": "jest --verbose",
-    "e2e": "jest tests/sessionManager.e2e.test.ts --verbose --runInBand"
+    "test": "jest --verbose --forceExit --detectOpenHandles --testPathIgnorePatterns=e2e",
+    "e2e": "npm test && jest tests/sessionManager.e2e.test.ts --verbose --runInBand"
   },
   "keywords": [],
   "type": "commonjs",
