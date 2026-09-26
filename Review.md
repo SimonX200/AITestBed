@@ -959,6 +959,45 @@ Example20-1 (Redis, optimiert)
 | `npm run e2e` | Nur E2E Tests | Unit + E2E Tests | Vollständiger Testlauf in einem Befehl |
 | Alle 14 Examples | E2E in `npm test` enthalten | `--testPathIgnorePatterns=e2e` | Saubere Trennung |
 
+### Durchgeführte Fixes
+
+#### Fix 1: E2E-Tests aus `npm test` ausschließen (Alle 14 Examples)
+**Problem:** `npm test` führte sowohl Unit- als auch E2E-Tests aus. Da keine Docker-Container liefen, schlugen alle E2E-Tests mit `ECONNREFUSED` fehl (72+ fehlgeschlagene Tests).
+
+**Lösung:** `--testPathIgnorePatterns=e2e` zu allen `test`-Scripts in `package.json` hinzugefügt:
+- `Example10-12,16-17,20,20-1`: `jest --testPathIgnorePatterns=e2e`
+- `Example15`: `vitest run --exclude '**/*.e2e.test.ts'`
+- `Example13,14`: Bereits korrekt (explizite Dateinennung)
+
+**E2E-Scripts aktualisiert:** `npm run e2e` führt nun `npm test && <e2e-command>` aus → Unit + E2E in einem Befehl.
+
+**Ergebnis:** ✅ Saubere Trennung - `npm test` = Unit Tests, `npm run e2e` = Unit + E2E Tests
+
+#### Fix 2: Example22 - deploy.sh falsches PROJECT_DIR
+**Problem:** `PROJECT_DIR="$(dirname "$SCRIPT_DIR")"` zeigte auf das Parent-Verzeichnis (AITestBed) statt auf Example22. `npm run build` scheiterte, weil es im Root-Verzeichnis ausgeführt wurde.
+
+**Lösung:** `PROJECT_DIR="$SCRIPT_DIR"` geändert.
+
+**Ergebnis:** ✅ Docker-Container bauen und starten funktioniert
+
+#### Fix 3: Example22 - Dockerfile fehlende Dependencies
+**Problem:** Das Dockerfile kopierte nur `dist/bundle.js`, aber nicht `node_modules` oder `package.json`. Der Container startete mit `Error: Cannot find module 'redis'`.
+
+**Lösung:** Zwei Zeilen zum Dockerfile hinzugefügt:
+```dockerfile
+COPY package.json .
+COPY node_modules ./node_modules
+```
+
+**Ergebnis:** ✅ Redis-Module verfügbar, Container startet erfolgreich
+
+#### Fix 4: Example15 - Vitest E2E-Ausschluss
+**Problem:** `vitest run` führte alle `*.test.ts`-Dateien aus, einschließlich `sessionManager.e2e.test.ts`, die ohne Server graceful skippten aber trotzdem im Output erschienen.
+
+**Lösung:** `--exclude '**/*.e2e.test.ts'` zum vitest test command hinzugefügt.
+
+**Ergebnis:** ✅ Nur Unit-Tests werden ausgeführt, E2E-Tests separat via `npm run e2e`
+
 ### Test-Setup
 - Alle 14 Examples (10-22) mit `npm test` (Unit Tests, E2E ausgeschlossen)
 - E2E-Tests live mit Docker-Containern ausgeführt
