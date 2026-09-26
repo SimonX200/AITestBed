@@ -26,12 +26,19 @@
     "typescript": "^5.3.3"
   },
   "jest": {
-    "moduleFileExtensions": ["js", "ts"],
+    "moduleFileExtensions": [
+      "js",
+      "ts"
+    ],
     "transform": {
       "^.+\\.ts$": "ts-jest"
     },
     "testEnvironment": "node",
-    "testMatch": ["**/tests/**/*.test.ts"],
-    "roots": ["<rootDir>"]
+    "testMatch": [
+      "**/tests/**/*.test.ts"
+    ],
+    "roots": [
+      "<rootDir>"
+    ]
   }
 }

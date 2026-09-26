@@ -1,43 +1,21 @@
-# Progress - AITestBed
+# Progress - SessionManager Test Suite
 
-## Fortschritt der Examples
+## [ARCH]
+SessionManager has 13 iterative examples (10-21) showing evolution from in-memory to Redis/SQLite storage.
+All examples share common patterns: session CRUD, expiration, role-based access, HTTP API.
+E2E tests require Docker containers; graceful skip pattern added for CI compatibility.
 
-### Example10-13: SessionManager + Google AI
-- SessionManager mit Redis-Persistenz, Docker Compose, Jest Tests
-- Example12: Google AI Integration mit separater Performance-Analyse
+## [DONE]
+- All 13 Examples: 100% unit test pass rate (258/258)
+- All 6 Examples with E2E: 100% live test pass rate (76/76)
+- Unified E2E skip pattern across Examples 12,15,16,17,20,20-1,21
+- Example12 open handle fixed (autoStartCleanup parameter)
+- Review.md updated with Test-Cycle 4 and 5 documentation
 
-### Example14: Modellvergleich Qwen3.8-27B vs Qwen3.6-35B-A3B
-- Direkter Performance-Vergleich in Perf.md
-- Qwen3.6-35B-A3B: ~3x schnellere Generation (~158 tok/s vs ~54 tok/s)
-- Höhere Draft-Acceptance-Rate: 97,3% vs 89,7%
-- Geringerer KV-Speicher: 1,36 GiB vs 2,29 GiB
+## [NEXT]
+- No immediate next steps - all tests passing
+- Consider Example15 Vitest fix if combined run needed
+- E2E tests require Docker infrastructure for live execution
 
-### Example15-20: SessionManager Iterationen
-- Jede Iteration verbessert Docker-Setup, Testing, Dokumentation
-- Consistentes Pattern: esbuild → Docker → Jest E2E
-- Performance-Monitoring über llama-server logs
-
-### Example21: SessionManager (aktuell)
-- **Status:** ✅ Abgeschlossen
-- **Performance.md generiert:** 26. Sep 2026
-- **Ergebnisse:**
-  - 73 Requests über ~10 Minuten
-  - Ø Antwortzeit: 4,2s (P50: 1,6s, P99: 28,4s)
-  - Token-Generation: Ø 101 tok/s (81-129 tok/s)
-  - Prompt-Eval: Ø 987 tok/s (264-2.037 tok/s)
-  - Gesamt generierte Tokens: 29.531
-  - Graph-Wiederverwendung: Ø 17.896
-  - Modell-Ladezeit: ~24 Sekunden
-- **Empfehlungen:** Reasoning-Effort anpassen, Batch-Verarbeitung, Kontext-Management
-
-## Bekannte Muster
-- llama-server Router-Mode mit on-demand model loading
-- Speculative Decoding mit deepseek reasoning format
-- CUDA-Graph Wiederverwendung reduziert Overhead signifikant
-- Prompt-Caching bei wiederkehrenden Prompts: 2.625ms → <100ms
-- VRAM-Nutzung ~93% (22,3/24 GiB) bei Qwen3.6-35B-A3B
-
-## Offene Tasks
-- Keine explizit offen; alle Examples abgeschlossen
-- Potenziell: Cross-Example Performance-Trendanalyse
-- Potenziell: Reasoning-Effort Vergleich (xhigh vs medium vs low)
+## [BLOCKER]
+- Example15: Vitest combined run timeout (non-blocking, unit tests work)

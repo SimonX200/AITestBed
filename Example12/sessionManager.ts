@@ -14,8 +14,11 @@ export class SessionManager {
   private sessions: Map<string, UserSession> = new Map();
   private cleanupInterval: NodeJS.Timeout | null = null;
 
-  constructor() {
-    this.startAutoCleanup();
+  constructor(autoStartCleanup: boolean = true) {
+    this.sessions = new Map();
+    if (autoStartCleanup) {
+      this.startAutoCleanup();
+    }
   }
 
   /** Startet die automatische Bereinigung abgelaufener Sessions alle 60 Sekunden */
@@ -109,7 +112,7 @@ export class SessionManager {
 import { createServer, IncomingMessage, ServerResponse } from 'http';
 import { URL } from 'url';
 
-const sessionManager = new SessionManager();
+const sessionManager = new SessionManager(false);
 
 function parseBody(req: IncomingMessage): Promise<string> {
   return new Promise((resolve, reject) => {

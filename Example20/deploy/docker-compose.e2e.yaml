@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  session-manager:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    ports:
+      - "42963:3000"
+    environment:
+      - EXAMPLE_SESSIONMANAGER_PORT=3000
+      - PORT=3000
+    volumes:
+      - ../data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:3000/api/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 5s
+
+volumes:
+  data:
