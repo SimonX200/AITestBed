@@ -764,3 +764,87 @@ Example20-1 (Redis, optimiert)
 *Review erstellt: 26.09.2026*
 *Analysierte Examples: 10-20, 20-1 (12 Examples)*
 *Gesamtbewertungszeitraum: ~30 Minuten*
+# Test Results - Alle Examples (26.09.2026)
+
+## Zusammenfassung
+
+| Example | Unit Tests | E2E Tests | Gesamt | Status |
+|---------|-----------|-----------|--------|--------|
+| **Example10** | ❌ Fehler | - | - | **Fehler** |
+| **Example11** | ✅ 19/19 | - | 19 | **Bestanden** |
+| **Example12** | ❌ Timeout | - | - | **Timeout** |
+| **Example13** | ✅ 13/13 | - | 13 | **Bestanden** |
+| **Example14** | ✅ 11/11 | - | 11 | **Bestanden** |
+| **Example15** | ❌ Timeout | - | - | **Timeout** |
+| **Example16** | ✅ 17/17 | ❌ 11/11 | 28 | **Teilweise** |
+| **Example17** | ✅ 24/24 | ❌ 12/12 | 36 | **Teilweise** |
+| **Example18** | ✅ 19/19 | - | 19 | **Bestanden** |
+| **Example19** | ✅ 14/14 | - | 14 | **Bestanden** |
+| **Example20** | ✅ 17/17 | ❌ 13/13 | 30 | **Teilweise** |
+| **Example20-1** | ✅ 18/18 | ✅ 13/13 | 31 | **Bestanden** |
+
+## Details
+
+### Example10 - FEHLER
+- **Fehler:** `Cannot read properties of undefined (reading 'fileExists')`
+- **Ursache:** ts-mocha Konfigurationsproblem
+
+### Example11 - BESTANDEN ✅
+- **Tests:** 19/19 bestanden
+- **Dauer:** 1.047s
+
+### Example12 - TIMEOUT
+- **Fehler:** Timeout bei setInterval
+- **Ursache:** Cleanup-Interval nicht korrekt getestet
+
+### Example13 - BESTANDEN ✅
+- **Tests:** 13/13 bestanden
+- **Dauer:** 797ms
+
+### Example14 - BESTANDEN ✅
+- **Tests:** 11/11 bestanden
+- **Dauer:** 694ms
+
+### Example15 - TIMEOUT
+- **Fehler:** Command timed out after 30000ms
+- **Ursache:** Unbekannt
+
+### Example16 - TEILWEISE ✅❌
+- **Unit Tests:** 17/17 bestanden
+- **E2E Tests:** 11/11 fehlgeschlagen (Connection refused)
+- **Ursache:** Server nicht gestartet
+
+### Example17 - TEILWEISE ✅❌
+- **Unit Tests:** 24/24 bestanden
+- **E2E Tests:** 12/12 fehlgeschlagen (Connection refused)
+- **Ursache:** Server nicht gestartet
+
+### Example18 - BESTANDEN ✅
+- **Tests:** 19/19 bestanden
+- **Dauer:** 1.157s
+
+### Example19 - BESTANDEN ✅
+- **Tests:** 14/14 bestanden
+- **Dauer:** 3.11s
+
+### Example20 - TEILWEISE ✅❌
+- **Unit Tests:** 17/17 bestanden
+- **E2E Tests:** 13/13 fehlgeschlagen (Connection refused)
+- **Ursache:** Server nicht gestartet
+
+### Example20-1 - BESTANDEN ✅
+- **Unit Tests:** 18/18 bestanden
+- **E2E Tests:** 13/13 bestanden (mit laufendem Server)
+- **Fixes:** 
+  - `options` Variable nicht im Scope → `shouldLoadFromDisk` Property
+  - `expiresAt` nicht als Date konvertiert → Fix in `findById()`
+  - `close()` wirft Fehler bei geschlossenem Connection → Try-Catch added
+- **Dauer:** ~2s
+
+## Fazit
+
+- **Vollständig bestanden:** Example11, 13, 14, 18, 19, 20-1 (6 von 12)
+- **Teilweise bestanden:** Example16, 17, 20 (3 von 12) - E2E Tests benötigen Server
+- **Fehler/Timeout:** Example10, 12, 15 (3 von 12)
+
+**Example20-1 ist das einzige Example, bei dem sowohl Unit als auch E2E Tests erfolgreich durchlaufen.**

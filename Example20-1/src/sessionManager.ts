@@ -77,7 +77,10 @@ class RedisStorage {
    */
   async findById(id: string): Promise<UserSession | null> {
     const data = await this.redis.get(`session:${id}`);
-    return data ? JSON.parse(data) : null;
+    if (!data) return null;
+    const session = JSON.parse(data);
+    session.expiresAt = new Date(session.expiresAt);
+    return session;
   }
 
   /**
@@ -155,7 +158,12 @@ class RedisStorage {
    * Closes the Redis connection.
    */
   async close(): Promise<void> {
-    await this.redis.quit();
+    if (!this.connected) return;
+    try {
+      await this.redis.quit();
+    } catch {
+      // Connection already closed or error during quit - ignore
+    }
     this.connected = false;
   }
 }
@@ -183,6 +191,7 @@ class SessionManager {
   private app: express.Application;
   private redisUrl: string;
   private _initialized: boolean;
+  private shouldLoadFromDisk: boolean;
 
   /**
    * Creates a new SessionManager instance.
@@ -192,6 +201,7 @@ class SessionManager {
    */
   constructor(options?: { redisUrl?: string; loadFromDisk?: boolean }) {
     this.redisUrl = options?.redisUrl || process.env.REDIS_URL || 'redis://localhost:6379/0';
+    this.shouldLoadFromDisk = options?.loadFromDisk !== false;
     this.sessions = new Map();
     this.storage = new RedisStorage(this.redisUrl);
     this._initialized = false;
@@ -206,7 +216,7 @@ class SessionManager {
   async init(): Promise<void> {
     if (this._initialized) return;
     await this.storage.init();
-    if (options?.loadFromDisk !== false) {
+    if (this.shouldLoadFromDisk) {
       await this.loadFromDisk();
     }
     this._initialized = true;
