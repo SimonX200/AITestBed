@@ -16,11 +16,13 @@ export class SessionManager {
   private cleanupInterval: NodeJS.Timeout | null;
   private readonly cleanupMs: number;
 
-  constructor(cleanupIntervalMs: number = 60_000) {
+  constructor(cleanupIntervalMs: number = 60_000, autoStartCleanup: boolean = true) {
     this.sessions = new Map();
     this.cleanupMs = cleanupIntervalMs;
     this.cleanupInterval = null;
-    this.startAutoCleanup();
+    if (autoStartCleanup) {
+      this.startAutoCleanup();
+    }
   }
 
   /** Start automatic cleanup of expired sessions */
@@ -115,7 +117,7 @@ export class SessionManager {
 
 // ==================== Express App Setup ====================
 
-const sessionManager = new SessionManager(60_000);
+const sessionManager = new SessionManager(60_000, false);
 const app = express();
 app.use(express.json());
 

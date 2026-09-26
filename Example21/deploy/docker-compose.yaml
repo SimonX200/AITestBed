@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  session-manager:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    ports:
+      - "${EXAMPLE_SESSIONMANAGER_PORT:-3000}:3000"
+    environment:
+      - EXAMPLE_SESSIONMANAGER_PORT=3000
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - session-network
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - session-network
+
+volumes:
+  redis-data:
+
+networks:
+  session-network:
+    driver: bridge

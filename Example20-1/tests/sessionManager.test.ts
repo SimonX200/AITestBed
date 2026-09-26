@@ -1,4 +1,5 @@
 import { SessionManager, RedisStorage, UserSession } from '../src/sessionManager';
+import Redis from 'ioredis';
 
 const TEST_REDIS_URL = 'redis://localhost:6380/1';
 
@@ -174,6 +175,12 @@ describe('SessionManager', () => {
   });
 
   test('should persist sessions to Redis and reload', async () => {
+    // Clean up Redis DB 2 first to avoid stale sessions from other tests
+    const cleanRedis = new Redis(TEST_REDIS_URL_SM);
+    const keys = await cleanRedis.keys('session:*');
+    if (keys.length > 0) await cleanRedis.del(...keys);
+    await cleanRedis.quit();
+
     await manager.createSession('user1', ['admin'], 1);
     await manager.dispose();
 
@@ -181,7 +188,10 @@ describe('SessionManager', () => {
     await freshManager.init();
     const loadedSessions = freshManager.listSessions();
     expect(loadedSessions.length).toBeGreaterThanOrEqual(1);
-    expect(loadedSessions[0].roles).toEqual(['admin']);
+    // Find the session we just created (it has 'admin' role)
+    const adminSession = loadedSessions.find(s => s.roles.includes('admin'));
+    expect(adminSession).toBeDefined();
+    expect(adminSession!.roles).toEqual(['admin']);
     await freshManager.dispose();
   });
 

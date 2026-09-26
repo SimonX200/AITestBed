@@ -1,0 +1,33 @@
+{
+  "name": "example21",
+  "version": "1.0.0",
+  "description": "SessionManager - User session management with Redis persistence",
+  "main": "dist/bundle.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest --config jest.config.js",
+    "test:unit": "jest --config jest.config.js --testPathPattern=tests/sessionManager.test.ts",
+    "e2e": "bash deploy.sh e2e",
+    "start": "node dist/bundle.js"
+  },
+  "keywords": [
+    "session",
+    "redis",
+    "express"
+  ],
+  "type": "commonjs",
+  "dependencies": {
+    "@types/express": "^5.0.6",
+    "@types/ioredis": "^4.28.10",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^26.6.3",
+    "express": "^5.2.1",
+    "ioredis": "^6.0.0",
+    "jest": "^30.5.2",
+    "ts-jest": "^29.4.14",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  }
+}

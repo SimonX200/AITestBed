@@ -1,0 +1,330 @@
+openapi: "3.0.3"
+info:
+  title: SessionManager API
+  description: RESTful API for managing user sessions with Redis-backed persistent storage. Supports session creation, retrieval, validation, deletion, and automatic cleanup of expired sessions.
+  version: 1.0.0
+  contact:
+    name: SessionManager Team
+servers:
+  - url: http://localhost:3000
+    description: Local development server
+paths:
+  /health:
+    get:
+      summary: Health check endpoint
+      description: Returns the current health status of the SessionManager service
+      tags:
+        - Health
+      responses:
+        "200":
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthResponse"
+  /api/sessions:
+    get:
+      summary: Get all active sessions
+      description: Returns a list of all non-expired sessions
+      tags:
+        - Sessions
+      responses:
+        "200":
+          description: List of active sessions
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AllSessionsResponse"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    post:
+      summary: Create a new session
+      description: Creates a new user session with optional roles and duration
+      tags:
+        - Sessions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateSessionRequest"
+      responses:
+        "201":
+          description: Session created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateSessionResponse"
+        "400":
+          description: Missing required field (userId)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /api/sessions/{id}:
+    get:
+      summary: Get a session by ID
+      description: Retrieves a specific session by its unique identifier
+      tags:
+        - Sessions
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Session unique identifier
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Session found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetSessionResponse"
+        "404":
+          description: Session not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    delete:
+      summary: Delete a session
+      description: Deletes a specific session by its unique identifier
+      tags:
+        - Sessions
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Session unique identifier
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Session deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeleteSessionResponse"
+        "404":
+          description: Session not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /api/sessions/{id}/validate:
+    post:
+      summary: Validate a session
+      description: Validates a session by checking its ID and token
+      tags:
+        - Sessions
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Session unique identifier
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ValidateSessionRequest"
+      responses:
+        "200":
+          description: Validation result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidateSessionResponse"
+        "400":
+          description: Missing required field (token)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /api/sessions/cleanup:
+    post:
+      summary: Cleanup expired sessions
+      description: Removes all expired sessions from memory and Redis storage
+      tags:
+        - Sessions
+      responses:
+        "200":
+          description: Cleanup completed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CleanupResponse"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+components:
+  schemas:
+    HealthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        timestamp:
+          type: string
+          format: date-time
+          example: "2026-09-26T12:00:00.000Z"
+    CreateSessionRequest:
+      type: object
+      required:
+        - userId
+      properties:
+        userId:
+          type: string
+          description: Unique identifier for the user
+          example: user-123
+        roles:
+          type: array
+          items:
+            type: string
+          description: List of roles for the session
+          example: ["user", "admin"]
+        durationMinutes:
+          type: integer
+          description: Session duration in minutes (default: 60)
+          example: 60
+    UserSession:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique session identifier
+          example: 550e8400-e29b-41d4-a716-446655440000
+        token:
+          type: string
+          description: Cryptographically secure session token
+          example: a1b2c3d4e5f6...
+        expiresAt:
+          type: string
+          format: date-time
+          description: Session expiration timestamp
+          example: "2026-09-26T13:00:00.000Z"
+        roles:
+          type: array
+          items:
+            type: string
+          description: List of roles assigned to this session
+          example: ["user", "admin"]
+    CreateSessionResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          $ref: "#/components/schemas/UserSession"
+    GetSessionResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          $ref: "#/components/schemas/UserSession"
+    AllSessionsResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/UserSession"
+    DeleteSessionResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          type: object
+          properties:
+            deleted:
+              type: boolean
+    ValidateSessionRequest:
+      type: object
+      required:
+        - token
+      properties:
+        token:
+          type: string
+          description: Session token to validate
+          example: a1b2c3d4e5f6...
+    ValidateSessionResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          type: object
+          properties:
+            valid:
+              type: boolean
+    CleanupResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          type: object
+          properties:
+            cleanedUp:
+              type: integer
+              description: Number of expired sessions removed
+              example: 5
+    ErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        error:
+          type: string
+          description: Error message
+          example: "Session not found"

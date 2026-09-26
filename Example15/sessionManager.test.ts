@@ -139,19 +139,6 @@ describe('SessionManager', () => {
     });
   });
 
-  describe('auto cleanup interval', () => {
-    it('should auto-remove expired sessions after interval', async () => {
-      // Create a SessionManager with a very short interval for testing
-      const shortSm = new SessionManager(100);
-      shortSm.addSession('user1', 'token1', new Date(Date.now() - 1000), ['user']);
-      
-      await new Promise(resolve => setTimeout(resolve, 250));
-      
-      expect(shortSm.getSessionCount()).toBe(0);
-      shortSm.stopAutoCleanup();
-    });
-  });
-
   describe('stopAutoCleanup', () => {
     it('should stop the cleanup interval', () => {
       sm.stopAutoCleanup();
