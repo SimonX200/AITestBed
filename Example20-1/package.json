@@ -1,0 +1,37 @@
+{
+  "name": "session-manager",
+  "version": "1.0.0",
+  "description": "Session Manager with Redis persistent storage and HTTP API",
+  "main": "dist/bundle.js",
+  "scripts": {
+    "build": "esbuild src/sessionManager.ts --bundle --outfile=dist/bundle.js --platform=node --target=node20",
+    "test": "jest --forceExit --detectOpenHandles",
+    "e2e": "bash deploy.sh e2e",
+    "e2e:setup": "bash deploy.sh e2e-setup",
+    "e2e:teardown": "bash deploy.sh e2e-teardown"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "ioredis": "^5.3.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.0",
+    "@types/supertest": "^7.2.1",
+    "esbuild": "^0.20.2",
+    "jest": "^29.7.0",
+    "supertest": "^6.3.4",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.3.3"
+  },
+  "jest": {
+    "moduleFileExtensions": ["js", "ts"],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "testEnvironment": "node",
+    "testMatch": ["**/tests/**/*.test.ts"],
+    "roots": ["<rootDir>"]
+  }
+}
